@@ -7,6 +7,8 @@ import { Testimonial } from "@/components/sections/Testimonial";
 import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
 
+
+
 export default function Page() {
   return (
     <>
@@ -14,7 +16,7 @@ export default function Page() {
       <Problems />
       <Services />
       <Process />
-      <Pricing condensed />
+      <Pricing />
       <Testimonial />
       <About />
       <Contact />

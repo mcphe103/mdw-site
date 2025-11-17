@@ -14,9 +14,9 @@ export function Header() {
       </Link>
       <nav className="hidden md:flex gap-6 text-sm">
         <NavLink href="/#services" current={pathname === "/#services"}>Services</NavLink>
-        <NavLink href="/pricing" current={pathname?.startsWith("/pricing")}>Pricing</NavLink>
+        <NavLink href="/#pricing" current={pathname?.startsWith("/#pricing")}>Pricing</NavLink>
         <NavLink href="/#process" current={pathname === "/#process"}>Process</NavLink>
-        <NavLink href="/contact" current={pathname?.startsWith("/contact")}>Contact</NavLink>
+        <NavLink href="/#contact" current={pathname?.startsWith("/#contact")}>Contact</NavLink>
       </nav>
       <div className="hidden md:block">
         <Link href="/contact"><Button>Book a free consult</Button></Link>
