@@ -31,7 +31,7 @@ export default function RootLayout({
               alt="Digital mesh background"
               fill
               priority
-              className="object-cover opacity-[0.15] blur-[1px]"
+              className="object-cover opacity-[0.15] object-[30%_0%] md:object-center"
             />
           </div>
 
