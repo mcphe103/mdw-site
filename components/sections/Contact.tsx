@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { SectionTitle } from "@/components/sections/SectionTitle";
 
 export function Contact() {
   const [loading, setLoading] = useState(false);
@@ -23,37 +24,30 @@ export function Contact() {
         body: JSON.stringify(data),
       });
 
-      if (!res.ok) {
-        // Try to extract any error message the API might return
-        let message = "Request failed";
-        try {
-          const json = await res.json();
-          if (json?.message) message = json.message;
-        } catch {}
-        throw new Error(message);
-      }
+      if (!res.ok) throw new Error("Request failed");
 
       form.reset();
       toast.success("Message sent!", {
         description: "Thanks for reaching out. I’ll get back to you soon.",
       });
-    } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Please try again later.";
-      toast.error("Something went wrong", { description: message });
+    } catch (err) {
+      toast.error("Something went wrong", {
+        description: "Please try again later.",
+      });
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <section id="contact" className="py-10">
-      <div className="container-xl">
-        <h2 className="text-2xl md:text-3xl font-semibold text-base-heading">
-          Contact
-        </h2>
+    <section id="contact" className="py-16 md:py-24">
+      <div className="container-xl max-w-3xl mx-auto px-4">
+        <SectionTitle title="Contact" />
 
-        <form onSubmit={onSubmit} className="mt-6 grid md:grid-cols-2 gap-4">
+        <form
+          onSubmit={onSubmit}
+          className="mt-8 grid md:grid-cols-2 gap-4"
+        >
           <div>
             <Label htmlFor="name" className="text-base-text/70">
               Name
@@ -102,7 +96,6 @@ export function Contact() {
                 name="topic"
                 className="mt-1 w-full bg-white/5 border border-white/10 rounded-2xl px-3 py-2"
                 defaultValue="New site"
-                aria-label="What do you need?"
               >
                 <option>New site</option>
                 <option>Redesign</option>
@@ -118,7 +111,10 @@ export function Contact() {
                 className="accent-base-accent"
                 required
               />
-              <Label htmlFor="consent" className="text-sm text-base-text/80">
+              <Label
+                htmlFor="consent"
+                className="text-sm text-base-text/80"
+              >
                 You can email me about this request.
               </Label>
             </div>
@@ -137,7 +133,7 @@ export function Contact() {
             />
           </div>
 
-          <div className="md:col-span-2 flex items-center gap-3">
+          <div className="md:col-span-2 flex items-center justify-center gap-3 mt-2">
             <Button
               type="submit"
               disabled={loading}
