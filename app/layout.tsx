@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="bg-[#05070B] text-base-text">
         <div className="relative min-h-screen">
           {/* GLOBAL DNA BACKGROUND */}
-          <div className="pointer-events-none fixed inset-0 -z-20">
+          <div className="pointer-events-none absolute md:fixed inset-0 -z-20">
             <Image
               src="/images/dna-hero-bg.png"
               alt="Digital mesh background"
