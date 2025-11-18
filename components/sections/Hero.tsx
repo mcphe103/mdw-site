@@ -22,15 +22,15 @@ export function Hero() {
             McPherson Digital Works
           </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-base-heading leading-tight">
-            Clean, modern websites
+            Reliable websites for businesses that expect more.
             <span className="block text-base-accent">
-              engineered to stay online.
+              Secure, lightning-fast, professionally maintained.
             </span>
           </h1>
           <p className="mt-4 text-sm md:text-base text-base-text/80 max-w-lg">
-            I design, build, and maintain sites for small businesses that need
-            reliability first—fast hosting, secure infrastructure, and ongoing
-            care without the technical headaches.
+            I deliver clean, modern websites and full ongoing care — including hosting,
+             monitoring, backups, and updates — so your online presence stays strong 
+             around the clock.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -67,18 +67,25 @@ export function Hero() {
               </li>
               <li className="flex gap-2">
                 <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/90" />
-                <span>Managed hosting, SSL, and performance monitoring.</span>
+                <span>Fully managed hosting, SSL, backups, and updates</span>
               </li>
               <li className="flex gap-2">
                 <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/90" />
-                <span>Ongoing updates and support through a simple care plan.</span>
+                <span>Performance and security monitoring</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/90" />
+                <span>Priority support for ongoing changes</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/90" />
+                <span>Transparent process with version control</span>
               </li>
             </ul>
 
             <div className="mt-5 border-t border-white/10 pt-4 text-xs md:text-sm text-base-text/70">
               <p>
-                Built with attention to detail, version control, and a clear
-                process—so you always know what&apos;s going on with your site.
+                Built with attention to detail, long-term reliability, and a structured process that keeps your website running at its best.
               </p>
             </div>
           </div>
