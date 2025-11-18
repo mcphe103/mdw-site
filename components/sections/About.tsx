@@ -1,64 +1,57 @@
-// components/sections/About.tsx
 import { SectionTitle } from "@/components/sections/SectionTitle";
 
 export function About() {
   return (
     <section id="about" className="py-16 md:py-24">
       <div className="container-xl max-w-4xl mx-auto px-4">
-        <SectionTitle
-          title="About McPherson Digital Works"
-          align="left"
-          kicker="Who I work with"
-        />
+        <SectionTitle kicker="About" title="McPherson Digital Works" />
 
-        <div className="mt-6 space-y-4 text-sm md:text-base text-base-text/80 leading-relaxed">
+        <div className="mt-6 space-y-4 text-sm md:text-base text-base-text/80">
           <p>
-            McPherson Digital Works is a one-person studio focused on building
-            and maintaining websites for small businesses that need things to
-            just work. No bloated page builders, no mystery boxes—just modern
-            web technology, clear communication, and long-term support.
+            McPherson Digital Works is a one-person studio run by me, Matthew
+            McPherson. I design, build, and manage websites for small businesses
+            that want a modern online presence without the chaos of DIY tools or
+            unreliable developers.
           </p>
 
           <p>
-            I handle the full lifecycle of your site: planning, design, build,
-            deployment, and ongoing hosting & care. That means you always know
-            who to talk to when you need an update, a fix, or a new idea
-            implemented.
-          </p>
-
-          <p>
-            My priority is reliability and clarity: predictable pricing,
-            documented changes, and a site that stays online and up to date so
-            you can focus on running your business.
+            My focus is on clean design, stable infrastructure, and a clear
+            process. Every project is tracked, version-controlled, and deployed
+            with long-term reliability in mind—so your website isn&apos;t just
+            launched and forgotten, it&apos;s something you can depend on.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3 text-xs md:text-sm text-base-text/75">
-          <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-            <div className="text-base-heading font-semibold mb-1">
-              Tech stack
-            </div>
-            <p>Next.js, React, Tailwind CSS, Vercel hosting, modern tooling.</p>
+        <div className="mt-8 grid gap-6 md:grid-cols-2 text-sm md:text-base">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-5">
+            <h3 className="text-base-heading text-lg font-medium">
+              What I focus on
+            </h3>
+            <ul className="mt-3 space-y-1.5 text-base-text/75">
+              <li>• Clear, professional presentation of your business</li>
+              <li>• Fast, stable Next.js builds</li>
+              <li>• Reliable hosting and maintenance</li>
+              <li>• Simple, predictable pricing</li>
+            </ul>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-            <div className="text-base-heading font-semibold mb-1">
-              Focus
-            </div>
-            <p>
-              Fast, secure business sites with simple maintenance and clear
-              communication.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-            <div className="text-base-heading font-semibold mb-1">
-              How we work
-            </div>
-            <p>
-              Project-based builds plus an optional Hosting & Care Plan for
-              ongoing support.
-            </p>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-5">
+            <h3 className="text-base-heading text-lg font-medium">
+              How I work
+            </h3>
+            <ul className="mt-3 space-y-1.5 text-base-text/75">
+              <li>• One point of contact—you work directly with me</li>
+              <li>• A clear, step-by-step process</li>
+              <li>• Ongoing support after launch</li>
+              <li>• Attention to detail in both design and infrastructure</li>
+            </ul>
           </div>
         </div>
+
+        <p className="mt-8 text-xs md:text-sm text-base-text/60 text-center">
+          The goal is simple: give your business a website that looks
+          professional, stays online, and is taken care of over time.
+        </p>
       </div>
     </section>
   );

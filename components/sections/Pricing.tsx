@@ -6,62 +6,53 @@ import { Button } from "@/components/ui/button";
 
 export function Pricing() {
   const plans = [
-    {
-      name: "Hosting & Care Plan",
-      price: "$100 / mo",
-      highlight: true,
-      description:
-        "Perfect for small businesses that want a fast, secure website without worrying about the tech.",
-      features: [
-        "Managed hosting & SSL",
-        "Performance & security monitoring",
-        "Backups and updates",
-        "Email support for site changes",
-      ],
-    },
-    {
-      name: "Launch Package",
-      price: "Custom",
-      highlight: false,
-      description:
-        "Custom design and build for new sites or full redesigns tailored to your brand.",
-      features: [
-        "Custom Next.js site",
-        "Responsive design",
-        "Basic SEO setup",
-        "Deployment & launch support",
-      ],
-    },
-
-    {
-      name: "Ongoing Support & Changes",
+  {
+    name: "Hosting & Care Plan",
+    price: "$100 / mo",
+    highlight: true,
+    description:
+      "A fully managed hosting and maintenance plan that keeps your website secure, backed up, and running around the clock. Available for websites built through MDW or for approved existing websites after an initial evaluation.",
+    features: [
+      "Managed Next.js hosting & SSL",
+      "Performance, uptime, and security monitoring",
+      "Weekly backups & platform updates",
+      "Priority support for site changes",
+      "Reliability & security checks",
+    ],
+    cta: "Check Eligibility",
+  },
+  {
+    name: "Launch Package (New Builds)",
     price: "Custom",
     highlight: false,
     description:
-      "For businesses that need regular content updates, new pages, or ongoing improvements beyond hosting.",
+      "A custom-built website designed around your brand, goals, and industry — built with clean design, modern performance, and long-term stability.",
     features: [
-      "Content and layout updates",
-      "New pages and sections as needed",
-      "Consulting on improvements",
-      "Prioritized support for site changes",
-      ],
-    },
+      "Custom Next.js website",
+      "Modern, responsive UI",
+      "Structured content strategy",
+      "Light SEO setup",
+      "Deployment & launch support",
+    ],
+    cta: "Request a Quote",
+  },
+  {
+    name: "Redesign Package",
+    price: "Custom",
+    highlight: false,
+    description:
+      "A complete redesign of your existing website — improving visuals, structure, and performance for a more modern, professional, and reliable online presence.",
+    features: [
+      "Full UI/UX redesign",
+      "Updated, modern layout",
+      "Improved speed & stability",
+      "Mobile-first performance",
+      "Updated content structure",
+    ],
+    cta: "Request a Quote",
+  },
+];
 
-    // You can add more plans later if you want, e.g.:
-    // {
-    //   name: "Launch Package",
-    //   price: "Custom",
-    //   highlight: false,
-    //   description:
-    //     "Custom design and build for new sites or full redesigns tailored to your brand.",
-    //   features: [
-    //     "Custom Next.js site",
-    //     "Responsive design",
-    //     "Basic SEO setup",
-    //     "Deployment & launch support",
-    //   ],
-    // },
-  ];
 
   return (
     <section id="pricing" className="py-16 md:py-24 bg-white/5">
