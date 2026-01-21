@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from "@/components/ui/toast"
+import { Toast } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 1000000
@@ -13,13 +13,6 @@ type ToasterToast = ToastProps & {
   title?: React.ReactNode
   description?: React.ReactNode
 }
-
-const actionTypes = {
-  ADD_TOAST: "ADD_TOAST",
-  UPDATE_TOAST: "UPDATE_TOAST",
-  DISMISS_TOAST: "DISMISS_TOAST",
-  REMOVE_TOAST: "REMOVE_TOAST",
-} as const
 
 let count = 0
 function genId() {
@@ -42,7 +35,7 @@ function addToRemoveQueue(toastId: string) {
   toastTimeouts.set(toastId, timeout)
 }
 
-const [state, dispatch] = (() => {
+const [_state, dispatch] = (() => {
   const initialState: State = { toasts: [] }
 
   type Action =
@@ -70,11 +63,11 @@ const [state, dispatch] = (() => {
             t.id === toastId || toastId === undefined ? { ...t, open: false } : t
           ),
         }
-      }
       case "REMOVE_TOAST":
-        if (action.toastId === undefined)
-          return { ...state, toasts: [] }
+        if (action.toastId === undefined) return { ...state, toasts: [] }
         return { ...state, toasts: state.toasts.filter((t) => t.id !== action.toastId) }
+      default:
+        return state
     }
   }
 
