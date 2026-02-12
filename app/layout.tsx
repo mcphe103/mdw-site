@@ -5,7 +5,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "sonner"; 
 import Image from "next/image";
-import Script from "next/script";
 
 
 
@@ -47,12 +46,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
     <body className="bg-[#05070B] text-base-text scroll-smooth">
-      <Script
-        id="mdw-jsonld"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+/>
+
 
       <div className="relative min-h-screen">
           {/* GLOBAL DNA BACKGROUND */}
