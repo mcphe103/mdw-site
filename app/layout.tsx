@@ -5,6 +5,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "sonner"; 
 import Image from "next/image";
+import Script from "next/script";
+
 
 
 
@@ -16,10 +18,22 @@ export const metadata: Metadata = {
     template: "%s | McPherson Digital Works",
   },
   description:
-    "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
+  "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
   icons: {
     icon: "/favicon.ico",
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "McPherson Digital Works",
+  url: "https://mcphersondigitalworks.com",
+  email: "contact@mcphersondigitalworks.com",
+  // phone: "+12094841674", // optional, add if you want
+  areaServed: "United States", // or narrow to your real service area
+  description:
+  "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
 };
 
 
@@ -33,6 +47,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
     <body className="bg-[#05070B] text-base-text scroll-smooth">
+      <Script
+        id="mdw-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <div className="relative min-h-screen">
           {/* GLOBAL DNA BACKGROUND */}
         <div className="pointer-events-none fixed inset-0 -z-20">
