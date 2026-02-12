@@ -10,7 +10,17 @@ import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = { /* ...existing... */ };
+export const metadata: Metadata = {
+  title: {
+    default: "McPherson Digital Works",
+    template: "%s | McPherson Digital Works",
+  },
+  description:
+    "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 
 
