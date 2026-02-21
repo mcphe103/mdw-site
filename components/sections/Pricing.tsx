@@ -6,53 +6,58 @@ import { Button } from "@/components/ui/button";
 
 export function Pricing() {
   const plans = [
-  {
-    name: "Hosting & Care Plan",
-    price: "$100 / mo",
-    highlight: true,
-    description:
-      "A fully managed hosting and maintenance plan that keeps your website secure, backed up, and running around the clock. Available for websites built through MDW or for approved existing websites after an initial evaluation.",
-    features: [
-      "Managed Next.js hosting & SSL",
-      "Performance, uptime, and security monitoring",
-      "Weekly backups & platform updates",
-      "Priority support for site changes",
-      "Reliability & security checks",
-    ],
-    cta: "Check Eligibility",
-  },
-  {
-    name: "Launch Package (New Builds)",
-    price: "Custom",
-    highlight: false,
-    description:
-      "A custom-built website designed around your brand, goals, and industry — built with clean design, modern performance, and long-term stability.",
-    features: [
-      "Custom Next.js website",
-      "Modern, responsive UI",
-      "Structured content strategy",
-      "Light SEO setup",
-      "Deployment & launch support",
-    ],
-    cta: "Request a Quote",
-  },
-  {
-    name: "Redesign Package",
-    price: "Custom",
-    highlight: false,
-    description:
-      "A complete redesign of your existing website — improving visuals, structure, and performance for a more modern, professional, and reliable online presence.",
-    features: [
-      "Full UI/UX redesign",
-      "Updated, modern layout",
-      "Improved speed & stability",
-      "Mobile-first performance",
-      "Updated content structure",
-    ],
-    cta: "Request a Quote",
-  },
-];
+    {
+      name: "Hosting & Care Plan",
+      price: "$100 / mo",
+      highlight: true,
+      description:
+      "A fully managed hosting and maintenance plan designed for long-term stability. Your website stays secure, monitored, updated, and professionally maintained — without you having to think about it.",
+      features: [
+        "Managed Next.js hosting & SSL",
+        "Performance, uptime, and security monitoring",
+        "Weekly backups & platform updates",
+        "Priority support for site changes",
+        "Reliability & security checks",
+      ],
+      note:
+      "Major redesigns, new feature builds, and structural changes are quoted separately.",
+      cta: "Check Eligibility",
+    },
+    {
+      name: "New Website Launch",
+      price: "Starting at $1,200",
+      highlight: false,
+      description:
+      "A professionally built website crafted around your brand and business goals. Designed for clarity, performance, and long-term reliability — not just something that looks good, but something built to last.",
+      features: [
+        "Custom Next.js website",
+        "Modern, responsive UI",
+        "Structured content strategy",
+        "Light SEO setup",
+        "Deployment & launch support",
+        "Typical timeline: 3–5 weeks",
+      ],
+      cta: "Request a Quote",
+    },
+    {
+      name: "Redesign Package",
+      price: "Starting at $1,000",
+      highlight: false,
+      description:
+      "A strategic redesign of your existing website — improving structure, performance, and visual clarity to better represent your business and increase trust with your customers.",
+      features: [
+        "Full UI/UX redesign",
+        "Updated, modern layout",
+        "Improved speed & stability",
+        "Mobile-first performance",
+        "Updated content structure",
+        "Typical timeline: 2–4 weeks",
+      ],
 
+      
+      cta: "Request a Quote",
+    },
+  ];
 
   return (
     <section id="pricing" className="py-16 md:py-24 bg-white/5">
@@ -60,10 +65,12 @@ export function Pricing() {
         <SectionTitle kicker="Investment" title="Pricing" />
 
         <p className="mt-4 text-sm md:text-base text-base-text/80 text-center max-w-2xl mx-auto">
-          Simple, predictable pricing. No hidden fees, no surprise add-ons—
-          just a clear monthly plan for keeping your website healthy and
-          running smoothly.
+          Clear investment levels for businesses that value stability, performance,
+          and long-term reliability. Whether you need a new launch, a redesign, or
+          ongoing care — each plan is built with structure and intention.
         </p>
+
+
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center">
           {plans.map((plan) => (
@@ -71,8 +78,8 @@ export function Pricing() {
               key={plan.name}
               className={`rounded-2xl border-white/10 bg-white/5 backdrop-blur flex flex-col h-full ${
                 plan.highlight
-                  ? "border-base-accent/70 shadow-[0_0_25px_rgba(73,194,199,0.35)]"
-                  : ""
+                ? "border-base-accent/70 shadow-[0_0_25px_rgba(73,194,199,0.35)]"
+                : ""
               }`}
             >
               <CardHeader className="pb-3">
@@ -86,46 +93,55 @@ export function Pricing() {
                   <p className="mt-1 inline-flex items-center rounded-full bg-base-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-base-accent">
                     Recommended
                   </p>
-                )}
+                  )}
               </CardHeader>
+
               <CardContent className="flex flex-col gap-4 flex-1">
                 <p className="text-sm text-base-text/80 leading-relaxed">
                   {plan.description}
                 </p>
+
                 <ul className="space-y-1.5 text-sm text-base-text/75">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex gap-2">
+                  {plan.features.map((f, idx) => (
+                    <li key={`${plan.name}-${idx}`} className="flex gap-2">
                       <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/80" />
                       <span>{f}</span>
                     </li>
-                  ))}
+                    ))}
                 </ul>
+                {plan.note && (
+  <p className="text-xs text-base-text/60 leading-relaxed">
+    {plan.note}
+  </p>
+)}
 
                 <div className="mt-6">
                   <Button
                     asChild
                     className={`w-full ${
                       plan.highlight
-                        ? "bg-base-accent text-black hover:bg-base-accent/90"
-                        : "bg-white/10 hover:bg-white/15 text-base-text"
+                      ? "bg-base-accent text-black hover:bg-base-accent/90"
+                      : "bg-white/10 hover:bg-white/15 text-base-text"
                     }`}
                   >
-                    <Link href="#contact">Start with this plan</Link>
+                    <Link href="#contact">{plan.cta}</Link>
                   </Button>
                 </div>
               </CardContent>
             </Card>
-
-
-          ))}
+            ))}
         </div>
 
-        <p className="mt-6 text-xs md:text-sm text-base-text/60 text-center">
-          Need something more custom, like a full redesign or a new build?
-          Reach out through the contact form and we’ll shape a plan around
-          your project.
+        <p className="mt-6 text-xs md:text-sm text-base-text/60 text-center max-w-2xl mx-auto">
+          “Starting at” pricing reflects standard project scope. Final investment is determined after a brief discovery conversation.
         </p>
+
+        <p className="mt-6 text-xs md:text-sm text-base-text/60 text-center">
+          Not sure which plan fits? Reach out through the contact form and we’ll recommend the best path forward.
+        </p>
+
+
       </div>
     </section>
-  );
+    );
 }
