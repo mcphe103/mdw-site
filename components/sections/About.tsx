@@ -19,7 +19,7 @@ export function About() {
             Every project is tracked, version-controlled, and deployed with long-term
             reliability in mind—so your website isn’t just launched and forgotten, it’s
             something you can depend on.
-          </p>>
+          </p>
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 text-sm md:text-base">
