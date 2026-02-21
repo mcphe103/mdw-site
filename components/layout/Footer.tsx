@@ -29,109 +29,90 @@ export function Footer() {
               <ul className="space-y-1">
                 <li>
                   <Link href="#process" className="text-base-text/70 hover:text-base-text">
-                    Process
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#services" className="text-base-text/70 hover:text-base-text">
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#pricing" className="text-base-text/70 hover:text-base-text">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#about" className="text-base-text/70 hover:text-base-text">
-                    About
-                  </Link>
-                </li>
-              </ul>
-            </div>
+                  Process
+                </Link>
+              </li>
+              <li>
+                <Link href="#services" className="text-base-text/70 hover:text-base-text">
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link href="#pricing" className="text-base-text/70 hover:text-base-text">
+              Pricing
+            </Link>
+          </li>
+          <li>
+            <Link href="#about" className="text-base-text/70 hover:text-base-text">
+            About
+          </Link>
+        </li>
+      </ul>
+    </div>
 
-            <div className="space-y-2">
-              <h4 className="text-base-heading/80 text-xs uppercase tracking-wider">
-                Support
-              </h4>
-              <ul className="space-y-1">
-                <li>
-                  <Link href="#contact" className="text-base-text/70 hover:text-base-text">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="mailto:contact@mcphersondigitalworks.com"
-                    className="text-base-text/70 hover:text-base-text"
-                  >
-                    Email Support
-                  </a>
-                </li>
-              </ul>
-            </div>
+    <div className="space-y-2">
+      <h4 className="text-base-heading/80 text-xs uppercase tracking-wider">
+        Support
+      </h4>
+      <ul className="space-y-1">
+        <li>
+          <Link href="#contact" className="text-base-text/70 hover:text-base-text">
+          Contact
+        </Link>
+      </li>
+      <li>
+        <Link href="#pricing" className="text-base-text/70 hover:text-base-text">
+        Start a Project
+      </Link>
+    </li>
+  </ul>
+</div>
 
-            <div className="space-y-2">
-              <h4 className="text-base-heading/80 text-xs uppercase tracking-wider">
-                Legal
-              </h4>
-              <ul className="space-y-1">
-                <li>
-                  <Link href="/privacy" className="text-base-text/70 hover:text-base-text">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms" className="text-base-text/70 hover:text-base-text">
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+<div className="space-y-2">
+  <h4 className="text-base-heading/80 text-xs uppercase tracking-wider">
+    Legal
+  </h4>
+  <ul className="space-y-1">
+    <li>
+      <Link href="/privacy" className="text-base-text/70 hover:text-base-text">
+      Privacy Policy
+    </Link>
+  </li>
+  <li>
+    <Link href="/terms" className="text-base-text/70 hover:text-base-text">
+    Terms of Service
+  </Link>
+</li>
+</ul>
+</div>
+</div>
+</div>
 
         {/* SOCIAL + COPYRIGHT + POWERED BY */}
-        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+<div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* SOCIALS */}
-          <div className="flex justify-center md:justify-start gap-3">
+  <div className="flex justify-center md:justify-start gap-3">
             {/* Replace href values with your real profiles when ready */}
-            <a
-              href="https://github.com/mcphe103"
-              target="_blank"
-              rel="noreferrer"
-              className="h-8 w-8 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-xs text-base-text/70 hover:border-base-accent/70 hover:text-base-accent"
-            >
-              GH
-            </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-              className="h-8 w-8 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-xs text-base-text/70 hover:border-base-accent/70 hover:text-base-accent"
-            >
-              IN
-            </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-              className="h-8 w-8 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-xs text-base-text/70 hover:border-base-accent/70 hover:text-base-accent"
-            >
-              X
-            </a>
-          </div>
+{/*    <a
+      href="https://github.com/mcphe103"
+      target="_blank"
+      rel="noreferrer"
+      className="h-8 w-8 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-xs text-base-text/70 hover:border-base-accent/70 hover:text-base-accent"
+    >
+      GH
+    </a>*/}
+  </div>
 
-          <div className="text-center md:text-right text-[11px] text-base-text/55 space-y-1">
-            <div>
-              © {new Date().getFullYear()} McPherson Digital Works. All rights reserved.
-            </div>
-            <div>
-              Powered by Next.js &amp; deployed on Vercel.
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+  <div className="text-center md:text-right text-[11px] text-base-text/55 space-y-1">
+    <div>
+      © {new Date().getFullYear()} McPherson Digital Works. All rights reserved.
+    </div>
+    <div>
+      Powered by Next.js &amp; deployed on Vercel.
+    </div>
+  </div>
+</div>
+</div>
+</footer>
+);
 }
