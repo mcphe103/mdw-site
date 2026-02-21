@@ -26,11 +26,11 @@ export function Services() {
         <SectionTitle kicker="What I Do" title="Services" />
 
         <p className="mt-4 text-sm md:text-base text-base-text/80 max-w-2xl mx-auto text-center">
-  I provide end-to-end solutions for modern small businesses—covering
-  design, development, hosting, and ongoing care. Whether you need a new
-  website, a redesign, or long-term maintenance, MDW keeps your online
-  presence secure and reliable.
-</p>
+          We provide end-to-end solutions for modern small businesses—covering
+          design, development, hosting, and ongoing care. Whether you need a new
+          website, a redesign, or long-term maintenance, MDW keeps your online
+          presence secure and reliable.
+        </p>
 
 
         <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -49,12 +49,12 @@ export function Services() {
                     <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/80" />
                     <span>{f}</span>
                   </li>
-                ))}
+                  ))}
               </ul>
             </div>
-          ))}
+            ))}
         </div>
       </div>
     </section>
-  );
+    );
 }

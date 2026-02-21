@@ -2,15 +2,15 @@ export function Problems() {
   const problems = [
     {
       title: "Outdated or Unprofessional Websites",
-      desc: "Your website should reflect the quality of your business. If it feels old, cluttered, or inconsistent, customers lose trust quickly. I redesign and modernize your site to match your brand.",
+      desc: "Your website should reflect the quality of your business. If it feels old, cluttered, or inconsistent, customers lose trust quickly. We redesign and modernize your site to match your brand.",
     },
     {
       title: "Slow or Unreliable Hosting",
-      desc: "Cheap or unmanaged hosting leads to downtime, slow load times, and security risks. I provide secure, reliable hosting and monitoring so your site stays fast and available.",
+      desc: "Cheap or unmanaged hosting leads to downtime, slow load times, and security risks. We provide secure, reliable hosting and monitoring so your site stays fast and available.",
     },
     {
       title: "No Ongoing Maintenance",
-      desc: "Most websites go months or years without updates. This leads to broken pages, vulnerabilities, and outdated content. I handle updates, backups, and maintenance for you.",
+      desc: "Most websites go months or years without updates. This leads to broken pages, vulnerabilities, and outdated content. We handle updates, backups, and maintenance for you.",
     },
     {
       title: "No One to Turn To",
@@ -27,7 +27,7 @@ export function Problems() {
 
         <p className="mt-4 text-sm md:text-base text-base-text/80 max-w-2xl">
           Modern businesses often struggle with outdated websites, technical
-          issues, and unreliable support. I help small businesses eliminate
+          issues, and unreliable support. We help small businesses eliminate
           those problems so their online presence stays professional, fast, and
           trustworthy.
         </p>

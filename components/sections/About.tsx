@@ -8,18 +8,18 @@ export function About() {
 
         <div className="mt-6 space-y-4 text-sm md:text-base text-base-text/80">
           <p>
-            McPherson Digital Works is a one-person studio run by me, Matthew
-            McPherson. I design, build, and manage websites for small businesses
-            that want a modern online presence without the chaos of DIY tools or
-            unreliable developers.
+            McPherson Digital Works is a founder-led digital studio focused on building
+            clean, reliable websites for small businesses. We design, build, and manage
+            modern web platforms for companies that want a strong online presence
+            without the chaos of DIY tools or unreliable development.
           </p>
 
           <p>
-            My focus is on clean design, stable infrastructure, and a clear
-            process. Every project is tracked, version-controlled, and deployed
-            with long-term reliability in mind—so your website isn&apos;t just
-            launched and forgotten, it&apos;s something you can depend on.
-          </p>
+            Our focus is on clean design, stable infrastructure, and a structured process.
+            Every project is tracked, version-controlled, and deployed with long-term
+            reliability in mind—so your website isn’t just launched and forgotten, it’s
+            something you can depend on.
+          </p>>
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 text-sm md:text-base">
@@ -37,7 +37,7 @@ export function About() {
 
           <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-5">
             <h3 className="text-base-heading text-lg font-medium">
-              How I work
+              How We Work
             </h3>
             <ul className="mt-3 space-y-1.5 text-base-text/75">
               <li>• One point of contact—you work directly with me</li>
@@ -54,5 +54,5 @@ export function About() {
         </p>
       </div>
     </section>
-  );
+    );
 }

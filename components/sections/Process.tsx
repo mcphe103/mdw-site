@@ -9,7 +9,7 @@ export function Process() {
     },
     {
       title: "Design & Structure",
-      desc: "I define a clean layout and content structure that matches your brand and makes it easy for customers to find what they need.",
+      desc: "We define a clean layout and content structure that matches your brand and makes it easy for customers to find what they need.",
     },
     {
       title: "Build",
