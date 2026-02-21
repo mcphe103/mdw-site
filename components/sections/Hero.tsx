@@ -28,7 +28,7 @@ export function Hero() {
             </span>
           </h1>
           <p className="mt-4 text-sm md:text-base text-base-text/80 max-w-lg">
-            I deliver clean, modern websites and full ongoing care — including hosting,
+            We deliver clean, modern websites and full ongoing care — including hosting,
              monitoring, backups, and updates — so your online presence stays strong 
              around the clock.
           </p>

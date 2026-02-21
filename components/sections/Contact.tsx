@@ -115,7 +115,7 @@ export function Contact() {
                 htmlFor="consent"
                 className="text-sm text-base-text/80"
               >
-                You can email me about this request.
+                You can email us about this request.
               </Label>
             </div>
           </div>
