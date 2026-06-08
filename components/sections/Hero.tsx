@@ -22,9 +22,9 @@ export function Hero() {
             McPherson Digital Works
           </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-base-heading leading-tight">
-            Reliable websites for businesses that expect more.
+            Professional websites for businesses that want to stand out.
             <span className="block text-base-accent">
-              Secure, lightning-fast, professionally maintained.
+            Fast, secure, and professionally managed from launch to long-term support.
             </span>
           </h1>
           <p className="mt-4 text-sm md:text-base text-base-text/80 max-w-lg">
