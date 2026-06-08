@@ -5,7 +5,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
-const SECTIONS = ["services", "process", "pricing", "about", "contact"] as const;
+const SECTIONS = ["services", "portfolio", "process", "pricing", "about", "contact"] as const;
 
 export function Header() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -71,6 +71,12 @@ export function Header() {
             Services
           </NavLink>
           <NavLink
+            href={isHome ? "#portfolio" : "/#portfolio"}
+            active={activeSection === "portfolio"}
+          >
+            Work
+          </NavLink>
+          <NavLink
             href={isHome ? "#process" : "/#process"}
             active={activeSection === "process"}
           >
@@ -124,6 +130,14 @@ export function Header() {
               onClick={closeMobile}
             >
               Services
+            </MobileNavLink>
+
+            <MobileNavLink
+              href={isHome ? "#portfolio" : "/#portfolio"}
+              active={activeSection === "portfolio"}
+              onClick={closeMobile}
+            >
+              Work
             </MobileNavLink>
 
             <MobileNavLink

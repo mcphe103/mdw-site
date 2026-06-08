@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { Problems } from "@/components/sections/Problems";
 import { Services } from "@/components/sections/Services";
+import { Portfolio } from "@/components/sections/Portfolio";
 import { Process } from "@/components/sections/Process";
 import { Pricing } from "@/components/sections/Pricing";
 import { Testimonial } from "@/components/sections/Testimonial";
@@ -21,6 +22,7 @@ export default function Page() {
       <Hero />
       <Problems />
       <Services />
+      <Portfolio />
       <Process />
       <Pricing />
       <Testimonial />
