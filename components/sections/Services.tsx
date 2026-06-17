@@ -3,35 +3,30 @@ import { SectionTitle } from "@/components/sections/SectionTitle";
 export function Services() {
   const services = [
     {
-      title: "Website Design",
-      desc: "Clean, modern designs tailored to your brand and built for clarity. Every layout is crafted to feel professional, trustworthy, and easy for customers to navigate.",
-      features: ["Modern, responsive UI", "Brand-aligned visuals", "Clear content structure"],
+      title: "New Website Builds",
+      desc: "Professional websites for small businesses that need to look credible online and make it easy for customers to understand their services and get in touch.",
+      features: ["Starter and growth website packages", "Mobile-friendly layouts", "Clear calls to action"],
     },
     {
-      title: "Website Development",
-      desc: "Fast, stable, and reliable builds powered by Next.js. Your website is engineered for performance, long-term maintainability, and a smooth user experience.",
+      title: "Modern Development",
+      desc: "Fast, stable, and reliable builds powered by Next.js. Your website is built for performance, maintainability, and a smooth customer experience.",
       features: ["Next.js + Tailwind", "Optimized performance", "Search-friendly foundation"],
     },
     {
       title: "Hosting & Ongoing Care",
-      desc: "A fully managed hosting and maintenance plan that keeps your website secure, updated, monitored, and backed up—so you can focus on running your business.",
-      features: ["Managed hosting & SSL", "Backups & updates", "Monitoring & priority support"],
+      desc: "Managed hosting and maintenance that keeps your website secure, monitored, backed up, and supported after launch.",
+      features: ["Managed hosting & SSL", "Backups & updates", "Monitoring & support"],
     },
   ];
 
   return (
     <section id="services" className="pt-10 pb-16 md:pt-14 md:pb-24">
-
       <div className="container-xl max-w-5xl mx-auto px-4">
         <SectionTitle kicker="What I Do" title="Services" />
 
         <p className="mt-4 text-sm md:text-base text-base-text/80 max-w-2xl mx-auto text-center">
-          We provide end-to-end solutions for modern small businesses—covering
-          design, development, hosting, and ongoing care. Whether you need a new
-          website, a redesign, or long-term maintenance, MDW keeps your online
-          presence secure and reliable.
+          MDW helps local businesses launch clean, modern websites with clear service information, strong first impressions, and ongoing support after launch.
         </p>
-
 
         <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
@@ -49,12 +44,12 @@ export function Services() {
                     <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/80" />
                     <span>{f}</span>
                   </li>
-                  ))}
+                ))}
               </ul>
             </div>
-            ))}
+          ))}
         </div>
       </div>
     </section>
-    );
+  );
 }
