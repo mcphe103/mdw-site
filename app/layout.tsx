@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "sonner"; 
 import Image from "next/image";
-
+import Script from "next/script";
 
 
 
@@ -45,11 +45,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
+    
     <body className="bg-[#05070B] text-base-text scroll-smooth">
       <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-/>
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
 
       <div className="relative min-h-screen">
@@ -74,24 +75,38 @@ export default function RootLayout({
           <Footer />
         </div>
 
-        <Toaster
-          theme="dark"
-          position="bottom-right"
-          toastOptions={{
-            style: {
-              background: "#121821",
-              color: "#E9EEF5",
-              border: "1px solid rgba(73, 194, 199, 0.3)",
-              boxShadow: "0 0 12px rgba(73, 194, 199, 0.25)",
-              transform: "translateX(20px)",
-              transition: "all 0.4s ease",
-            },
-            className: "rounded-2xl",
-          }}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-W7F61KR99P"
+          strategy="afterInteractive"
         />
-      </div>
-    </body>
-    </html>
-    );
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W7F61KR99P');
+            `}
+          </Script>
+
+          <Toaster
+            theme="dark"
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                background: "#121821",
+                color: "#E9EEF5",
+                border: "1px solid rgba(73, 194, 199, 0.3)",
+                boxShadow: "0 0 12px rgba(73, 194, 199, 0.25)",
+                transform: "translateX(20px)",
+                transition: "all 0.4s ease",
+              },
+              className: "rounded-2xl",
+            }}
+          />
+        </div>
+      </body>
+      </html>
+      );
 }
 
