@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,12 +10,30 @@ import { SectionTitle } from "@/components/sections/SectionTitle";
 
 export function Contact() {
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+  const startedAt = useRef(Date.now());
+  const submitting = useRef(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting.current) return;
+
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      company: formData.get("company"),
+      topic: formData.get("topic"),
+      consent: formData.get("consent") === "on",
+      message: formData.get("message"),
+      website: formData.get("website"),
+      startedAt: startedAt.current,
+    };
+
+    submitting.current = true;
     setLoading(true);
+    setStatus("Sending your message…");
 
     try {
       const res = await fetch("/api/contact", {
@@ -27,14 +45,18 @@ export function Contact() {
       if (!res.ok) throw new Error("Request failed");
 
       form.reset();
+      startedAt.current = Date.now();
+      setStatus("Message sent. Thanks for reaching out; I’ll get back to you soon.");
       toast.success("Message sent!", {
         description: "Thanks for reaching out. I’ll get back to you soon.",
       });
-    } catch (err) {
+    } catch {
+      setStatus("Your message could not be sent. Please try again later.");
       toast.error("Something went wrong", {
         description: "Please try again later.",
       });
     } finally {
+      submitting.current = false;
       setLoading(false);
     }
   }
@@ -47,7 +69,22 @@ export function Contact() {
         <form
           onSubmit={onSubmit}
           className="mt-8 grid md:grid-cols-2 gap-4"
+          aria-describedby="contact-form-status"
         >
+          <div
+            className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
+            aria-hidden="true"
+          >
+            <Label htmlFor="website">Leave this field blank</Label>
+            <Input
+              id="website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div>
             <Label htmlFor="name" className="text-base-text/70">
               Name
@@ -57,6 +94,8 @@ export function Contact() {
               name="name"
               required
               autoComplete="name"
+              minLength={2}
+              maxLength={100}
               className="mt-1 bg-white/5 border-white/10"
             />
           </div>
@@ -71,6 +110,7 @@ export function Contact() {
               name="email"
               required
               autoComplete="email"
+              maxLength={254}
               className="mt-1 bg-white/5 border-white/10"
             />
           </div>
@@ -82,6 +122,8 @@ export function Contact() {
             <Input
               id="company"
               name="company"
+              autoComplete="organization"
+              maxLength={120}
               className="mt-1 bg-white/5 border-white/10"
             />
           </div>
@@ -96,6 +138,7 @@ export function Contact() {
                 name="topic"
                 className="mt-1 w-full bg-white/5 border border-white/10 rounded-2xl px-3 py-2"
                 defaultValue="New site"
+                required
               >
                 <option>New site</option>
                 <option>Redesign</option>
@@ -129,6 +172,8 @@ export function Contact() {
               name="message"
               required
               rows={5}
+              minLength={10}
+              maxLength={5000}
               className="mt-1 bg-white/5 border-white/10"
             />
           </div>
@@ -142,6 +187,15 @@ export function Contact() {
               {loading ? "Sending…" : "Send"}
             </Button>
           </div>
+
+          <p
+            id="contact-form-status"
+            className="md:col-span-2 text-center text-sm text-base-text/80"
+            role="status"
+            aria-live="polite"
+          >
+            {status}
+          </p>
         </form>
       </div>
     </section>

@@ -1,5 +1,33 @@
-node_modules
-.next
-.vercel
+# Dependencies and framework output
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local environment files (the documented example remains tracked)
+.env
+.env.*
+!.env.example
+
+# Private key material
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+eval "$(ssh-agent -s)"*
+
+# Local tooling and generated review archives
+.vercel/
+.review-packages/
+.pnpm-store/
+.turbo/
+.cache/
+
+# OS and log files
 .DS_Store
 *.log

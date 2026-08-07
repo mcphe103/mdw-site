@@ -1,4 +1,4 @@
-// components/sections/Portfolio.tsx
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
@@ -10,8 +10,8 @@ const projects = [
     client: "Chairez Fencing",
     industry: "Fencing Contractor",
     url: "https://www.chairezfencing.com/",
-    image: "/portfolio/chairez-fencing.jpg",
-    imageAlt: "Chairez Fencing website preview",
+    image: "/portfolio/chairez-fencing.png",
+    imageAlt: "Homepage of the Chairez Fencing website on desktop and mobile",
     description:
       "A modern website for a local fencing company built to create a stronger first impression, organize services clearly, and give customers an easy way to request an estimate.",
     highlights: [
@@ -43,35 +43,13 @@ export function Portfolio() {
             >
               <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
                 <div className="relative min-h-[260px] border-b border-white/10 bg-base-bg/70 lg:border-b-0 lg:border-r">
-                  {
-                  <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      className="h-full w-full object-cover"
-                    />
-                }
-                  {/*<div className="absolute inset-4 flex items-center justify-center rounded-xl border border-dashed border-white/15 bg-white/[0.03] text-center">
-                    <div className="max-w-xs px-4">
-                      <p className="text-sm font-medium text-base-heading">
-                        Project screenshot placeholder
-                      </p>
-                      <p className="mt-2 text-xs text-base-text/60">
-                        Add your image at {project.image} and replace this
-                        placeholder with an image when you are ready.
-                      </p>
-                    </div>
-                  </div>*/}
-
-                  {/*
-                    When you have the screenshot ready, replace the placeholder
-                    above with this image element:
-
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      className="h-full w-full object-cover"
-                    />
-                  */}
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 53vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
 
                 <div className="p-6 md:p-8 flex flex-col">

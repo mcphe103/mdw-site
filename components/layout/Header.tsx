@@ -9,23 +9,17 @@ const SECTIONS = ["services", "portfolio", "process", "pricing", "about", "conta
 
 export function Header() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const [mobileMenu, setMobileMenu] = useState({ pathname, open: false });
+  const mobileOpen = mobileMenu.pathname === pathname && mobileMenu.open;
+  const visibleActiveSection = isHome ? activeSection : null;
 
-  const closeMobile = () => setMobileOpen(false);
-
-  // Close mobile menu when navigating to a new route (ex: /privacy -> /)
-  useEffect(() => {
-    closeMobile();
-  }, [pathname]);
+  const closeMobile = () => setMobileMenu({ pathname, open: false });
 
   useEffect(() => {
-    if (!isHome) {
-      setActiveSection(null);
-      return;
-    }
+    if (!isHome) return;
 
     const handleScroll = () => {
       let current: string | null = null;
@@ -45,9 +39,12 @@ export function Header() {
       setActiveSection(current);
     };
 
-    handleScroll();
+    const animationFrame = window.requestAnimationFrame(handleScroll);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [isHome]);
 
   return (
@@ -66,37 +63,37 @@ export function Header() {
         <nav className="hidden md:flex gap-6 text-sm">
           <NavLink
             href={isHome ? "#services" : "/#services"}
-            active={activeSection === "services"}
+            active={visibleActiveSection === "services"}
           >
             Services
           </NavLink>
           <NavLink
             href={isHome ? "#portfolio" : "/#portfolio"}
-            active={activeSection === "portfolio"}
+            active={visibleActiveSection === "portfolio"}
           >
             Work
           </NavLink>
           <NavLink
             href={isHome ? "#process" : "/#process"}
-            active={activeSection === "process"}
+            active={visibleActiveSection === "process"}
           >
             Process
           </NavLink>
           <NavLink
             href={isHome ? "#pricing" : "/#pricing"}
-            active={activeSection === "pricing"}
+            active={visibleActiveSection === "pricing"}
           >
             Pricing
           </NavLink>
           <NavLink
             href={isHome ? "#about" : "/#about"}
-            active={activeSection === "about"}
+            active={visibleActiveSection === "about"}
           >
             About
           </NavLink>
           <NavLink
             href={isHome ? "#contact" : "/#contact"}
-            active={activeSection === "contact"}
+            active={visibleActiveSection === "contact"}
           >
             Contact
           </NavLink>
@@ -112,7 +109,12 @@ export function Header() {
         {/* MOBILE TOGGLE */}
         <button
           className="md:hidden inline-flex items-center justify-center rounded-md border border-white/15 bg-white/5 px-3 py-1 text-xs text-base-text/80 hover:border-base-accent/60 hover:text-base-accent"
-          onClick={() => setMobileOpen((prev) => !prev)}
+          onClick={() =>
+            setMobileMenu((current) => ({
+              pathname,
+              open: current.pathname === pathname ? !current.open : true,
+            }))
+          }
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}
         >
@@ -126,7 +128,7 @@ export function Header() {
           <nav className="container-xl flex flex-col gap-2 py-4 text-sm">
             <MobileNavLink
               href={isHome ? "#services" : "/#services"}
-              active={activeSection === "services"}
+              active={visibleActiveSection === "services"}
               onClick={closeMobile}
             >
               Services
@@ -134,7 +136,7 @@ export function Header() {
 
             <MobileNavLink
               href={isHome ? "#portfolio" : "/#portfolio"}
-              active={activeSection === "portfolio"}
+              active={visibleActiveSection === "portfolio"}
               onClick={closeMobile}
             >
               Work
@@ -142,7 +144,7 @@ export function Header() {
 
             <MobileNavLink
               href={isHome ? "#process" : "/#process"}
-              active={activeSection === "process"}
+              active={visibleActiveSection === "process"}
               onClick={closeMobile}
             >
               Process
@@ -150,7 +152,7 @@ export function Header() {
 
             <MobileNavLink
               href={isHome ? "#pricing" : "/#pricing"}
-              active={activeSection === "pricing"}
+              active={visibleActiveSection === "pricing"}
               onClick={closeMobile}
             >
               Pricing
@@ -158,7 +160,7 @@ export function Header() {
 
             <MobileNavLink
               href={isHome ? "#about" : "/#about"}
-              active={activeSection === "about"}
+              active={visibleActiveSection === "about"}
               onClick={closeMobile}
             >
               About
@@ -166,7 +168,7 @@ export function Header() {
 
             <MobileNavLink
               href={isHome ? "#contact" : "/#contact"}
-              active={activeSection === "contact"}
+              active={visibleActiveSection === "contact"}
               onClick={closeMobile}
             >
               Contact
