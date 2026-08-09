@@ -49,8 +49,8 @@ export function HeroReveal({ children, className, delay = 0 }: MotionBaseProps) 
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={reduceMotion ? false : { opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.78, delay, ease }}
     >
       {children}
