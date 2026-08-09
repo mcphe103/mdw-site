@@ -9,14 +9,23 @@ export default {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+			mono: ['var(--font-ibm-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+		},
   		colors: {
-  			base: {
-  				bg: '#0B0F14',
-  				surface: '#121821',
-  				text: '#C9D4E3',
-  				heading: '#E9EEF5',
-  				accent: '#49C2C7',
-  				mute: '#A8B4C6'
+			base: {
+				bg: 'hsl(var(--canvas-obsidian))',
+				carbon: 'hsl(var(--canvas-carbon))',
+				surface: 'hsl(var(--surface-graphite))',
+				raised: 'hsl(var(--surface-raised))',
+				text: 'hsl(var(--text-warm))',
+				heading: 'hsl(var(--text-warm))',
+				accent: 'hsl(var(--signal-cyan))',
+				cyan: 'hsl(var(--signal-cyan))',
+				blue: 'hsl(var(--signal-blue))',
+				crimson: 'hsl(var(--signal-crimson))',
+				mute: 'hsl(var(--text-muted))'
   			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -59,8 +68,10 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
-  		boxShadow: {
-  			glow: '0 0 40px rgba(73, 194, 199, 0.25)'
+		boxShadow: {
+			glow: '0 0 48px hsl(var(--signal-cyan) / 0.18)',
+			'cyan-button': '0 12px 34px hsl(var(--signal-cyan) / 0.18)',
+			elevation: '0 24px 70px rgba(0, 0, 0, 0.28)'
   		},
   		borderRadius: {
   			'2xl': '1rem',

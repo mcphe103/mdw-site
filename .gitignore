@@ -24,7 +24,6 @@ eval "$(ssh-agent -s)"*
 # Local tooling and generated review archives
 .vercel/
 .review-packages/
-.pnpm-store/
 .turbo/
 .cache/
 

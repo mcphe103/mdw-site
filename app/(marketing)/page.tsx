@@ -1,32 +1,35 @@
 import type { Metadata } from "next";
 
 import { Hero } from "@/components/sections/Hero";
-import { Problems } from "@/components/sections/Problems";
-import { Services } from "@/components/sections/Services";
-import { Portfolio } from "@/components/sections/Portfolio";
-import { Process } from "@/components/sections/Process";
-import { Pricing } from "@/components/sections/Pricing";
-import { Testimonial } from "@/components/sections/Testimonial";
-import { About } from "@/components/sections/About";
+import {
+  AboutOverview,
+  BusinessNeeds,
+  PricingOverview,
+  ProcessOverview,
+  ProjectCTA,
+  ServicesOverview,
+  WorkOverview,
+} from "@/components/sections/Homepage";
 import { Contact } from "@/components/sections/Contact";
 
 export const metadata: Metadata = {
-  title: "McPherson Digital Works | Web Design & Development",
+  title: "Web Design for Central Valley Small Businesses | MDW",
   description:
-    "McPherson Digital Works builds clean, modern websites for small businesses and local professionals.",
+    "McPherson Digital Works plans, designs, builds, and supports professional websites for Central Valley small businesses.",
+  alternates: { canonical: "/" },
 };
 
 export default function Page() {
   return (
     <>
       <Hero />
-      <Problems />
-      <Services />
-      <Portfolio />
-      <Process />
-      <Pricing />
-      <Testimonial />
-      <About />
+      <BusinessNeeds />
+      <ServicesOverview />
+      <WorkOverview />
+      <ProcessOverview />
+      <PricingOverview />
+      <AboutOverview />
+      <ProjectCTA />
       <Contact />
     </>
   );

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "validate": "pnpm lint && pnpm typecheck && pnpm build",
     "package:review": "node scripts/package-review.mjs"
   },
   "dependencies": {

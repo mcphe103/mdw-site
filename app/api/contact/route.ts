@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
 
+export const runtime = "nodejs";
+
 const MAX_BODY_BYTES = 16 * 1024;
 const MIN_COMPLETION_MS = 3_000;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
@@ -11,7 +13,7 @@ const CONTACT_TOPICS = ["New site", "Redesign", "Hosting & Care", "Other"] as co
 const contactSchema = z
   .object({
     name: z.string().trim().min(2).max(100).refine(noLineBreaks),
-    email: z.string().trim().email().max(254),
+    email: z.string().trim().email().max(254).transform((value) => value.toLowerCase()),
     company: z.string().trim().max(120).refine(noLineBreaks),
     topic: z.enum(CONTACT_TOPICS),
     consent: z.literal(true),
@@ -162,7 +164,7 @@ export async function POST(request: Request) {
     const submission = parsed.data;
     const completionTime = Date.now() - submission.startedAt;
 
-    if (completionTime < MIN_COMPLETION_MS) {
+    if (completionTime < MIN_COMPLETION_MS || completionTime > 24 * 60 * 60 * 1_000) {
       console.warn("[Contact API] Rejected invalid completion time");
       return genericError();
     }

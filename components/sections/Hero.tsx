@@ -1,88 +1,73 @@
-// components/sections/Hero.tsx
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+import { Container } from "@/components/layout/Container";
+import { HeroReveal } from "@/components/motion/MotionSystem";
+import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden py-20 md:py-28"
-    >
-      {/* subtle background glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 right-0 h-72 w-72 rounded-full bg-base-accent/20 blur-3xl" />
-        <div className="absolute -bottom-40 left-0 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+    <section id="hero" className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden border-b border-white/[0.08]">
+      <div className="hero-art absolute inset-0 -z-20">
+        <Image
+          src="/images/structured-signal-hero.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[69%_center] opacity-90 sm:object-[63%_center] lg:object-center"
+        />
       </div>
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,hsl(var(--canvas-obsidian))_0%,hsl(var(--canvas-obsidian)/0.97)_35%,hsl(var(--canvas-obsidian)/0.58)_64%,hsl(var(--canvas-obsidian)/0.18)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,hsl(var(--canvas-obsidian)/0.12)_0%,hsl(var(--canvas-obsidian)/0.05)_55%,hsl(var(--canvas-obsidian))_100%)]" />
+      <div className="signal-mist signal-mist-hero" aria-hidden="true" />
+      <div className="hero-signal-pulse absolute inset-0 -z-[7]" aria-hidden="true" />
 
-      <div className="relative container-xl max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
-        <div className="flex-1 max-w-xl">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-base-text/60 mb-3">
-            McPherson Digital Works
-          </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-base-heading leading-tight">
-            Websites that help local businesses earn trust.
-            <span className="block text-base-accent">
-              Built to look professional, load fast, and make contact easy.
-            </span>
-          </h1>
-          <p className="mt-4 text-sm md:text-base text-base-text/80 max-w-lg">
-            MDW builds and maintains modern websites for small businesses that need a stronger online presence without dealing with hosting, updates, or technical headaches.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button
-              asChild
-              className="bg-base-accent text-black hover:bg-base-accent/90"
-            >
-              <Link href="#contact">Start a project</Link>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              className="border-white/20 bg-transparent hover:bg-white/5"
-            >
-              <Link href="#pricing">View pricing</Link>
-            </Button>
-
-            <span className="text-xs md:text-sm text-base-text/60 ml-1">
-              Starter websites from <span className="text-base-accent">$999</span>
-            </span>
-          </div>
-        </div>
-
-        <div className="flex-1 max-w-md w-full">
-          <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur p-5 md:p-6 shadow-lg">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-base-text/60 mb-3">
-              What you get
+      <Container className="flex min-h-[calc(100svh-4.5rem)] items-end pb-16 pt-24 sm:pb-20 lg:items-center lg:py-24">
+        <div className="max-w-[42rem]">
+          <HeroReveal delay={0.12}>
+            <p className="operational-label flex items-center gap-3">
+              <span className="hero-signal-line h-px w-8 origin-left bg-base-cyan/60" />
+              Web design · Central Valley
             </p>
-            <ul className="space-y-3 text-sm text-base-text/80">
-              <li className="flex gap-2">
-                <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/90" />
-                <span>A clean, mobile-friendly website built around your business.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/90" />
-                <span>Clear service information, photos, contact details, and calls to action.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/90" />
-                <span>Fast hosting, SSL, backups, monitoring, and support available.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-base-accent/90" />
-                <span>A simple process from discovery to launch.</span>
-              </li>
-            </ul>
+          </HeroReveal>
 
-            <div className="mt-5 border-t border-white/10 pt-4 text-xs md:text-sm text-base-text/70">
-              <p>
-                Best for local businesses that want to look professional online and make it easy for customers to call, message, or request a quote.
-              </p>
+          <HeroReveal delay={0.24}>
+            <h1 className="mt-6 text-balance text-[clamp(2.45rem,5.8vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-[hsl(var(--text-hero))]">
+              A dependable website partner for the business you&apos;re building.
+            </h1>
+          </HeroReveal>
+
+          <HeroReveal delay={0.38}>
+            <p className="mt-7 max-w-2xl text-pretty text-base leading-7 text-base-text/76 sm:text-lg sm:leading-8">
+              McPherson Digital Works plans, designs, builds, and supports professional websites for small businesses that need clarity now and dependable care after launch.
+            </p>
+          </HeroReveal>
+
+          <HeroReveal delay={0.5}>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <ProjectIntakeTrigger size="lg">
+                Start a Project
+                <ArrowRight aria-hidden="true" />
+              </ProjectIntakeTrigger>
+              <Button asChild size="lg" variant="outline">
+                <Link href="#portfolio">Explore the Work</Link>
+              </Button>
             </div>
-          </div>
+          </HeroReveal>
+
+          <HeroReveal delay={0.62}>
+            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/10 pt-5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-base-mute">
+              <span>Founder-led</span>
+              <span>Veteran-owned</span>
+              <span>Projects from $999</span>
+            </div>
+          </HeroReveal>
         </div>
-      </div>
+      </Container>
+
     </section>
   );
 }

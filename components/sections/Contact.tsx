@@ -1,202 +1,46 @@
-"use client";
+import { CheckCircle2 } from "lucide-react";
 
-import { useRef, useState } from "react";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { InquiryForm } from "@/components/project-intake/InquiryForm";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 
 export function Contact() {
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
-  const startedAt = useRef(Date.now());
-  const submitting = useRef(false);
-
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (submitting.current) return;
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      company: formData.get("company"),
-      topic: formData.get("topic"),
-      consent: formData.get("consent") === "on",
-      message: formData.get("message"),
-      website: formData.get("website"),
-      startedAt: startedAt.current,
-    };
-
-    submitting.current = true;
-    setLoading(true);
-    setStatus("Sending your message…");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) throw new Error("Request failed");
-
-      form.reset();
-      startedAt.current = Date.now();
-      setStatus("Message sent. Thanks for reaching out; I’ll get back to you soon.");
-      toast.success("Message sent!", {
-        description: "Thanks for reaching out. I’ll get back to you soon.",
-      });
-    } catch {
-      setStatus("Your message could not be sent. Please try again later.");
-      toast.error("Something went wrong", {
-        description: "Please try again later.",
-      });
-    } finally {
-      submitting.current = false;
-      setLoading(false);
-    }
-  }
-
   return (
-    <section id="contact" className="py-16 md:py-24">
-      <div className="container-xl max-w-3xl mx-auto px-4">
-        <SectionTitle title="Contact" />
-
-        <form
-          onSubmit={onSubmit}
-          className="mt-8 grid md:grid-cols-2 gap-4"
-          aria-describedby="contact-form-status"
-        >
-          <div
-            className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
-            aria-hidden="true"
-          >
-            <Label htmlFor="website">Leave this field blank</Label>
-            <Input
-              id="website"
-              name="website"
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="name" className="text-base-text/70">
-              Name
-            </Label>
-            <Input
-              id="name"
-              name="name"
-              required
-              autoComplete="name"
-              minLength={2}
-              maxLength={100}
-              className="mt-1 bg-white/5 border-white/10"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="email" className="text-base-text/70">
-              Email
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              name="email"
-              required
-              autoComplete="email"
-              maxLength={254}
-              className="mt-1 bg-white/5 border-white/10"
-            />
-          </div>
-
-          <div className="md:col-span-2">
-            <Label htmlFor="company" className="text-base-text/70">
-              Company (optional)
-            </Label>
-            <Input
-              id="company"
-              name="company"
-              autoComplete="organization"
-              maxLength={120}
-              className="mt-1 bg-white/5 border-white/10"
-            />
-          </div>
-
-          <div className="md:col-span-2 grid md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="topic" className="text-base-text/70">
-                What do you need?
-              </Label>
-              <select
-                id="topic"
-                name="topic"
-                className="mt-1 w-full bg-white/5 border border-white/10 rounded-2xl px-3 py-2"
-                defaultValue="New site"
-                required
-              >
-                <option>New site</option>
-                <option>Redesign</option>
-                <option>Hosting & Care</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div className="flex items-center gap-2 pt-6">
-              <input
-                id="consent"
-                type="checkbox"
-                name="consent"
-                className="accent-base-accent"
-                required
+    <section id="contact" className="section-space">
+      <div className="container-xl">
+        <div className="signal-panel relative overflow-hidden border border-base-cyan/15 bg-[radial-gradient(circle_at_6%_8%,hsl(var(--signal-cyan)/0.12),transparent_25rem),linear-gradient(145deg,hsl(var(--surface-graphite)/0.92),hsl(var(--canvas-carbon)/0.96))] p-6 sm:p-10 lg:p-14">
+          <div className="pointer-events-none absolute right-0 top-0 h-px w-2/3 bg-gradient-to-l from-base-cyan/55 to-transparent" />
+          <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16 xl:gap-20">
+            <div className="flex flex-col">
+              <SectionTitle
+                kicker="Project inquiry / 06"
+                title="You do not need to have everything figured out."
+                description="Tell me what you are building, what is not working, or where you need direction. We can start with what you know now."
+                align="left"
               />
-              <Label
-                htmlFor="consent"
-                className="text-sm text-base-text/80"
-              >
-                You can email us about this request.
-              </Label>
+              <div className="mt-8 space-y-3 border-t border-white/10 pt-6 text-sm leading-6 text-base-text/72">
+                {[
+                  "A straightforward conversation—not a sales ambush.",
+                  "No obligation or project date reserved by submitting.",
+                  "Google Meet or phone, by appointment.",
+                ].map((item) => (
+                  <p key={item} className="flex gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-base-cyan" aria-hidden="true" />
+                    {item}
+                  </p>
+                ))}
+              </div>
+              <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website projects begin at $999.</p>
+            </div>
+
+            <div className="rounded-lg border border-white/12 bg-base-bg/72 p-6 shadow-elevation backdrop-blur-sm sm:p-8">
+              <div className="mb-5 border-b border-white/10 pb-5">
+                <p className="text-xl font-semibold tracking-[-0.025em] text-base-heading">Start the conversation</p>
+                <p className="mt-2 text-sm leading-6 text-base-mute">A few details will help me understand what kind of support may fit.</p>
+              </div>
+              <InquiryForm idPrefix="contact" />
             </div>
           </div>
-
-          <div className="md:col-span-2">
-            <Label htmlFor="message" className="text-base-text/70">
-              Message
-            </Label>
-            <Textarea
-              id="message"
-              name="message"
-              required
-              rows={5}
-              minLength={10}
-              maxLength={5000}
-              className="mt-1 bg-white/5 border-white/10"
-            />
-          </div>
-
-          <div className="md:col-span-2 flex items-center justify-center gap-3 mt-2">
-            <Button
-              type="submit"
-              disabled={loading}
-              className="bg-base-accent/90 text-black hover:bg-base-accent shadow-glow"
-            >
-              {loading ? "Sending…" : "Send"}
-            </Button>
-          </div>
-
-          <p
-            id="contact-form-status"
-            className="md:col-span-2 text-center text-sm text-base-text/80"
-            role="status"
-            aria-live="polite"
-          >
-            {status}
-          </p>
-        </form>
+        </div>
       </div>
     </section>
   );

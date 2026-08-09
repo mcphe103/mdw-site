@@ -1,12 +1,14 @@
+import type { Metadata } from "next";
+
 import { Pricing } from "@/components/sections/Pricing";
 
+export const metadata: Metadata = {
+  title: "Website Pricing | McPherson Digital Works",
+  description:
+    "Explore website project starting investments and ongoing Hosting & Care from McPherson Digital Works.",
+  alternates: { canonical: "/pricing" },
+};
+
 export default function PricingPage() {
-  return (
-    <div className="pt-10">
-      <div className="container-xl">
-        <h1 className="text-3xl md:text-4xl font-semibold text-base-heading">Pricing</h1>
-      </div>
-      <Pricing />
-    </div>
-  );
+  return <Pricing />;
 }

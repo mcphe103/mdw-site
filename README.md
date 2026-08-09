@@ -1,30 +1,26 @@
 # McPherson Digital Works
 
-The McPherson Digital Works website is built with Next.js, React, TypeScript,
-and Tailwind CSS. It uses `next/font` to optimize and load Inter.
+Production-ready marketing site for McPherson Digital Works, built with Next.js 16, React 19, TypeScript, Tailwind CSS, Framer Motion, Resend, and GA4.
 
-## Getting started
-
-Install the existing dependencies and start the development server:
+## Local development
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in a browser.
+Copy `.env.example` to `.env.local` and supply development-safe values when testing email delivery. Never commit `.env.local` or real credentials.
 
-Copy `.env.example` to `.env.local` and provide the required Resend and contact
-delivery settings before testing the contact form. `.env.local` is intentionally
-untracked.
+## Validation
 
-## Validation and review packages
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+```
 
-Run `pnpm lint`, `pnpm typecheck`, and `pnpm build` before review. After the
-reviewed changes are committed and the working tree is clean, `pnpm
-package:review` creates a ZIP from tracked Git content in `.review-packages/`.
-The command refuses dirty trees and prohibited tracked filenames.
+## Production configuration
 
-The contact endpoint includes in-memory IP throttling as a best-effort abuse
-control. In serverless deployments it is per-instance and not globally durable;
-a shared rate-limit service would be required for globally consistent limits.
+The contact system requires `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL`. `CONTACT_ALLOWED_ORIGINS` permits additional cross-origin callers; the deployment's own origin is always allowed. `NEXT_PUBLIC_GA_MEASUREMENT_ID` enables GA4 and the privacy-safe `generate_lead` event after a successful inquiry.
+
+See `docs/PRODUCTION_READINESS.md` for the deployment gate and verification checklist.

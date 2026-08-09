@@ -1,23 +1,43 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Toaster } from "sonner"; 
-import Image from "next/image";
+import { ProjectIntakeProvider } from "@/components/project-intake/ProjectIntake";
 import Script from "next/script";
 
+const siteUrl = "https://www.mcphersondigitalworks.com";
+const analyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
-const inter = Inter({ subsets: ["latin"] });
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "McPherson Digital Works",
     template: "%s | McPherson Digital Works",
   },
   description:
   "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
+  openGraph: {
+    type: "website",
+    siteName: "McPherson Digital Works",
+    title: "McPherson Digital Works",
+    description:
+      "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
+    url: siteUrl,
+  },
   icons: {
     icon: "/favicon.ico",
   },
@@ -27,86 +47,55 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "McPherson Digital Works",
-  url: "https://mcphersondigitalworks.com",
+  url: siteUrl,
   email: "contact@mcphersondigitalworks.com",
-  // phone: "+12094841674", // optional, add if you want
-  areaServed: "United States", // or narrow to your real service area
+  areaServed: "United States",
   description:
   "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
 };
-
-
-
-//------------------------
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
-    
-    <body className="bg-[#05070B] text-base-text scroll-smooth">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-
-      <div className="relative min-h-screen">
-          {/* GLOBAL DNA BACKGROUND */}
-        <div className="pointer-events-none fixed inset-0 -z-20">
-          <Image
-            src="/images/dna-hero-bg.png"
-            alt="Digital mesh background"
-            fill
-            priority
-            className="object-cover object-top md:object-center opacity-20 md:opacity-[0.15]"
-          />
-        </div>
-
-          {/* OPTIONAL DARK GRADIENT OVERLAY FOR READABILITY */}
-        <div className="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/10 to-black/25" />
-
-          {/* MAIN PAGE STRUCTURE */}
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-W7F61KR99P"
-          strategy="afterInteractive"
+    <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable}`}>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-W7F61KR99P');
-            `}
-          </Script>
+        <ProjectIntakeProvider>
+          <div className="site-frame relative min-h-screen overflow-clip">
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-base-cyan/50 to-transparent" />
 
-          <Toaster
-            theme="dark"
-            position="bottom-right"
-            toastOptions={{
-              style: {
-                background: "#121821",
-                color: "#E9EEF5",
-                border: "1px solid rgba(73, 194, 199, 0.3)",
-                boxShadow: "0 0 12px rgba(73, 194, 199, 0.25)",
-                transform: "translateX(20px)",
-                transition: "all 0.4s ease",
-              },
-              className: "rounded-2xl",
-            }}
-          />
-        </div>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+
+            {analyticsId && (
+              <>
+                <Script
+                  src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
+                  strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                  {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    window.gtag = gtag;
+                    gtag('js', new Date());
+                    gtag('config', '${analyticsId}', { anonymize_ip: true });
+                  `}
+                </Script>
+              </>
+            )}
+          </div>
+        </ProjectIntakeProvider>
       </body>
-      </html>
-      );
+    </html>
+  );
 }
-

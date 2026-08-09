@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+
 import { Contact } from "@/components/sections/Contact";
+
+export const metadata: Metadata = {
+  title: "Start a Project",
+  description:
+    "Tell McPherson Digital Works about your business, website needs, and project goals.",
+  alternates: { canonical: "/contact" },
+};
 
 export default function ContactPage() {
   return (

@@ -1,5 +1,6 @@
-import Image from "next/image";
+// components/sections/Portfolio.tsx
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
 import { SectionTitle } from "@/components/sections/SectionTitle";
@@ -11,7 +12,7 @@ const projects = [
     industry: "Fencing Contractor",
     url: "https://www.chairezfencing.com/",
     image: "/portfolio/chairez-fencing.png",
-    imageAlt: "Homepage of the Chairez Fencing website on desktop and mobile",
+    imageAlt: "Chairez Fencing website preview",
     description:
       "A modern website for a local fencing company built to create a stronger first impression, organize services clearly, and give customers an easy way to request an estimate.",
     highlights: [
@@ -47,7 +48,7 @@ export function Portfolio() {
                     src={project.image}
                     alt={project.imageAlt}
                     fill
-                    sizes="(min-width: 1024px) 53vw, 100vw"
+                    sizes="(min-width: 1024px) 54vw, 100vw"
                     className="object-cover"
                   />
                 </div>

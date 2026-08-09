@@ -32,19 +32,6 @@ const exactProhibitedPaths = new Set([
   'eval "$(ssh-agent -s)"',
   'eval "$(ssh-agent -s)".pub',
 ]);
-const prohibitedDirectories = [
-  ".git/",
-  ".pnpm-store/",
-  ".turbo/",
-  ".cache/",
-  "node_modules/",
-  ".next/",
-  "coverage/",
-  ".review-packages/",
-  "out/",
-  "build/",
-  "dist/",
-];
 
 function isProhibited(file) {
   const normalized = file.replaceAll("\\", "/");
@@ -56,7 +43,14 @@ function isProhibited(file) {
   if (/\.(pem|key|p12|pfx|zip)$/i.test(basename)) return true;
   if (/^(id_rsa|id_ed25519)(\.|$)/i.test(basename)) return true;
   if (lowerBasename === ".ds_store") return true;
-  if (prohibitedDirectories.some((directory) => normalized.startsWith(directory))) return true;
+  if (
+    normalized.startsWith("node_modules/") ||
+    normalized.startsWith(".next/") ||
+    normalized.startsWith("coverage/") ||
+    normalized.startsWith(".review-packages/")
+  ) {
+    return true;
+  }
 
   return false;
 }
