@@ -13,6 +13,7 @@ type TurnstileInstance = {
       action: string;
       theme: "dark";
       size: "flexible";
+      "response-field": boolean;
       callback: (token: string) => void;
       "expired-callback": () => void;
       "error-callback": () => void;
@@ -57,6 +58,7 @@ export function Turnstile({ idPrefix, resetKey, onTokenChange }: TurnstileProps)
       action: "contact_form",
       theme: "dark",
       size: "flexible",
+      "response-field": false,
       callback: (token) => {
         setWidgetError(false);
         onTokenChangeRef.current(token);
