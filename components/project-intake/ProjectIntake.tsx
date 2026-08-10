@@ -225,7 +225,7 @@ function ProjectIntakeDialog({
               <div className="mt-8 space-y-3 border-t border-white/10 pt-6 text-sm leading-6 text-base-text/70">
                 <p>Founder-led from the first conversation.</p>
                 <p>No obligation or project date reserved by submitting.</p>
-                <p>Website projects begin at $999.</p>
+                <p>Website packages begin at $599.</p>
               </div>
               <p className="mt-8 text-sm leading-6 text-base-mute">
                 Prefer a full page?{" "}

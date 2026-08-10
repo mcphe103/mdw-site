@@ -2,24 +2,29 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
 
+import { inquiryInterests } from "@/lib/services";
+
 export const runtime = "nodejs";
 
 const MAX_BODY_BYTES = 16 * 1024;
 const MIN_COMPLETION_MS = 3_000;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
-const CONTACT_TOPICS = ["New site", "Redesign", "Hosting & Care", "Other"] as const;
+const TURNSTILE_ACTION = "contact_form";
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+const TURNSTILE_TIMEOUT_MS = 8_000;
 
 const contactSchema = z
   .object({
     name: z.string().trim().min(2).max(100).refine(noLineBreaks),
     email: z.string().trim().email().max(254).transform((value) => value.toLowerCase()),
     company: z.string().trim().max(120).refine(noLineBreaks),
-    topic: z.enum(CONTACT_TOPICS),
+    interest: z.enum(inquiryInterests),
     consent: z.literal(true),
     message: z.string().trim().min(10).max(5_000),
     website: z.string().max(200),
     startedAt: z.number().int().positive(),
+    turnstileToken: z.string().max(2_048),
   })
   .strict();
 
@@ -47,8 +52,45 @@ function escapeHtml(value: string) {
 }
 
 function getClientIp(request: Request) {
+  const cloudflareIp = request.headers.get("cf-connecting-ip")?.trim();
+  if (cloudflareIp) return cloudflareIp;
+
   const forwardedFor = request.headers.get("x-forwarded-for");
   return forwardedFor?.split(",")[0]?.trim() || null;
+}
+
+type TurnstileVerification = {
+  success?: boolean;
+  action?: string;
+};
+
+async function verifyTurnstile(token: string, clientIp: string | null, secret: string) {
+  if (!token) return false;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), TURNSTILE_TIMEOUT_MS);
+
+  try {
+    const body = new URLSearchParams({ secret, response: token });
+    if (clientIp) body.set("remoteip", clientIp);
+
+    const response = await fetch(TURNSTILE_VERIFY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+      cache: "no-store",
+      signal: controller.signal,
+    });
+
+    if (!response.ok) return false;
+
+    const result = (await response.json()) as TurnstileVerification;
+    return result.success === true && result.action === TURNSTILE_ACTION;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function isRateLimited(clientIp: string | null) {
@@ -134,7 +176,9 @@ export async function POST(request: Request) {
     return genericError(413);
   }
 
-  if (isRateLimited(getClientIp(request))) {
+  const clientIp = getClientIp(request);
+
+  if (isRateLimited(clientIp)) {
     console.warn("[Contact API] Rate limit exceeded");
     return NextResponse.json(
       { error: "Too many requests. Please wait a few minutes and try again." },
@@ -175,6 +219,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true });
     }
 
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+    if (!turnstileSecret) {
+      console.error("[Contact API] Turnstile configuration is missing");
+      return genericError(503);
+    }
+
+    if (!(await verifyTurnstile(submission.turnstileToken, clientIp, turnstileSecret))) {
+      console.warn("[Contact API] Turnstile verification failed");
+      return genericError(403);
+    }
+
     const apiKey = process.env.RESEND_API_KEY;
     const fromEmail = process.env.CONTACT_FROM_EMAIL;
     const toEmail = process.env.CONTACT_TO_EMAIL;
@@ -188,7 +243,7 @@ export async function POST(request: Request) {
       name: escapeHtml(submission.name),
       email: escapeHtml(submission.email),
       company: escapeHtml(submission.company),
-      topic: escapeHtml(submission.topic),
+      interest: escapeHtml(submission.interest),
       message: escapeHtml(submission.message),
     };
     const companyText = submission.company || "N/A";
@@ -198,13 +253,13 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: toEmail,
       replyTo: submission.email,
-      subject: `New inquiry from ${submission.name}`,
+      subject: `${submission.interest} inquiry from ${submission.name}`,
       text: [
         "New Contact Request",
         `Name: ${submission.name}`,
         `Email: ${submission.email}`,
         `Company: ${companyText}`,
-        `Topic: ${submission.topic}`,
+        `Project interest: ${submission.interest}`,
         "Consent to be contacted: Yes",
         "",
         "Message:",
@@ -216,7 +271,7 @@ export async function POST(request: Request) {
           <p><strong>Name:</strong> ${safe.name}</p>
           <p><strong>Email:</strong> ${safe.email}</p>
           <p><strong>Company:</strong> ${safe.company || "N/A"}</p>
-          <p><strong>Topic:</strong> ${safe.topic}</p>
+          <p><strong>Project interest:</strong> ${safe.interest}</p>
           <p><strong>Consent to be contacted:</strong> Yes</p>
           <hr style="border:0;border-top:1px solid #1b222c;margin:20px 0" />
           <p><strong>Message:</strong></p>
@@ -241,7 +296,7 @@ export async function POST(request: Request) {
         "Your request:",
         `Email: ${submission.email}`,
         ...(submission.company ? [`Company: ${submission.company}`] : []),
-        `Topic: ${submission.topic}`,
+        `Project interest: ${submission.interest}`,
         "",
         "Message you sent:",
         submission.message,
@@ -258,7 +313,7 @@ export async function POST(request: Request) {
           <ul>
             <li><strong>Email:</strong> ${safe.email}</li>
             ${safe.company ? `<li><strong>Company:</strong> ${safe.company}</li>` : ""}
-            <li><strong>Topic:</strong> ${safe.topic}</li>
+            <li><strong>Project interest:</strong> ${safe.interest}</li>
           </ul>
           <p><strong>Message you sent:</strong></p>
           <p style="white-space:pre-wrap;border-left:3px solid #1b222c;padding-left:12px;color:#c4ccd8">${safe.message}</p>

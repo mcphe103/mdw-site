@@ -29,7 +29,7 @@ export function Contact() {
                   </p>
                 ))}
               </div>
-              <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website projects begin at $999.</p>
+              <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website packages begin at $599.</p>
             </div>
 
             <div className="rounded-lg border border-white/12 bg-base-bg/72 p-6 shadow-elevation backdrop-blur-sm sm:p-8">

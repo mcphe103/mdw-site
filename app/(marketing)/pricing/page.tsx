@@ -5,7 +5,7 @@ import { Pricing } from "@/components/sections/Pricing";
 export const metadata: Metadata = {
   title: "Website Pricing | McPherson Digital Works",
   description:
-    "Explore website project starting investments and ongoing Hosting & Care from McPherson Digital Works.",
+    "Compare Quick Launch, Starter, and Growth website packages plus ongoing Hosting & Care from McPherson Digital Works.",
   alternates: { canonical: "/pricing" },
 };
 

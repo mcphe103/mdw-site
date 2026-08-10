@@ -23,6 +23,7 @@ import {
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { Button } from "@/components/ui/button";
+import { websitePackages } from "@/lib/services";
 
 const servicePaths = [
   {
@@ -57,27 +58,6 @@ const processSteps = [
   ["03", "Creation", "Design and build the approved experience with careful technical execution."],
   ["04", "Review", "Walk through the work, consolidate feedback, and refine the details."],
   ["05", "Launch & Care", "Verify the complete system, launch deliberately, and support it afterward."],
-] as const;
-
-const packages = [
-  {
-    name: "Focused Launch",
-    price: "$999+",
-    description: "A focused, professional website for a small business that needs a credible foundation and clear path to inquiry.",
-    points: ["Up to three primary pages", "Custom visual direction", "Inquiry-ready experience", "Launch preparation"],
-  },
-  {
-    name: "Established Presence",
-    price: "$1,750+",
-    description: "A broader website for a business with multiple services, more content, and a more developed customer journey.",
-    points: ["Four to six primary pages", "Expanded service presentation", "Stronger content hierarchy", "Analytics and search setup"],
-  },
-  {
-    name: "Growth & Visibility",
-    price: "$2,750+",
-    description: "A deeper engagement for substantial content, search architecture, integrations, or continued growth.",
-    points: ["Expanded content system", "Advanced forms or integrations", "Local SEO foundation", "Stronger measurement architecture"],
-  },
 ] as const;
 
 export function BusinessNeeds() {
@@ -286,46 +266,49 @@ export function PricingOverview() {
       </div>
       <Container>
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <SectionTitle kicker="Investment / 04" title="A clear starting point for the right-sized project." description="Projects are scoped after discovery. These starting investments reflect the typical level of planning, design, development, and launch care involved." align="left" className="max-w-3xl" />
+          <SectionTitle kicker="Investment / 04" title="A clear starting point for the right-sized project." description="Choose a focused one-page launch, a complete small-business website, or an expanded build for deeper content and lead generation." align="left" className="max-w-3xl" />
           <Button asChild variant="outline"><Link href="/pricing">Full Pricing Details <ArrowRight /></Link></Button>
         </Reveal>
 
         <Stagger className="relative mt-12 border-y border-base-cyan/15 bg-base-bg/25 shadow-[0_0_80px_hsl(var(--signal-cyan)/0.045)] sm:mt-16">
           <span className="absolute -left-px top-0 h-20 w-px bg-base-cyan shadow-[0_0_22px_hsl(var(--signal-cyan)/0.72)]" aria-hidden="true" />
-          {packages.map((plan, index) => (
+          {websitePackages.map((plan) => (
             <MotionArticle
               key={plan.name}
               className={`group relative grid gap-7 border-b border-white/10 px-6 py-9 last:border-b-0 sm:px-9 sm:py-11 lg:grid-cols-[0.72fr_1.18fr_0.48fr] lg:items-start lg:gap-12 lg:px-12 ${
-                index === 1
+                "featured" in plan && plan.featured
                   ? "bg-[linear-gradient(90deg,hsl(var(--signal-cyan)/0.07),transparent_42%,hsl(var(--signal-cyan)/0.025))]"
                   : "transition-colors hover:bg-white/[0.018]"
               }`}
             >
-              {index === 1 && (
+              {"featured" in plan && plan.featured && <>
                 <span className="absolute inset-y-0 left-0 w-px bg-base-cyan shadow-[0_0_22px_hsl(var(--signal-cyan)/0.7)]" aria-hidden="true" />
-              )}
+                <span className="absolute right-5 top-5 rounded-full border border-base-cyan/40 bg-base-cyan/10 px-3 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-base-cyan sm:right-8">Most Popular</span>
+              </>}
               <div>
-                <p className="operational-label">0{index + 1} / Website engagement</p>
+                <p className="operational-label">{plan.index} / Website package</p>
                 <h3 className="mt-4 text-2xl font-semibold tracking-[-0.035em] text-base-heading sm:text-[1.75rem]">{plan.name}</h3>
               </div>
 
               <div>
                 <p className="max-w-2xl text-sm leading-6 text-base-text/70 sm:text-base sm:leading-7">{plan.description}</p>
                 <ul className="mt-6 grid gap-x-7 gap-y-3 border-t border-white/10 pt-6 text-sm text-base-text/68 sm:grid-cols-2">
-                  {plan.points.map((point) => <li key={point} className="flex gap-2.5"><Check className="mt-0.5 h-4 w-4 shrink-0 text-base-cyan/80" aria-hidden="true" />{point}</li>)}
+                  {plan.summaryPoints.map((point) => <li key={point} className="flex gap-2.5"><Check className="mt-0.5 h-4 w-4 shrink-0 text-base-cyan/80" aria-hidden="true" />{point}</li>)}
                 </ul>
+                <ProjectIntakeTrigger variant="link" className="mt-5 h-auto px-0 text-base-cyan">Start Your Project <ArrowRight /></ProjectIntakeTrigger>
               </div>
 
               <div className="border-t border-white/10 pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                 <p className="text-xs font-medium uppercase tracking-[0.14em] text-base-mute">Starting investment</p>
                 <p className="mt-2 text-3xl font-semibold tracking-[-0.045em] text-base-cyan sm:text-4xl">{plan.price}</p>
+                <p className="mt-2 text-xs text-base-mute">Recommended: {plan.carePlan.replace(" Hosting & Care", " Care")}</p>
               </div>
             </MotionArticle>
           ))}
         </Stagger>
         <div className="mt-6 flex flex-col gap-3 text-sm leading-6 text-base-mute sm:flex-row sm:items-start sm:justify-between sm:gap-8">
-          <p>Final scope and investment are confirmed after a discovery conversation.</p>
-          <p className="max-w-2xl sm:text-right">E-commerce, customer portals, application functionality, advanced automation, and unusual integrations are individually proposed.</p>
+          <p>Prices begin at the amounts shown. Final scope and investment are confirmed after discovery.</p>
+          <p className="max-w-2xl sm:text-right">Hosting & Care begins at $39/month and is priced separately from website development.</p>
         </div>
       </Container>
     </section>

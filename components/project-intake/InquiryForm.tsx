@@ -1,14 +1,16 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Turnstile } from "@/components/security/Turnstile";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { trackInquirySuccess } from "@/lib/analytics";
+import { inquiryInterests } from "@/lib/services";
 
 type InquiryFormProps = {
   idPrefix: string;
@@ -20,18 +22,30 @@ export function InquiryForm({ idPrefix, className, onSuccess }: InquiryFormProps
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successful, setSuccessful] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
   const startedAt = useRef(Date.now());
+
+  const handleTurnstileToken = useCallback((token: string | null) => {
+    setTurnstileToken(token);
+  }, []);
 
   const fieldId = (name: string) => `${idPrefix}-${name}`;
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!turnstileToken) {
+      setError("Please complete the security verification before sending your inquiry.");
+      return;
+    }
+
     const form = event.currentTarget;
     const data: Record<string, FormDataEntryValue | number | boolean> = Object.fromEntries(
       new FormData(form).entries(),
     );
 
     data.consent = data.consent === "on" ? true : false;
+    data.turnstileToken = turnstileToken;
     data.startedAt = startedAt.current;
     setError(null);
     setLoading(true);
@@ -45,13 +59,14 @@ export function InquiryForm({ idPrefix, className, onSuccess }: InquiryFormProps
 
       if (!response.ok) throw new Error("Request failed");
 
-      trackInquirySuccess(typeof data.topic === "string" ? data.topic : "Other");
+      trackInquirySuccess(typeof data.interest === "string" ? data.interest : "Not Sure Yet");
       form.reset();
       startedAt.current = Date.now();
       if (onSuccess) onSuccess();
       else setSuccessful(true);
     } catch {
       setError("Your inquiry could not be sent. Please wait a moment and try again.");
+      setTurnstileResetKey((value) => value + 1);
     } finally {
       setLoading(false);
     }
@@ -132,19 +147,16 @@ export function InquiryForm({ idPrefix, className, onSuccess }: InquiryFormProps
 
       <div className="grid gap-4 md:col-span-2 md:grid-cols-2">
         <div>
-          <Label htmlFor={fieldId("topic")} className="text-base-text/70">
-            What do you need?
+          <Label htmlFor={fieldId("interest")} className="text-base-text/70">
+            What are you interested in?
           </Label>
           <select
-            id={fieldId("topic")}
-            name="topic"
+            id={fieldId("interest")}
+            name="interest"
             className="mt-2 h-10 w-full rounded-md border border-white/10 bg-base-bg/65 px-3 text-sm text-base-text"
-            defaultValue="New site"
+            defaultValue="Not Sure Yet"
           >
-            <option>New site</option>
-            <option>Redesign</option>
-            <option>Hosting &amp; Care</option>
-            <option>Other</option>
+            {inquiryInterests.map((interest) => <option key={interest}>{interest}</option>)}
           </select>
         </div>
 
@@ -174,6 +186,14 @@ export function InquiryForm({ idPrefix, className, onSuccess }: InquiryFormProps
           maxLength={5000}
           rows={5}
           className="mt-2 border-white/10 bg-base-bg/65"
+        />
+      </div>
+
+      <div className="md:col-span-2">
+        <Turnstile
+          idPrefix={idPrefix}
+          resetKey={turnstileResetKey}
+          onTokenChange={handleTurnstileToken}
         />
       </div>
 
