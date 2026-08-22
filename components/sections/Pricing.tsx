@@ -2,6 +2,7 @@ import { ArrowRight, Check, Minus, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
+import { NumberBadge } from "@/components/ui/NumberBadge";
 import { carePlans, packageComparison, websitePackages } from "@/lib/services";
 
 export function Pricing() {
@@ -29,7 +30,7 @@ export function Pricing() {
       <section className="section-space section-panel relative isolate">
         <Container>
           <div className="grid gap-6 border-b border-white/10 pb-9 sm:grid-cols-[auto_1fr] sm:items-end sm:gap-10">
-            <p className="operational-label">Website packages / 01–03</p>
+            <p className="operational-label">Website packages</p>
             <p className="max-w-2xl text-sm leading-6 text-base-mute sm:justify-self-end sm:text-right">
               Prices begin at the amounts shown. Final scope and investment are confirmed after discovery.
             </p>
@@ -46,9 +47,7 @@ export function Pricing() {
                     : ""
                 }`}
               >
-                <span className="relative z-10 grid h-10 w-10 place-items-center rounded-full border border-base-cyan/55 bg-base-carbon font-mono text-[0.6875rem] text-base-cyan shadow-[0_0_0_6px_hsl(var(--canvas-carbon)),0_0_22px_hsl(var(--signal-cyan)/0.18)]">
-                  {plan.index}
-                </span>
+                <NumberBadge value={plan.index} className="shadow-[0_0_0_6px_hsl(var(--canvas-carbon)),0_0_22px_hsl(var(--signal-cyan)/0.18)] sm:h-10 sm:w-10" />
 
                 <div>
                   <div className="flex flex-wrap items-center gap-3">

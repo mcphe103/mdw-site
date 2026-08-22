@@ -5,6 +5,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
+import { NumberBadge } from "@/components/ui/NumberBadge";
 
 export const metadata: Metadata = {
   title: "About Matthew McPherson | McPherson Digital Works",
@@ -96,10 +97,10 @@ export default function AboutPage() {
 
           <div className="mt-12 border-y border-base-cyan/15 bg-base-bg/25">
             {principles.map(([title, description], index) => (
-              <article key={title} className="grid gap-4 border-b border-white/10 px-6 py-8 last:border-b-0 sm:grid-cols-[3rem_0.55fr_1fr] sm:items-start sm:gap-8 sm:px-9 sm:py-10">
-                <span className="font-mono text-xs text-base-cyan">0{index + 1}</span>
+              <article key={title} className="grid grid-cols-[2.5rem_1fr] gap-x-4 gap-y-4 border-b border-white/10 px-6 py-8 last:border-b-0 sm:grid-cols-[3rem_0.55fr_1fr] sm:items-start sm:gap-8 sm:px-9 sm:py-10">
+                <NumberBadge value={`0${index + 1}`} />
                 <h2 className="text-xl font-semibold tracking-[-0.025em] text-base-heading">{title}</h2>
-                <p className="flex gap-3 leading-7 text-base-text/70">
+                <p className="col-start-2 flex gap-3 leading-7 text-base-text/70 sm:col-start-auto">
                   <Check className="mt-1 h-4 w-4 shrink-0 text-base-cyan" aria-hidden="true" />
                   {description}
                 </p>

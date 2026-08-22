@@ -1,5 +1,6 @@
 // components/sections/Process.tsx
 import { SectionTitle } from "@/components/sections/SectionTitle";
+import { NumberBadge } from "@/components/ui/NumberBadge";
 
 export function Process() {
   const steps = [
@@ -40,9 +41,7 @@ export function Process() {
             <div key={step.title} className="relative flex gap-4 md:gap-6">
               {/* LEFT: number + vertical connector */}
               <div className="flex flex-col items-center">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full border border-base-accent/60 bg-white/5 text-xs font-semibold text-base-accent">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
+                <NumberBadge value={String(index + 1).padStart(2, "0")} size="compact" />
                 {index < steps.length - 1 && (
                   <div className="mt-2 flex-1 w-px bg-gradient-to-b from-base-accent/40 via-base-accent/10 to-transparent" />
                 )}

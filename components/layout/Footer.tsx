@@ -26,8 +26,7 @@ export function Footer() {
       <Container className="py-12 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.5fr)_repeat(3,minmax(8rem,0.6fr))] lg:gap-8">
           <section aria-labelledby="footer-brand-heading" className="max-w-xl">
-            <p className="operational-label">Brand</p>
-            <div className="relative mt-5 h-28 w-40">
+            <div className="relative h-28 w-40">
               <Image
                 src="/brand/mdw-lockup.png"
                 alt="McPherson Digital Works"

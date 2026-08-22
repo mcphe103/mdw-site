@@ -13,6 +13,7 @@ import {
 
 import { Container } from "@/components/layout/Container";
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
+import { NumberBadge } from "@/components/ui/NumberBadge";
 import { cn } from "@/lib/utils";
 
 const NAVIGATION = [
@@ -276,10 +277,8 @@ function MobileNavLink({
       aria-current={active ? "location" : undefined}
       className="group flex min-h-16 items-center justify-between gap-5 border-b border-white/10 py-4 text-base-heading focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
     >
-      <span className="flex items-baseline gap-4">
-        <span className="font-mono text-[0.625rem] tracking-[0.16em] text-base-mute">
-          {index}
-        </span>
+      <span className="flex items-center gap-4">
+        <NumberBadge value={index} size="compact" />
         <span className="text-2xl font-medium tracking-[-0.035em] transition-colors group-hover:text-white">
           {children}
         </span>

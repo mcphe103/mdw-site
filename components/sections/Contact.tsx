@@ -12,7 +12,7 @@ export function Contact() {
           <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16 xl:gap-20">
             <div className="flex flex-col">
               <SectionTitle
-                kicker="Project inquiry / 06"
+                kicker="Project inquiry"
                 title="You do not need to have everything figured out."
                 description="Tell me what you are building, what is not working, or where you need direction. We can start with what you know now."
                 align="left"

@@ -23,6 +23,7 @@ import {
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { Button } from "@/components/ui/button";
+import { NumberBadge } from "@/components/ui/NumberBadge";
 import { websitePackages } from "@/lib/services";
 
 const servicePaths = [
@@ -90,7 +91,7 @@ export function BusinessNeeds() {
                 ["03", "Nobody responsible after launch", "Updates, reliability, and technical decisions become another burden for the owner to carry."],
               ].map(([index, title, description]) => (
                 <MotionArticle key={title} className="group relative grid grid-cols-[2.5rem_1fr] gap-5 border border-white/[0.08] bg-base-bg/45 px-5 py-6 backdrop-blur-sm transition-colors hover:border-base-cyan/20 hover:bg-base-cyan/[0.025] sm:grid-cols-[3rem_1fr] sm:px-7 sm:py-7">
-                  <span className="relative z-10 grid h-10 w-10 place-items-center rounded-full border border-base-cyan/50 bg-base-carbon font-mono text-[0.625rem] text-base-cyan shadow-[0_0_18px_hsl(var(--signal-cyan)/0.16)] sm:h-12 sm:w-12">{index}</span>
+                  <NumberBadge value={index} />
                   <div>
                     <h3 className="text-lg font-semibold tracking-[-0.025em] text-base-heading sm:text-xl">{title}</h3>
                     <p className="mt-2 max-w-xl text-sm leading-6 text-base-text/66 sm:text-base sm:leading-7">{description}</p>
@@ -126,7 +127,7 @@ export function ServicesOverview() {
       <Container>
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <Reveal>
-            <SectionTitle kicker="Services / 01" title="The right website starts with the right problem." align="left" />
+            <SectionTitle kicker="Services" title="The right website starts with the right problem." align="left" />
             <p className="mt-6 max-w-xl leading-7 text-base-text/68">
               Every engagement is scoped around what the business actually needs—not around filling a template or selling unnecessary features.
             </p>
@@ -139,8 +140,8 @@ export function ServicesOverview() {
             {servicePaths.map((service) => {
               const Icon = service.icon;
               return (
-                <MotionArticle key={service.title} className="group grid gap-5 py-7 transition-colors hover:bg-base-cyan/[0.025] sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:py-9">
-                  <span className="font-mono text-xs text-base-cyan">{service.index}</span>
+                <MotionArticle key={service.title} className="group grid grid-cols-[2.5rem_1fr] gap-x-5 gap-y-4 py-7 transition-colors hover:bg-base-cyan/[0.025] sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:py-9">
+                  <NumberBadge value={service.index} />
                   <div>
                     <h3 className="text-xl font-semibold tracking-[-0.025em] text-base-heading sm:text-2xl">{service.title}</h3>
                     <p className="mt-3 max-w-2xl leading-7 text-base-text/68">{service.description}</p>
@@ -163,7 +164,7 @@ export function WorkOverview() {
       <Container>
         <Reveal>
           <SectionTitle
-            kicker="Selected work / 02"
+            kicker="Selected work"
             title="Different businesses should not look like versions of the same website."
             description="The standard stays consistent: careful planning, clear communication, and dependable execution. The visual character and customer journey belong to the business."
             align="left"
@@ -218,7 +219,10 @@ export function WorkOverview() {
 function ProjectCopy({ index, region, title, description, points, link }: { index: string; region: string; title: string; description: string; points: readonly string[]; link?: string }) {
   return (
     <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
-      <p className="operational-label">Project {index} / {region}</p>
+      <div className="flex items-center gap-3">
+        <NumberBadge value={index} size="compact" />
+        <p className="operational-label">{region}</p>
+      </div>
       <h3 className="mt-5 text-3xl font-semibold tracking-[-0.045em] text-base-heading sm:text-4xl">{title}</h3>
       <p className="mt-5 max-w-xl leading-7 text-base-text/70">{description}</p>
       <ul className="mt-7 grid gap-3 text-sm text-base-text/70 sm:grid-cols-2">
@@ -239,13 +243,13 @@ export function ProcessOverview() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
           <Reveal>
-            <SectionTitle kicker="Process / 03" title="A clear process makes better work—and a better client experience." align="left" />
+            <SectionTitle kicker="Process" title="A clear process makes better work—and a better client experience." align="left" />
             <p className="mt-6 leading-7 text-base-text/68">You know what is happening, what is needed from you, and what must be approved before the project moves forward.</p>
           </Reveal>
           <Timeline className="relative">
             {processSteps.map(([index, title, description]) => (
               <TimelineItem key={title} className="relative grid grid-cols-[2.75rem_1fr] gap-x-4 gap-y-2 border-b border-white/10 py-6 first:border-t sm:grid-cols-[3rem_10rem_1fr] sm:items-center sm:gap-x-6 sm:py-7">
-                <span className="process-node relative z-10 grid h-10 w-10 place-items-center rounded-full border border-base-cyan/55 bg-base-carbon font-mono text-[0.6875rem] font-medium text-base-cyan shadow-[0_0_0_5px_hsl(var(--canvas-carbon)),0_0_20px_hsl(var(--signal-cyan)/0.16)] sm:h-12 sm:w-12">{index}</span>
+                <NumberBadge value={index} className="process-node shadow-[0_0_0_5px_hsl(var(--canvas-carbon)),0_0_20px_hsl(var(--signal-cyan)/0.16)]" />
                 <h3 className="font-semibold text-base-heading">{title}</h3>
                 <p className="col-start-2 text-sm leading-6 text-base-text/65 sm:col-start-auto">{description}</p>
               </TimelineItem>
@@ -266,7 +270,7 @@ export function PricingOverview() {
       </div>
       <Container>
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <SectionTitle kicker="Investment / 04" title="A clear starting point for the right-sized project." description="Choose a focused one-page launch, a complete small-business website, or an expanded build for deeper content and lead generation." align="left" className="max-w-3xl" />
+          <SectionTitle kicker="Investment" title="A clear starting point for the right-sized project." description="Choose a focused one-page launch, a complete small-business website, or an expanded build for deeper content and lead generation." align="left" className="max-w-3xl" />
           <Button asChild variant="outline"><Link href="/pricing">Full Pricing Details <ArrowRight /></Link></Button>
         </Reveal>
 
@@ -285,9 +289,12 @@ export function PricingOverview() {
                 <span className="absolute inset-y-0 left-0 w-px bg-base-cyan shadow-[0_0_22px_hsl(var(--signal-cyan)/0.7)]" aria-hidden="true" />
                 <span className="absolute right-5 top-5 rounded-full border border-base-cyan/40 bg-base-cyan/10 px-3 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-base-cyan sm:right-8">Most Popular</span>
               </>}
-              <div>
-                <p className="operational-label">{plan.index} / Website package</p>
-                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.035em] text-base-heading sm:text-[1.75rem]">{plan.name}</h3>
+              <div className="flex items-start gap-4">
+                <NumberBadge value={plan.index} size="compact" />
+                <div>
+                  <p className="operational-label">Website package</p>
+                  <h3 className="mt-3 text-2xl font-semibold tracking-[-0.035em] text-base-heading sm:text-[1.75rem]">{plan.name}</h3>
+                </div>
               </div>
 
               <div>
@@ -338,7 +345,7 @@ export function AboutOverview() {
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <SectionTitle kicker="About / 05" title="Your website is handled by the person whose name is on the work." align="left" />
+            <SectionTitle kicker="About" title="Your website is handled by the person whose name is on the work." align="left" />
             <div className="mt-6 space-y-5 leading-7 text-base-text/70">
               <p>I started McPherson Digital Works to help small-business owners establish a professional online presence without being left alone with confusing tools, unclear technical decisions, or a website nobody is responsible for after launch.</p>
               <p>My role does not end with selling the project. I am directly involved in planning the structure, developing the design, building the website, preparing it for launch, and supporting it afterward.</p>
