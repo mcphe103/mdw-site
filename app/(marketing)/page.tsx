@@ -8,12 +8,13 @@ import {
   WorkOverview,
 } from "@/components/sections/Homepage";
 import { ContactOverview } from "@/components/sections/Contact";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Modesto Web Design for Small Businesses",
   description:
     "McPherson Digital Works plans, designs, builds, and supports professional websites for small businesses in Modesto and across California's Central Valley.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: siteConfig.url },
 };
 
 export default function Page() {
