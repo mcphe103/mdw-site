@@ -105,21 +105,23 @@ function PhoneContactMethod() {
         <Phone className="h-3.5 w-3.5" aria-hidden="true" />
         Call or text
       </span>
-      <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <p className="mt-2 text-base font-semibold text-base-heading">{siteConfig.phone.display}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
         <a
           href={siteConfig.phone.href}
-          className="text-sm font-medium text-base-heading transition-colors hover:text-white"
+          className="inline-flex items-center gap-2 border border-white/12 bg-white/[0.025] px-3 py-2 text-xs font-semibold text-base-heading transition-colors hover:border-base-cyan/35 hover:bg-base-cyan/[0.05] hover:text-white"
           aria-label={`Call ${siteConfig.phone.display}`}
         >
-          {siteConfig.phone.display}
+          <Phone className="h-3.5 w-3.5 text-base-cyan" aria-hidden="true" />
+          Call
         </a>
         <a
           href={siteConfig.phone.smsHref}
-          className="inline-flex w-fit items-center gap-1.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-base-cyan transition-colors hover:text-white"
+          className="inline-flex items-center gap-2 border border-white/12 bg-white/[0.025] px-3 py-2 text-xs font-semibold text-base-heading transition-colors hover:border-base-cyan/35 hover:bg-base-cyan/[0.05] hover:text-white"
           aria-label={`Text ${siteConfig.phone.display}`}
         >
-          <MessageSquareText className="h-3.5 w-3.5" aria-hidden="true" />
-          Send a text
+          <MessageSquareText className="h-3.5 w-3.5 text-base-cyan" aria-hidden="true" />
+          Text
         </a>
       </div>
     </div>

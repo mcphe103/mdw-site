@@ -159,24 +159,31 @@ export function WorkOverview() {
         </Container>
       </section>
 
-      <section id="process" className="section-panel scroll-mt-28 border-y border-white/[0.07] py-14 sm:py-16 lg:py-20">
+      <section id="process" className="section-panel scroll-mt-28 border-y border-white/[0.07] py-16 sm:py-20 lg:py-24">
         <Container>
-          <Reveal className="grid gap-8 lg:grid-cols-[0.42fr_1.58fr] lg:items-start lg:gap-12">
-            <div>
-              <p className="operational-label">The project path</p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-base-heading sm:text-3xl">
-                Clear from first conversation to launch.
-              </h2>
-              <p className="mt-4 text-sm leading-6 text-base-text/66">
-                You know what is happening, what is needed, and what must be approved.
+          <Reveal>
+            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-14">
+              <div>
+                <p className="operational-label">The project path</p>
+                <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.04] tracking-[-0.045em] text-base-heading sm:text-5xl lg:text-[3.5rem]">
+                  Clear from first conversation to launch.
+                </h2>
+              </div>
+              <p className="max-w-xl text-base leading-7 text-base-text/68 lg:justify-self-end lg:border-l lg:border-base-cyan/30 lg:pl-6 lg:text-lg lg:leading-8">
+                You know what is happening, what is needed, and what must be approved—before the work moves forward.
               </p>
             </div>
-            <ol className="grid border border-white/10 bg-base-bg/28 md:grid-cols-5">
+
+            <ol className="mt-10 grid gap-3 md:grid-cols-2 sm:mt-12 xl:grid-cols-5">
               {processSteps.map(([index, title, description]) => (
-                <li key={title} className="border-b border-white/10 p-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
-                  <NumberBadge value={index} size="compact" />
-                  <h3 className="mt-4 font-semibold text-base-heading">{title}</h3>
-                  <p className="mt-2 text-xs leading-5 text-base-text/60">{description}</p>
+                <li
+                  key={title}
+                  className="relative min-h-[15rem] overflow-hidden border border-white/10 bg-base-bg/32 p-6 transition-colors hover:border-base-cyan/25 hover:bg-base-cyan/[0.025]"
+                >
+                  <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-base-cyan/45 via-base-cyan/10 to-transparent" />
+                  <NumberBadge value={index} />
+                  <h3 className="mt-6 text-lg font-semibold tracking-[-0.025em] text-base-heading">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-base-text/64">{description}</p>
                 </li>
               ))}
             </ol>
