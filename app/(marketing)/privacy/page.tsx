@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "How McPherson Digital Works collects, uses, and protects information provided through its website and services.",
+  alternates: { canonical: "/privacy" },
+};
+
 export default function PrivacyPage() {
   return (
     <section className="container-xl mx-auto max-w-4xl px-4 py-20">
