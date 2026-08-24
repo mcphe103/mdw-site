@@ -1,12 +1,55 @@
-import { CheckCircle2, Mail, MessageSquareText, Phone } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, Mail, MessageSquareText, Phone } from "lucide-react";
 
+import { Reveal } from "@/components/motion/MotionSystem";
+import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
 import { InquiryForm } from "@/components/project-intake/InquiryForm";
 import { SectionTitle } from "@/components/sections/SectionTitle";
+import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
-export function Contact({ compactTop = false }: { compactTop?: boolean }) {
+export function ContactOverview() {
   return (
-    <section id="contact" className={`section-space ${compactTop ? "pt-0" : ""}`}>
+    <section id="contact" className="section-space">
+      <div className="container-xl">
+        <Reveal className="signal-panel relative overflow-hidden border border-base-cyan/20 bg-[radial-gradient(circle_at_8%_12%,hsl(var(--signal-cyan)/0.13),transparent_24rem),linear-gradient(145deg,hsl(var(--surface-graphite)/0.92),hsl(var(--canvas-carbon)/0.96))] p-7 sm:p-10 lg:p-12">
+          <div className="pointer-events-none absolute right-0 top-0 h-px w-2/3 bg-gradient-to-l from-base-cyan/55 to-transparent" />
+          <div className="grid gap-10 lg:grid-cols-[0.76fr_1.24fr] lg:items-center lg:gap-14">
+            <div>
+              <SectionTitle
+                kicker="Start a conversation"
+                title="Bring the business problem. We can define the website together."
+                description="A straightforward first conversation by Google Meet or phone—without a sales ambush or obligation."
+                align="left"
+              />
+              <p className="mt-6 text-sm font-semibold text-base-heading">Website packages begin at $599.</p>
+            </div>
+
+            <div>
+              <div className="grid gap-3 sm:grid-cols-3">
+                <ContactMethod href={siteConfig.phone.href} icon={Phone} label="Call" value={siteConfig.phone.display} />
+                <ContactMethod href={siteConfig.phone.smsHref} icon={MessageSquareText} label="Text" value={siteConfig.phone.display} />
+                <ContactMethod href={`mailto:${siteConfig.email}`} icon={Mail} label="Email" value={siteConfig.email} />
+              </div>
+              <div className="mt-5 flex flex-col gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center">
+                <ProjectIntakeTrigger size="lg">
+                  Start a Project <ArrowRight aria-hidden="true" />
+                </ProjectIntakeTrigger>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/contact">Open Contact Page</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+export function Contact() {
+  return (
+    <section id="contact" className="section-space">
       <div className="container-xl">
         <div className="signal-panel relative overflow-hidden border border-base-cyan/15 bg-[radial-gradient(circle_at_6%_8%,hsl(var(--signal-cyan)/0.12),transparent_25rem),linear-gradient(145deg,hsl(var(--surface-graphite)/0.92),hsl(var(--canvas-carbon)/0.96))] p-6 sm:p-10 lg:p-14">
           <div className="pointer-events-none absolute right-0 top-0 h-px w-2/3 bg-gradient-to-l from-base-cyan/55 to-transparent" />
