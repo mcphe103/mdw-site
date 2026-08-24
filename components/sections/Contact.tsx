@@ -140,7 +140,7 @@ function ContactMethod({
   return (
     <a
       href={href}
-      className="group min-w-0 border border-white/10 bg-base-bg/45 px-4 py-3 transition-colors hover:border-base-cyan/30 hover:bg-base-cyan/[0.04]"
+      className="group block min-w-0 border border-white/10 bg-base-bg/45 px-4 py-3 transition-colors hover:border-base-cyan/30 hover:bg-base-cyan/[0.04]"
     >
       <span className="flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-base-cyan">
         <Icon className="h-3.5 w-3.5" aria-hidden="true" />
