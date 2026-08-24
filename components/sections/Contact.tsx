@@ -26,9 +26,8 @@ export function ContactOverview() {
             </div>
 
             <div>
-              <div className="grid gap-3 sm:grid-cols-[0.72fr_0.72fr_1.56fr]">
-                <ContactMethod href={siteConfig.phone.href} icon={Phone} label="Call" value={siteConfig.phone.display} />
-                <ContactMethod href={siteConfig.phone.smsHref} icon={MessageSquareText} label="Text" value={siteConfig.phone.display} />
+              <div className="space-y-3">
+                <PhoneContactMethod />
                 <ContactMethod href={`mailto:${siteConfig.email}`} icon={Mail} label="Email" value={siteConfig.email} />
               </div>
               <div className="mt-5 flex flex-col gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center">
@@ -73,19 +72,8 @@ export function Contact() {
                   </p>
                 ))}
               </div>
-              <div className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                <ContactMethod
-                  href={siteConfig.phone.href}
-                  icon={Phone}
-                  label="Call"
-                  value={siteConfig.phone.display}
-                />
-                <ContactMethod
-                  href={siteConfig.phone.smsHref}
-                  icon={MessageSquareText}
-                  label="Text"
-                  value={siteConfig.phone.display}
-                />
+              <div className="mt-8 space-y-3">
+                <PhoneContactMethod />
                 <ContactMethod
                   href={`mailto:${siteConfig.email}`}
                   icon={Mail}
@@ -110,6 +98,34 @@ export function Contact() {
   );
 }
 
+function PhoneContactMethod() {
+  return (
+    <div className="min-w-0 border border-white/10 bg-base-bg/45 px-4 py-3">
+      <span className="flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-base-cyan">
+        <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+        Call or text
+      </span>
+      <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <a
+          href={siteConfig.phone.href}
+          className="text-sm font-medium text-base-heading transition-colors hover:text-white"
+          aria-label={`Call ${siteConfig.phone.display}`}
+        >
+          {siteConfig.phone.display}
+        </a>
+        <a
+          href={siteConfig.phone.smsHref}
+          className="inline-flex w-fit items-center gap-1.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-base-cyan transition-colors hover:text-white"
+          aria-label={`Text ${siteConfig.phone.display}`}
+        >
+          <MessageSquareText className="h-3.5 w-3.5" aria-hidden="true" />
+          Send a text
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function ContactMethod({
   href,
   icon: Icon,
@@ -130,7 +146,7 @@ function ContactMethod({
         <Icon className="h-3.5 w-3.5" aria-hidden="true" />
         {label}
       </span>
-      <span className="mt-2 block truncate text-sm font-medium text-base-heading group-hover:text-white">
+      <span className="mt-2 block break-words text-sm font-medium text-base-heading group-hover:text-white">
         {value}
       </span>
     </a>
