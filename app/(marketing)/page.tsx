@@ -28,7 +28,7 @@ export default function Page() {
       <ProcessOverview />
       <PricingOverview />
       <AboutOverview />
-      <Contact />
+      <Contact compactTop />
     </>
   );
 }

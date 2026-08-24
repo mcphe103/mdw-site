@@ -4,9 +4,9 @@ import { InquiryForm } from "@/components/project-intake/InquiryForm";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { siteConfig } from "@/lib/site";
 
-export function Contact() {
+export function Contact({ compactTop = false }: { compactTop?: boolean }) {
   return (
-    <section id="contact" className="section-space">
+    <section id="contact" className={`section-space ${compactTop ? "pt-0" : ""}`}>
       <div className="container-xl">
         <div className="signal-panel relative overflow-hidden border border-base-cyan/15 bg-[radial-gradient(circle_at_6%_8%,hsl(var(--signal-cyan)/0.12),transparent_25rem),linear-gradient(145deg,hsl(var(--surface-graphite)/0.92),hsl(var(--canvas-carbon)/0.96))] p-6 sm:p-10 lg:p-14">
           <div className="pointer-events-none absolute right-0 top-0 h-px w-2/3 bg-gradient-to-l from-base-cyan/55 to-transparent" />
