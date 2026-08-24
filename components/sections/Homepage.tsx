@@ -223,16 +223,25 @@ function ProjectCard({
         featured ? "border-base-cyan/18" : "border-white/10"
       }`}
     >
-      <div className="relative min-h-[18rem] overflow-hidden bg-base-bg sm:min-h-[21rem]">
+      <Link
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View the ${title} live website`}
+        className="group/image relative block min-h-[18rem] overflow-hidden bg-base-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan/70 sm:min-h-[21rem]"
+      >
         <Image
           src={image}
           alt={imageAlt}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
-          className={`object-cover ${imagePosition}`}
+          className={`object-cover transition-transform duration-500 ease-out group-hover/image:scale-[1.015] ${imagePosition}`}
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-base-bg/55 via-transparent to-transparent" />
-      </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-base-bg/55 via-transparent to-transparent transition-colors group-hover/image:from-base-bg/45" />
+        <span className="pointer-events-none absolute right-4 top-4 grid h-9 w-9 place-items-center border border-white/15 bg-base-bg/78 text-base-cyan shadow-elevation backdrop-blur-sm transition-colors group-hover/image:border-base-cyan/45 group-hover/image:bg-base-bg/90">
+          <ExternalLink className="h-4 w-4" aria-hidden="true" />
+        </span>
+      </Link>
       <div className="flex flex-1 flex-col p-6 sm:p-8">
         <div className="flex items-center gap-3">
           <NumberBadge value={index} size="compact" />
