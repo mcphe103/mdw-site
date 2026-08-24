@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   },
   description:
     "Professional web design, website redesign, and ongoing care for small businesses in Modesto and across California's Central Valley.",
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     type: "website",
     siteName: "McPherson Digital Works",

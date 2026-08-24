@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   title: "Modesto Web Design for Small Businesses",
   description:
     "McPherson Digital Works plans, designs, builds, and supports professional websites for small businesses in Modesto and across California's Central Valley.",
-  alternates: { canonical: "/" },
 };
 
 export default function Page() {
