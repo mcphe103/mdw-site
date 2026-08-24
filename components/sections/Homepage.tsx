@@ -4,6 +4,7 @@ import {
   ArrowRight,
   Check,
   ExternalLink,
+  MapPin,
   RefreshCw,
   ShieldCheck,
   Sparkles,
@@ -25,6 +26,7 @@ import { SectionTitle } from "@/components/sections/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { NumberBadge } from "@/components/ui/NumberBadge";
 import { websitePackages } from "@/lib/services";
+import { siteConfig } from "@/lib/site";
 
 const servicePaths = [
   {
@@ -356,26 +358,35 @@ export function AboutOverview() {
               <span>Veteran-owned</span>
               <span>Based in Modesto</span>
             </div>
-            <Button asChild variant="outline" className="mt-8">
-              <Link href="/about">Meet Matthew & Learn About MDW <ArrowRight /></Link>
-            </Button>
+            <aside
+              aria-label="MDW local service area"
+              className="mt-8 border border-base-cyan/15 bg-base-bg/38 p-5 sm:p-6"
+            >
+              <div className="flex items-start gap-4">
+                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-base-cyan/25 bg-base-cyan/10 text-base-cyan">
+                  <MapPin className="h-4 w-4" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="operational-label">Local service area</p>
+                  <p className="mt-2 font-semibold text-base-heading">
+                    Serving Modesto and Central Valley small businesses.
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-base-text/66">
+                    Web design, website redesign, and ongoing care for businesses in {siteConfig.serviceAreas.join(", ")}, surrounding communities, and select remote locations.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3 border-t border-white/10 pt-4 text-sm font-semibold">
+                <Link href="/about" className="inline-flex items-center gap-2 text-base-heading transition-colors hover:text-base-cyan">
+                  Meet Matthew <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link href="/modesto-web-design" className="inline-flex items-center gap-2 text-base-cyan transition-colors hover:text-base-heading">
+                  Modesto Web Design <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </aside>
           </Reveal>
         </div>
-      </Container>
-    </section>
-  );
-}
-
-export function ProjectCTA() {
-  return (
-    <section className="section-space pb-0">
-      <Container>
-        <Reveal className="signal-panel relative overflow-hidden border border-base-cyan/20 bg-[radial-gradient(circle_at_86%_18%,hsl(var(--signal-cyan)/0.17),transparent_24rem),linear-gradient(135deg,hsl(var(--surface-raised)),hsl(var(--canvas-obsidian)))] px-7 py-12 sm:px-12 sm:py-16 lg:px-16">
-          <p className="operational-label">Your next step</p>
-          <h2 className="mt-5 max-w-4xl text-balance text-3xl font-semibold leading-tight tracking-[-0.045em] text-base-heading sm:text-5xl">Tell me what your business needs from its website.</h2>
-          <p className="mt-5 max-w-2xl leading-7 text-base-text/70">You do not need to arrive with every page, feature, or technical detail already decided. Start with what you know now.</p>
-          <ProjectIntakeTrigger size="lg" className="mt-8">Start a Project <ArrowRight /></ProjectIntakeTrigger>
-        </Reveal>
       </Container>
     </section>
   );

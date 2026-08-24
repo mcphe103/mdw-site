@@ -6,12 +6,10 @@ import {
   BusinessNeeds,
   PricingOverview,
   ProcessOverview,
-  ProjectCTA,
   ServicesOverview,
   WorkOverview,
 } from "@/components/sections/Homepage";
 import { Contact } from "@/components/sections/Contact";
-import { ServiceArea } from "@/components/sections/ServiceArea";
 
 export const metadata: Metadata = {
   title: "Modesto Web Design for Small Businesses",
@@ -30,8 +28,6 @@ export default function Page() {
       <ProcessOverview />
       <PricingOverview />
       <AboutOverview />
-      <ServiceArea />
-      <ProjectCTA />
       <Contact />
     </>
   );
