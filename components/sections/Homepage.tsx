@@ -265,7 +265,7 @@ export function PricingOverview() {
         <Reveal className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
           <SectionTitle
             kicker="Investment snapshot"
-            title="See the starting point. Use the Pricing page for the fine print."
+            title="Choose a starting point. Compare the details when you are ready."
             description="Three website packages cover the most common starting scopes. Final scope and investment are confirmed after discovery."
             align="left"
             className="max-w-4xl"

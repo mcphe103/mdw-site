@@ -26,7 +26,7 @@ export function ContactOverview() {
             </div>
 
             <div>
-              <div className="grid gap-3 sm:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-[0.72fr_0.72fr_1.56fr]">
                 <ContactMethod href={siteConfig.phone.href} icon={Phone} label="Call" value={siteConfig.phone.display} />
                 <ContactMethod href={siteConfig.phone.smsHref} icon={MessageSquareText} label="Text" value={siteConfig.phone.display} />
                 <ContactMethod href={`mailto:${siteConfig.email}`} icon={Mail} label="Email" value={siteConfig.email} />
