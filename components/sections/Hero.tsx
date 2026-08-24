@@ -30,7 +30,7 @@ export function Hero() {
           <HeroReveal delay={0.12}>
             <p className="operational-label flex items-center gap-3">
               <span className="hero-signal-line h-px w-8 origin-left bg-base-cyan/60" />
-              Web design · Central Valley
+              Web design · Modesto &amp; Central Valley
             </p>
           </HeroReveal>
 
@@ -42,7 +42,7 @@ export function Hero() {
 
           <HeroReveal delay={0.38}>
             <p className="mt-7 max-w-2xl text-pretty text-base leading-7 text-base-text/76 sm:text-lg sm:leading-8">
-              McPherson Digital Works plans, designs, builds, and supports professional websites for small businesses that need clarity now and dependable care after launch.
+              McPherson Digital Works plans, designs, builds, and supports professional websites for small businesses in Modesto and across California&apos;s Central Valley.
             </p>
           </HeroReveal>
 

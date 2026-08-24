@@ -189,7 +189,7 @@ export function Header() {
 
             <div className="mt-auto border-t border-white/10 pt-6 text-sm leading-6 text-base-mute">
               <p>Founder-led · Veteran-owned</p>
-              <p>Central Valley focused · Select remote projects</p>
+              <p>Based in Modesto · Serving the Central Valley</p>
             </div>
           </Container>
         </div>

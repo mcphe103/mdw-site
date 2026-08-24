@@ -1,7 +1,50 @@
-import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, Mail, MessageSquareText, Phone } from "lucide-react";
 
+import { Reveal } from "@/components/motion/MotionSystem";
+import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
 import { InquiryForm } from "@/components/project-intake/InquiryForm";
 import { SectionTitle } from "@/components/sections/SectionTitle";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
+
+export function ContactOverview() {
+  return (
+    <section id="contact" className="section-space">
+      <div className="container-xl">
+        <Reveal className="signal-panel relative overflow-hidden border border-base-cyan/20 bg-[radial-gradient(circle_at_8%_12%,hsl(var(--signal-cyan)/0.13),transparent_24rem),linear-gradient(145deg,hsl(var(--surface-graphite)/0.92),hsl(var(--canvas-carbon)/0.96))] p-7 sm:p-10 lg:p-12">
+          <div className="pointer-events-none absolute right-0 top-0 h-px w-2/3 bg-gradient-to-l from-base-cyan/55 to-transparent" />
+          <div className="grid gap-10 lg:grid-cols-[0.76fr_1.24fr] lg:items-center lg:gap-14">
+            <div>
+              <SectionTitle
+                kicker="Start a conversation"
+                title="Bring the business problem. We can define the website together."
+                description="A straightforward first conversation by Google Meet or phone—without a sales ambush or obligation."
+                align="left"
+              />
+              <p className="mt-6 text-sm font-semibold text-base-heading">Website packages begin at $599.</p>
+            </div>
+
+            <div>
+              <div className="space-y-3">
+                <PhoneContactMethod />
+                <ContactMethod href={`mailto:${siteConfig.email}`} icon={Mail} label="Email" value={siteConfig.email} />
+              </div>
+              <div className="mt-5 flex flex-col gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center">
+                <ProjectIntakeTrigger size="lg">
+                  Start a Project <ArrowRight aria-hidden="true" />
+                </ProjectIntakeTrigger>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/contact">Open Contact Page</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
 export function Contact() {
   return (
@@ -29,6 +72,15 @@ export function Contact() {
                   </p>
                 ))}
               </div>
+              <div className="mt-8 space-y-3">
+                <PhoneContactMethod />
+                <ContactMethod
+                  href={`mailto:${siteConfig.email}`}
+                  icon={Mail}
+                  label="Email"
+                  value={siteConfig.email}
+                />
+              </div>
               <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website packages begin at $599.</p>
             </div>
 
@@ -43,5 +95,62 @@ export function Contact() {
         </div>
       </div>
     </section>
+  );
+}
+
+function PhoneContactMethod() {
+  return (
+    <div className="min-w-0 border border-white/10 bg-base-bg/45 px-4 py-3">
+      <span className="flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-base-cyan">
+        <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+        Call or text
+      </span>
+      <p className="mt-2 text-base font-semibold text-base-heading">{siteConfig.phone.display}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <a
+          href={siteConfig.phone.href}
+          className="inline-flex items-center gap-2 border border-white/12 bg-white/[0.025] px-3 py-2 text-xs font-semibold text-base-heading transition-colors hover:border-base-cyan/35 hover:bg-base-cyan/[0.05] hover:text-white"
+          aria-label={`Call ${siteConfig.phone.display}`}
+        >
+          <Phone className="h-3.5 w-3.5 text-base-cyan" aria-hidden="true" />
+          Call
+        </a>
+        <a
+          href={siteConfig.phone.smsHref}
+          className="inline-flex items-center gap-2 border border-white/12 bg-white/[0.025] px-3 py-2 text-xs font-semibold text-base-heading transition-colors hover:border-base-cyan/35 hover:bg-base-cyan/[0.05] hover:text-white"
+          aria-label={`Text ${siteConfig.phone.display}`}
+        >
+          <MessageSquareText className="h-3.5 w-3.5 text-base-cyan" aria-hidden="true" />
+          Text
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function ContactMethod({
+  href,
+  icon: Icon,
+  label,
+  value,
+}: {
+  href: string;
+  icon: typeof Phone;
+  label: string;
+  value: string;
+}) {
+  return (
+    <a
+      href={href}
+      className="group block min-w-0 border border-white/10 bg-base-bg/45 px-4 py-3 transition-colors hover:border-base-cyan/30 hover:bg-base-cyan/[0.04]"
+    >
+      <span className="flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-base-cyan">
+        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+        {label}
+      </span>
+      <span className="mt-2 block break-words text-sm font-medium text-base-heading group-hover:text-white">
+        {value}
+      </span>
+    </a>
   );
 }
