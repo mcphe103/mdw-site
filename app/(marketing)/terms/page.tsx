@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "Terms governing McPherson Digital Works website services, payments, intellectual property, and liability.",
+  alternates: { canonical: "/terms" },
+};
+
 export default function TermsPage() {
   return (
     <section className="container-xl mx-auto max-w-4xl px-4 py-20">
