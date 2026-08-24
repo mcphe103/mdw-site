@@ -354,7 +354,7 @@ export function AboutOverview() {
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-sm font-medium text-base-text/72">
               <span>Founder-led</span>
               <span>Veteran-owned</span>
-              <span>Central Valley focused</span>
+              <span>Based in Modesto</span>
             </div>
             <Button asChild variant="outline" className="mt-8">
               <Link href="/about">Meet Matthew & Learn About MDW <ArrowRight /></Link>

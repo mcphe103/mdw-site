@@ -8,9 +8,9 @@ import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake"
 import { NumberBadge } from "@/components/ui/NumberBadge";
 
 export const metadata: Metadata = {
-  title: "About Matthew McPherson | McPherson Digital Works",
+  title: "About Matthew McPherson",
   description:
-    "Meet Matthew McPherson, founder of McPherson Digital Works, a veteran-owned web design studio serving Central Valley small businesses.",
+    "Meet Matthew McPherson, founder of McPherson Digital Works, a veteran-owned web design studio based in Modesto and serving Central Valley small businesses.",
   alternates: { canonical: "/about" },
 };
 
@@ -32,12 +32,12 @@ export default function AboutPage() {
                 A dependable digital partner, personally accountable for the work.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-base-text/70">
-                I&apos;m Matthew McPherson, founder of McPherson Digital Works. I help small-business owners turn unclear website needs into a professional, reliable online presence they can feel confident sharing.
+                I&apos;m Matthew McPherson, founder of McPherson Digital Works in Modesto, California. I help small-business owners turn unclear website needs into a professional, reliable online presence they can feel confident sharing.
               </p>
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-sm font-medium text-base-text/72">
                 <span>Founder-led</span>
                 <span>Veteran-owned</span>
-                <span>Central Valley focused</span>
+                <span>Based in Modesto</span>
               </div>
             </div>
 

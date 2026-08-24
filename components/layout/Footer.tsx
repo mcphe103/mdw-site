@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Container } from "@/components/layout/Container";
+import { siteConfig } from "@/lib/site";
 
 const exploreLinks = [
   { label: "Services", href: "/#services" },
@@ -12,6 +13,7 @@ const exploreLinks = [
 
 const resourceLinks = [
   { label: "Services & Pricing", href: "/pricing" },
+  { label: "Modesto Web Design", href: "/modesto-web-design" },
   { label: "Contact page", href: "/contact" },
 ];
 
@@ -24,7 +26,7 @@ export function Footer() {
   return (
     <footer className="relative mt-24 border-t border-base-cyan/[0.1] bg-base-carbon/92 shadow-[0_-24px_80px_rgba(0,0,0,0.2)] backdrop-blur-sm sm:mt-32">
       <Container className="py-12 sm:py-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.5fr)_repeat(3,minmax(8rem,0.6fr))] lg:gap-8">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_repeat(4,minmax(7rem,0.6fr))] lg:gap-8">
           <section aria-labelledby="footer-brand-heading" className="max-w-xl">
             <div className="relative h-28 w-40">
               <Image
@@ -37,10 +39,10 @@ export function Footer() {
             </div>
             <h2 id="footer-brand-heading" className="sr-only">McPherson Digital Works</h2>
             <p className="mt-4 max-w-lg text-sm leading-6 text-base-mute sm:text-[0.9375rem]">
-              A founder-led web design studio serving Central Valley small businesses and select clients beyond the region. Professional websites, clear project execution, and dependable care after launch.
+              A founder-led web design studio serving small businesses in Modesto and across California&apos;s Central Valley. Professional websites, clear project execution, and dependable care after launch.
             </p>
             <p className="mt-6 font-mono text-[0.625rem] uppercase leading-5 tracking-[0.16em] text-base-mute">
-              Veteran-owned · Central Valley focused
+              Veteran-owned · Based in Modesto
               <br />
               Available for select remote projects
             </p>
@@ -48,6 +50,7 @@ export function Footer() {
 
           <FooterGroup title="Explore" links={exploreLinks} />
           <FooterGroup title="Resources" links={resourceLinks} />
+          <FooterContact />
           <FooterGroup title="Legal" links={legalLinks} />
         </div>
 
@@ -57,6 +60,39 @@ export function Footer() {
         </div>
       </Container>
     </footer>
+  );
+}
+
+function FooterContact() {
+  return (
+    <section aria-labelledby="footer-contact-heading">
+      <p
+        id="footer-contact-heading"
+        className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.17em] text-base-mute"
+      >
+        Contact
+      </p>
+      <ul className="mt-4 space-y-3 text-sm">
+        <li>
+          <a className="text-base-text/75 transition-colors hover:text-base-heading" href={siteConfig.phone.href}>
+            Call {siteConfig.phone.display}
+          </a>
+        </li>
+        <li>
+          <a className="text-base-text/75 transition-colors hover:text-base-heading" href={siteConfig.phone.smsHref}>
+            Text {siteConfig.phone.display}
+          </a>
+        </li>
+        <li>
+          <a
+            className="break-words text-base-text/75 transition-colors hover:text-base-heading"
+            href={`mailto:${siteConfig.email}`}
+          >
+            {siteConfig.email}
+          </a>
+        </li>
+      </ul>
+    </section>
   );
 }
 

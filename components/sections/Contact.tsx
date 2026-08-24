@@ -1,7 +1,8 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Mail, MessageSquareText, Phone } from "lucide-react";
 
 import { InquiryForm } from "@/components/project-intake/InquiryForm";
 import { SectionTitle } from "@/components/sections/SectionTitle";
+import { siteConfig } from "@/lib/site";
 
 export function Contact() {
   return (
@@ -29,6 +30,26 @@ export function Contact() {
                   </p>
                 ))}
               </div>
+              <div className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                <ContactMethod
+                  href={siteConfig.phone.href}
+                  icon={Phone}
+                  label="Call"
+                  value={siteConfig.phone.display}
+                />
+                <ContactMethod
+                  href={siteConfig.phone.smsHref}
+                  icon={MessageSquareText}
+                  label="Text"
+                  value={siteConfig.phone.display}
+                />
+                <ContactMethod
+                  href={`mailto:${siteConfig.email}`}
+                  icon={Mail}
+                  label="Email"
+                  value={siteConfig.email}
+                />
+              </div>
               <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website packages begin at $599.</p>
             </div>
 
@@ -43,5 +64,32 @@ export function Contact() {
         </div>
       </div>
     </section>
+  );
+}
+
+function ContactMethod({
+  href,
+  icon: Icon,
+  label,
+  value,
+}: {
+  href: string;
+  icon: typeof Phone;
+  label: string;
+  value: string;
+}) {
+  return (
+    <a
+      href={href}
+      className="group min-w-0 border border-white/10 bg-base-bg/45 px-4 py-3 transition-colors hover:border-base-cyan/30 hover:bg-base-cyan/[0.04]"
+    >
+      <span className="flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-base-cyan">
+        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+        {label}
+      </span>
+      <span className="mt-2 block truncate text-sm font-medium text-base-heading group-hover:text-white">
+        {value}
+      </span>
+    </a>
   );
 }

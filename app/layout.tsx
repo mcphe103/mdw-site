@@ -4,9 +4,10 @@ import { IBM_Plex_Mono, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ProjectIntakeProvider } from "@/components/project-intake/ProjectIntake";
+import { siteConfig } from "@/lib/site";
 import Script from "next/script";
 
-const siteUrl = "https://www.mcphersondigitalworks.com";
+const siteUrl = siteConfig.url;
 const analyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const inter = Inter({
@@ -25,17 +26,17 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "McPherson Digital Works",
+    default: "Modesto Web Design for Small Businesses | McPherson Digital Works",
     template: "%s | McPherson Digital Works",
   },
   description:
-  "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
+    "Professional web design, website redesign, and ongoing care for small businesses in Modesto and across California's Central Valley.",
   openGraph: {
     type: "website",
     siteName: "McPherson Digital Works",
-    title: "McPherson Digital Works",
+    title: "Modesto Web Design for Small Businesses | McPherson Digital Works",
     description:
-      "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
+      "Professional web design, website redesign, and ongoing care for small businesses in Modesto and across California's Central Valley.",
     url: siteUrl,
   },
   icons: {
@@ -46,12 +47,30 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "McPherson Digital Works",
+  "@id": `${siteUrl}/#business`,
+  name: siteConfig.name,
   url: siteUrl,
-  email: "contact@mcphersondigitalworks.com",
-  areaServed: "United States",
+  logo: `${siteUrl}/brand/mdw-lockup.png`,
+  image: `${siteUrl}/brand/mdw-lockup.png`,
+  email: siteConfig.email,
+  telephone: siteConfig.phone.e164,
+  areaServed: siteConfig.serviceAreas.map((name) => ({
+    "@type": "City",
+    name: `${name}, California`,
+  })),
+  founder: {
+    "@type": "Person",
+    name: "Matthew McPherson",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: siteConfig.phone.e164,
+    email: siteConfig.email,
+    contactType: "sales and customer support",
+    availableLanguage: "English",
+  },
   description:
-  "Clean, reliable websites for small businesses — built with care, clarity, and long-term stability.",
+    "Founder-led, veteran-owned web design studio serving small businesses in Modesto and across California's Central Valley.",
 };
 export default function RootLayout({
   children,
