@@ -36,11 +36,18 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
+    locale: "en_US",
     siteName: "McPherson Digital Works",
     title: "Modesto Web Design for Small Businesses | McPherson Digital Works",
     description:
       "Professional web design, website redesign, and ongoing care for small businesses in Modesto and across California's Central Valley.",
     url: siteUrl,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Modesto Web Design for Small Businesses | McPherson Digital Works",
+    description:
+      "Professional web design, website redesign, and ongoing care for small businesses in Modesto and across California's Central Valley.",
   },
   icons: {
     icon: "/favicon.ico",
