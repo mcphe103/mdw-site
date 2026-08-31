@@ -20,6 +20,14 @@ export const metadata: Metadata = {
     description:
       "Professional websites and dependable ongoing care for businesses in Modesto and across California's Central Valley.",
     url: "/modesto-web-design",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "McPherson Digital Works — dependable websites for Modesto and Central Valley small businesses",
+      },
+    ],
   },
 };
 
