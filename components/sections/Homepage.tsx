@@ -17,11 +17,10 @@ import {
   Reveal,
   Stagger,
 } from "@/components/motion/MotionSystem";
-import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { NumberBadge } from "@/components/ui/NumberBadge";
-import { carePlans, websitePackages } from "@/lib/services";
+import { PackageCards } from "@/components/sections/PackageCards";
 import { siteConfig } from "@/lib/site";
 
 const servicePaths = [
@@ -159,6 +158,13 @@ export function WorkOverview() {
         </Container>
       </section>
 
+    </>
+  );
+}
+
+export function ProcessOverview() {
+  return (
+    <>
       <section id="process" className="section-panel scroll-mt-28 border-y border-white/[0.07] py-16 sm:py-20 lg:py-24">
         <Container>
           <Reveal>
@@ -281,8 +287,8 @@ export function PricingOverview() {
         <Reveal className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
           <SectionTitle
             kicker="Investment snapshot"
-            title="A clear two-part investment: website project + ongoing care."
-            description="Choose a website package for the build, then a Hosting & Care plan to keep it monitored, maintained, and supported after launch."
+            title="The right starting point for your business."
+            description="Compare the one-time build price and recommended monthly care together. No hunting for the ongoing cost."
             align="left"
             className="max-w-4xl"
           />
@@ -291,68 +297,8 @@ export function PricingOverview() {
           </Button>
         </Reveal>
 
-        <div className="mt-10 grid overflow-hidden border border-base-cyan/20 bg-base-bg/35 sm:grid-cols-2 sm:mt-14">
-          <div className="p-6 sm:p-8">
-            <p className="operational-label">01 / One-time website project</p>
-            <p className="mt-4 text-3xl font-semibold tracking-[-0.045em] text-base-heading sm:text-4xl">From $600</p>
-            <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">Your selected website package covers the planning, design, development, and launch of the site.</p>
-          </div>
-          <div className="border-t border-white/10 bg-base-cyan/[0.06] p-6 sm:border-l sm:border-t-0 sm:p-8">
-            <p className="operational-label text-base-cyan">02 / After launch: Hosting & Care</p>
-            <p className="mt-4 text-3xl font-semibold tracking-[-0.045em] text-base-cyan sm:text-4xl">From {carePlans[0].monthlyPrice}</p>
-            <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">Managed hosting, monitoring, maintenance, and direct support are priced separately from the website project.</p>
-          </div>
-        </div>
-
-        <Stagger className="mt-10 grid gap-4 lg:grid-cols-3">
-          {websitePackages.map((plan) => (
-            <MotionArticle
-              key={plan.name}
-              className={`group relative flex flex-col border p-6 sm:p-7 ${
-                "featured" in plan && plan.featured
-                  ? "border-base-cyan/35 bg-[linear-gradient(145deg,hsl(var(--signal-cyan)/0.09),hsl(var(--canvas-obsidian)/0.72))] shadow-[0_0_50px_hsl(var(--signal-cyan)/0.06)]"
-                  : "border-white/10 bg-base-bg/28 transition-colors hover:border-base-cyan/20"
-              }`}
-            >
-              {"featured" in plan && plan.featured && (
-                <span className="absolute right-5 top-5 rounded-full border border-base-cyan/40 bg-base-cyan/10 px-3 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-base-cyan">
-                  Most Popular
-                </span>
-              )}
-              <div className="flex items-center gap-3">
-                <NumberBadge value={plan.index} size="compact" />
-                <p className="operational-label">Website package</p>
-              </div>
-              <div className="mt-6 flex items-end justify-between gap-4">
-                <h3 className="text-2xl font-semibold tracking-[-0.035em] text-base-heading">{plan.name}</h3>
-                <div className="text-right">
-                  <p className="text-[0.625rem] font-medium uppercase tracking-[0.14em] text-base-mute">From</p>
-                  <p className="mt-1 text-3xl font-semibold tracking-[-0.045em] text-base-cyan">{plan.price}</p>
-                </div>
-              </div>
-              <p className="mt-5 text-sm leading-6 text-base-text/68">{plan.description}</p>
-              <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-5 text-sm text-base-text/66">
-                {plan.summaryPoints.slice(0, 2).map((point) => (
-                  <li key={point} className="flex gap-2.5">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-base-cyan/80" aria-hidden="true" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-6">
-                <ProjectIntakeTrigger variant="link" className="h-auto px-0 text-base-cyan">
-                  Start Your Project <ArrowRight />
-                </ProjectIntakeTrigger>
-              </div>
-            </MotionArticle>
-          ))}
-        </Stagger>
-        <div className="mt-6 flex flex-col gap-2 text-sm leading-6 text-base-mute sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-          <p>Every new website includes a separate Hosting &amp; Care plan after launch, starting at $39/month.</p>
-          <Link href="/pricing" className="inline-flex items-center gap-2 font-semibold text-base-heading transition-colors hover:text-base-cyan">
-            Inclusions, exclusions, and care plans <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
+        <div className="mt-10"><PackageCards /></div>
+        <p className="mt-6 text-sm leading-6 text-base-mute">Build prices are starting points. We confirm your scope and care needs before work begins. Domain registration is separate.</p>
       </Container>
     </section>
   );
