@@ -62,7 +62,7 @@ export function Hero() {
             <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/10 pt-5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-base-mute">
               <span>Founder-led</span>
               <span>Veteran-owned</span>
-              <span>Website packages from $600</span>
+              <span>Websites from $600 · Hosting &amp; Care from $39/month</span>
             </div>
           </HeroReveal>
         </div>
