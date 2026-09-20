@@ -294,7 +294,7 @@ export function PricingOverview() {
         <div className="mt-10 grid overflow-hidden border border-base-cyan/20 bg-base-bg/35 sm:grid-cols-2 sm:mt-14">
           <div className="p-6 sm:p-8">
             <p className="operational-label">01 / One-time website project</p>
-            <p className="mt-4 text-3xl font-semibold tracking-[-0.045em] text-base-heading sm:text-4xl">From $599</p>
+            <p className="mt-4 text-3xl font-semibold tracking-[-0.045em] text-base-heading sm:text-4xl">From $600</p>
             <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">Your selected website package covers the planning, design, development, and launch of the site.</p>
           </div>
           <div className="border-t border-white/10 bg-base-cyan/[0.06] p-6 sm:border-l sm:border-t-0 sm:p-8">
