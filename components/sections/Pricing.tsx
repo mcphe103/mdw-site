@@ -2,13 +2,13 @@ import { ArrowRight, Check, Minus, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
-import { NumberBadge } from "@/components/ui/NumberBadge";
+import { PackageCards } from "@/components/sections/PackageCards";
 import { carePlans, packageComparison, websitePackages } from "@/lib/services";
 
 export function Pricing() {
   return (
     <main className="overflow-hidden">
-      <section className="relative isolate border-b border-white/[0.07] pb-20 pt-20 sm:pb-28 sm:pt-28 lg:pb-32">
+      <section className="relative isolate border-b border-white/[0.07] pb-12 pt-16 sm:pb-16 sm:pt-20">
         <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
           <span className="absolute -right-20 top-14 h-72 w-72 rotate-45 border border-base-cyan/10" />
           <span className="absolute right-[18%] top-0 h-40 w-px bg-gradient-to-b from-base-cyan/60 to-transparent shadow-[0_0_20px_hsl(var(--signal-cyan)/0.4)]" />
@@ -21,72 +21,18 @@ export function Pricing() {
               Clear project pricing. Dependable care after launch.
             </h1>
             <p className="max-w-xl text-base leading-8 text-base-text/70 sm:text-lg">
-              Every MDW website has two clear parts: a one-time website project starting at $600 and a separate Hosting &amp; Care plan starting at $39/month after launch.
+              Compare your one-time website build and recommended monthly care in one place. Final scope and pricing are confirmed before work begins.
             </p>
           </div>
 
-          <div className="mt-12 grid overflow-hidden border border-base-cyan/20 bg-base-bg/35 sm:grid-cols-2">
-            <div className="p-6 sm:p-8">
-              <p className="operational-label">01 / Website project</p>
-              <p className="mt-3 text-3xl font-semibold tracking-[-0.045em] text-base-heading">From $600</p>
-              <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">A one-time investment for planning, design, development, review, and launch.</p>
-            </div>
-            <div className="border-t border-white/10 bg-base-cyan/[0.06] p-6 sm:border-l sm:border-t-0 sm:p-8">
-              <p className="operational-label text-base-cyan">02 / Hosting &amp; Care after launch</p>
-              <p className="mt-3 text-3xl font-semibold tracking-[-0.045em] text-base-cyan">From $39/month</p>
-              <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">Managed hosting, maintenance, monitoring, and support—priced separately from the website project.</p>
-            </div>
-          </div>
         </Container>
       </section>
 
-      <section className="section-space section-panel relative isolate">
+      <section className="section-panel py-12 sm:py-16" aria-label="Website packages">
         <Container>
-          <div className="grid gap-6 border-b border-white/10 pb-9 sm:grid-cols-[auto_1fr] sm:items-end sm:gap-10">
-            <p className="operational-label">Website packages</p>
-            <p className="max-w-2xl text-sm leading-6 text-base-mute sm:justify-self-end sm:text-right">
-              Prices begin at the amounts shown. Final scope and investment are confirmed after discovery.
-            </p>
-          </div>
-
-          <div className="relative mt-2">
-            <span className="absolute bottom-0 left-5 top-0 hidden w-px bg-gradient-to-b from-base-cyan/60 via-base-cyan/15 to-transparent md:block" aria-hidden="true" />
-            {websitePackages.map((plan) => (
-              <article
-                key={plan.name}
-                className={`relative grid gap-8 border-b border-white/10 py-12 md:grid-cols-[3rem_0.72fr_1.28fr] md:gap-10 lg:gap-16 lg:py-16 ${
-                  "featured" in plan && plan.featured
-                    ? "bg-[linear-gradient(90deg,hsl(var(--signal-cyan)/0.065),transparent_68%)]"
-                    : ""
-                }`}
-              >
-                <NumberBadge value={plan.index} className="shadow-[0_0_0_6px_hsl(var(--canvas-carbon)),0_0_22px_hsl(var(--signal-cyan)/0.18)] sm:h-10 sm:w-10" />
-
-                <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <p className="operational-label">Website package</p>
-                    {"featured" in plan && plan.featured && (
-                      <span className="rounded-full border border-base-cyan/40 bg-base-cyan/10 px-3 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-base-cyan">Most Popular</span>
-                    )}
-                  </div>
-                  <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-4xl">{plan.name}</h2>
-                  <p className="mt-4 text-sm uppercase tracking-[0.12em] text-base-mute">Starting at</p>
-                  <p className="mt-1 text-4xl font-semibold tracking-[-0.05em] text-base-cyan">{plan.price}</p>
-                  <p className="mt-6 max-w-md leading-7 text-base-text/70">{plan.description}</p>
-                  <p className="mt-5 text-sm font-semibold text-base-heading/85">Recommended: {plan.carePlan}</p>
-                  <ProjectIntakeTrigger variant="outline" className="mt-7">Start Your Project <ArrowRight aria-hidden="true" /></ProjectIntakeTrigger>
-                </div>
-
-                <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-                  <ScopeList title="Included" items={plan.included} included />
-                  <ScopeList title={plan.name === "Growth Website" ? "Not automatically included" : "Not included"} items={plan.excluded} />
-                  {"note" in plan && plan.note && (
-                    <p className="border-l border-base-cyan/45 pl-4 text-xs leading-6 text-base-mute lg:col-span-2">{plan.note}</p>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
+          <h2 className="sr-only">Choose your website package</h2>
+          <PackageCards />
+          <p className="mt-6 text-sm leading-6 text-base-mute">50% to reserve your project; the remaining balance is due before launch. Hosting &amp; Care is separate from the build. Domain registration and renewal are additional.</p>
         </Container>
       </section>
 
@@ -94,8 +40,8 @@ export function Pricing() {
         <Container>
           <div className="max-w-3xl">
             <p className="operational-label">After launch / Hosting & Care</p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-5xl">A responsible plan for what happens after launch.</h2>
-            <p className="mt-5 max-w-2xl leading-7 text-base-text/70">Website development and Hosting & Care are priced separately. Choose the plan aligned with the size and support needs of the website.</p>
+            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-5xl">What changes between care plans?</h2>
+            <p className="mt-5 max-w-2xl leading-7 text-base-text/70">Both plans cover hosting, monitoring, maintenance, and technical support. Launch Care has no routine content-update allowance; Standard includes up to one hour each month.</p>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -109,10 +55,11 @@ export function Pricing() {
                   <p className="text-3xl font-semibold tracking-[-0.045em] text-base-cyan">{plan.monthlyPrice}</p>
                   <p className="text-sm text-base-mute">or {plan.annualPrice}</p>
                 </div>
-                <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                <details className="mt-6"><summary className="cursor-pointer text-sm font-semibold text-base-heading focus-visible:outline-base-cyan">Full care inclusions and exclusions</summary><div className="mt-6 grid gap-8 sm:grid-cols-2">
                   <ScopeList title="Included" items={plan.included} included />
                   <ScopeList title="Not included" items={plan.excluded} />
                 </div>
+                </details>
                 <p className="mt-8 border-t border-white/10 pt-5 text-xs leading-6 text-base-mute">{plan.note}</p>
               </article>
             ))}
@@ -151,6 +98,25 @@ export function Pricing() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </Container>
+      </section>
+
+      <section className="section-space border-b border-white/10">
+        <Container>
+          <p className="operational-label">The full scope</p>
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-base-heading">Know exactly what is included.</h2>
+          <div className="mt-8 divide-y divide-white/10 border-y border-white/10">
+            {websitePackages.map((plan) => (
+              <details key={plan.name} className="py-6">
+                <summary className="cursor-pointer text-xl font-semibold text-base-heading focus-visible:outline-base-cyan">{plan.name} — scope and exclusions</summary>
+                <div className="mt-6 grid gap-8 md:grid-cols-2">
+                  <ScopeList title="Included" items={plan.included} included />
+                  <ScopeList title="Not included" items={plan.excluded} />
+                </div>
+                {"note" in plan && <p className="mt-6 text-sm leading-6 text-base-mute">{plan.note}</p>}
+              </details>
+            ))}
           </div>
         </Container>
       </section>
