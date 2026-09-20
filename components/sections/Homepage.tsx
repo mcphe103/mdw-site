@@ -21,7 +21,7 @@ import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake"
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { NumberBadge } from "@/components/ui/NumberBadge";
-import { websitePackages } from "@/lib/services";
+import { carePlans, websitePackages } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
 const servicePaths = [
@@ -281,8 +281,8 @@ export function PricingOverview() {
         <Reveal className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
           <SectionTitle
             kicker="Investment snapshot"
-            title="Choose a starting point. Compare the details when you are ready."
-            description="Three website packages cover the most common starting scopes. Final scope and investment are confirmed after discovery."
+            title="A clear two-part investment: website project + ongoing care."
+            description="Choose a website package for the build, then a Hosting & Care plan to keep it monitored, maintained, and supported after launch."
             align="left"
             className="max-w-4xl"
           />
@@ -291,7 +291,20 @@ export function PricingOverview() {
           </Button>
         </Reveal>
 
-        <Stagger className="mt-10 grid gap-4 lg:grid-cols-3 sm:mt-14">
+        <div className="mt-10 grid overflow-hidden border border-base-cyan/20 bg-base-bg/35 sm:grid-cols-2 sm:mt-14">
+          <div className="p-6 sm:p-8">
+            <p className="operational-label">01 / One-time website project</p>
+            <p className="mt-4 text-3xl font-semibold tracking-[-0.045em] text-base-heading sm:text-4xl">From $599</p>
+            <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">Your selected website package covers the planning, design, development, and launch of the site.</p>
+          </div>
+          <div className="border-t border-white/10 bg-base-cyan/[0.06] p-6 sm:border-l sm:border-t-0 sm:p-8">
+            <p className="operational-label text-base-cyan">02 / After launch: Hosting & Care</p>
+            <p className="mt-4 text-3xl font-semibold tracking-[-0.045em] text-base-cyan sm:text-4xl">From {carePlans[0].monthlyPrice}</p>
+            <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">Managed hosting, monitoring, maintenance, and direct support are priced separately from the website project.</p>
+          </div>
+        </div>
+
+        <Stagger className="mt-10 grid gap-4 lg:grid-cols-3">
           {websitePackages.map((plan) => (
             <MotionArticle
               key={plan.name}
@@ -335,7 +348,7 @@ export function PricingOverview() {
           ))}
         </Stagger>
         <div className="mt-6 flex flex-col gap-2 text-sm leading-6 text-base-mute sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-          <p>Hosting &amp; Care begins at $39/month and is priced separately from website development.</p>
+          <p>Every new website includes a separate Hosting &amp; Care plan after launch, starting at $39/month.</p>
           <Link href="/pricing" className="inline-flex items-center gap-2 font-semibold text-base-heading transition-colors hover:text-base-cyan">
             Inclusions, exclusions, and care plans <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
