@@ -4,7 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import {
   AboutOverview,
   PricingOverview,
-  ServicesOverview,
+  ProcessOverview,
   WorkOverview,
 } from "@/components/sections/Homepage";
 import { ContactOverview } from "@/components/sections/Contact";
@@ -19,9 +19,9 @@ export default function Page() {
   return (
     <>
       <Hero />
-      <ServicesOverview />
       <WorkOverview />
       <PricingOverview />
+      <ProcessOverview />
       <AboutOverview />
       <ContactOverview />
     </>
