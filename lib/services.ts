@@ -2,7 +2,7 @@ export const websitePackages = [
   {
     index: "01",
     name: "Quick Launch",
-    price: "$600",
+    price: "$800",
     description:
       "A polished one-page website for businesses ready to establish a credible online presence quickly and affordably.",
     summaryPoints: [
@@ -34,7 +34,7 @@ export const websitePackages = [
   {
     index: "02",
     name: "Starter Website",
-    price: "$1,000",
+    price: "$1,200",
     description:
       "A complete professional website for small businesses ready to clearly present their services, build trust, and generate inquiries.",
     summaryPoints: [
@@ -67,7 +67,7 @@ export const websitePackages = [
   {
     index: "03",
     name: "Growth Website",
-    price: "$1,500",
+    price: "$1,800",
     description:
       "An expanded website for businesses that need deeper content, stronger service presentation, and additional lead-generation capabilities.",
     summaryPoints: [
@@ -147,7 +147,7 @@ export const carePlans = [
 ] as const;
 
 export const packageComparison = [
-  ["Starting price", "$600", "$1,000", "$1,500"],
+  ["Starting price", "$800", "$1,200", "$1,800"],
   ["Website size", "One scrolling page", "Up to 5 pages", "Up to 8 pages"],
   ["Responsive design", "Included", "Included", "Included"],
   ["Client-provided content", "Required", "Required", "Required"],
