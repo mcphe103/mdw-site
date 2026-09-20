@@ -18,7 +18,7 @@ export function Pricing() {
           <p className="operational-label">Services & Pricing / Project investment</p>
           <div className="mt-5 grid gap-8 lg:grid-cols-[1.18fr_0.82fr] lg:items-end lg:gap-20">
             <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.05em] text-base-heading sm:text-5xl lg:text-6xl">
-              Clear project pricing. Dependable care after launch.
+              Choose the website your business needs next.
             </h1>
             <p className="max-w-xl text-base leading-8 text-base-text/70 sm:text-lg">
               Compare your one-time website build and recommended monthly care in one place. Final scope and pricing are confirmed before work begins.
@@ -41,7 +41,7 @@ export function Pricing() {
           <div className="max-w-3xl">
             <p className="operational-label">After launch / Hosting & Care</p>
             <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-5xl">What changes between care plans?</h2>
-            <p className="mt-5 max-w-2xl leading-7 text-base-text/70">Both plans cover hosting, monitoring, maintenance, and technical support. Launch Care has no routine content-update allowance; Standard includes up to one hour each month.</p>
+            <p className="mt-5 max-w-2xl leading-7 text-base-text/70">Have someone to contact when a website issue comes up. Both plans cover hosting, monitoring, maintenance, and technical support. Launch Care covers technical upkeep; Standard also includes up to one hour each month for routine changes such as hours, supplied photos, or service details.</p>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -151,7 +151,7 @@ export function Pricing() {
             <p className="operational-label">Your next step</p>
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-4xl">Not sure which package fits?</h2>
             <p className="mt-4 max-w-2xl leading-7 text-base-text/70">Start with what you know about your business and what the website needs to accomplish. You do not need to select a package before reaching out.</p>
-            <ProjectIntakeTrigger size="lg" className="mt-7">Start Your Project <ArrowRight aria-hidden="true" /></ProjectIntakeTrigger>
+            <ProjectIntakeTrigger size="lg" className="mt-7">Let’s Talk <ArrowRight aria-hidden="true" /></ProjectIntakeTrigger>
           </div>
         </Container>
       </section>
