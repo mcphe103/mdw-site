@@ -21,14 +21,14 @@ export function Pricing() {
               Clear project pricing. Dependable care after launch.
             </h1>
             <p className="max-w-xl text-base leading-8 text-base-text/70 sm:text-lg">
-              Every MDW website has two clear parts: a one-time website project starting at $599 and a separate Hosting &amp; Care plan starting at $39/month after launch.
+              Every MDW website has two clear parts: a one-time website project starting at $600 and a separate Hosting &amp; Care plan starting at $39/month after launch.
             </p>
           </div>
 
           <div className="mt-12 grid overflow-hidden border border-base-cyan/20 bg-base-bg/35 sm:grid-cols-2">
             <div className="p-6 sm:p-8">
               <p className="operational-label">01 / Website project</p>
-              <p className="mt-3 text-3xl font-semibold tracking-[-0.045em] text-base-heading">From $599</p>
+              <p className="mt-3 text-3xl font-semibold tracking-[-0.045em] text-base-heading">From $600</p>
               <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">A one-time investment for planning, design, development, review, and launch.</p>
             </div>
             <div className="border-t border-white/10 bg-base-cyan/[0.06] p-6 sm:border-l sm:border-t-0 sm:p-8">
