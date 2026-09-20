@@ -201,7 +201,7 @@ function ProjectIntakeDialog({
               </span>
               <p className="operational-label mt-8">Inquiry received</p>
               <h2 id="project-intake-title" className="mt-5 text-balance text-4xl font-semibold tracking-[-0.05em] text-base-heading sm:text-5xl">
-                Your project is now on my radar.
+                Thank you for telling me about your business.
               </h2>
               <p id="project-intake-description" className="mx-auto mt-5 max-w-xl text-base leading-7 text-base-text/72 sm:text-lg sm:leading-8">
                 I&apos;ll review what you shared and respond within one to two business days, often sooner. A confirmation is on its way to your inbox.
@@ -214,10 +214,10 @@ function ProjectIntakeDialog({
           </div>
         ) : (
           <div className="relative z-10 grid min-h-[100dvh] lg:grid-cols-[0.8fr_1.2fr] sm:min-h-0">
-            <div className="border-b border-white/10 bg-[linear-gradient(145deg,hsl(var(--signal-cyan)/0.09),transparent_65%)] px-6 pb-9 pt-24 sm:px-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-16">
-              <p className="operational-label">Project intake / Open channel</p>
+            <div className="border-b border-white/10 bg-[linear-gradient(145deg,hsl(var(--signal-cyan)/0.09),transparent_65%)] px-6 pb-6 pt-16 sm:px-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-16">
+              <p className="operational-label">Let’s talk about your website</p>
               <h2 id="project-intake-title" className="mt-5 text-balance text-3xl font-semibold leading-tight tracking-[-0.045em] text-base-heading sm:text-4xl">
-                Let&apos;s build something dependable.
+                What would make your website more useful?
               </h2>
               <p id="project-intake-description" className="mt-5 text-base leading-7 text-base-text/72">
                 Tell me about your business, what you need, and where you would like to go next. You do not need to have every detail figured out.
