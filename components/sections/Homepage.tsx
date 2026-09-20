@@ -97,12 +97,17 @@ export function WorkOverview() {
               link="https://www.chairezfencing.com/"
             />
           </div>
-          <article className="mt-8 border-l-2 border-base-cyan bg-base-cyan/[0.04] p-6 sm:p-8">
+          <article className="mt-8 overflow-hidden border border-base-cyan/20 bg-base-cyan/[0.04] lg:grid lg:grid-cols-2">
+            <Link href="https://www.savorysakura.com" target="_blank" rel="noopener noreferrer" aria-label="View the Savory Sakura website" className="block self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan">
+              <Image src="/portfolio/savory-sakura.webp" alt="Savory Sakura website with pink cherry blossom branding, Japanese comfort food introduction, and a weekend catering request button" width={2048} height={1157} sizes="(min-width: 1024px) 50vw, 100vw" className="h-auto w-full" />
+            </Link>
+            <div className="p-6 sm:p-8">
             <p className="operational-label">Also built by MDW / Savory Sakura</p>
             <h3 className="mt-3 text-2xl font-semibold text-base-heading">Catering requests built around the owner’s availability.</h3>
             <p className="mt-4 max-w-3xl leading-7 text-base-text/70">Savory Sakura needed customers to explore the menu and request weekend catering. The site accepts preferred dates with a week’s notice, gathers order details, and explains that approval and a deposit are needed to confirm an order.</p>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-base-text/70">Customers have a clear way to ask. The owner keeps control of availability and confirmation.</p>
             <Link href="https://www.savorysakura.com" target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 font-semibold text-base-cyan">Visit Savory Sakura <ExternalLink className="h-4 w-4" aria-hidden="true" /></Link>
+            </div>
           </article>
         </Container>
       </section>

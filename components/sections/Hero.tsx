@@ -42,7 +42,7 @@ export function Hero() {
 
           <HeroReveal delay={0.38}>
             <p className="mt-7 max-w-2xl text-pretty text-base leading-7 text-base-text/76 sm:text-lg sm:leading-8">
-              I’m Matthew. I build websites that explain your services, show the quality of your work, and give customers a clear next step. You work directly with me, from the first conversation through launch and ongoing care.
+              Hello there! My name is Matthew. I build websites that explain your services, show the quality of your work, and give customers a clear next step. You work directly with me, from the first conversation through launch and ongoing care.
             </p>
           </HeroReveal>
 
