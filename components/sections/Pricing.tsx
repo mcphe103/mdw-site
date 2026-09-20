@@ -18,11 +18,24 @@ export function Pricing() {
           <p className="operational-label">Services & Pricing / Project investment</p>
           <div className="mt-5 grid gap-8 lg:grid-cols-[1.18fr_0.82fr] lg:items-end lg:gap-20">
             <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.05em] text-base-heading sm:text-5xl lg:text-6xl">
-              Clear packages. Thoughtful scope. Dependable care.
+              Clear project pricing. Dependable care after launch.
             </h1>
             <p className="max-w-xl text-base leading-8 text-base-text/70 sm:text-lg">
-              Website packages begin at $599. Each offers a clear foundation while leaving room to confirm the final scope around your business.
+              Every MDW website has two clear parts: a one-time website project starting at $599 and a separate Hosting &amp; Care plan starting at $39/month after launch.
             </p>
+          </div>
+
+          <div className="mt-12 grid overflow-hidden border border-base-cyan/20 bg-base-bg/35 sm:grid-cols-2">
+            <div className="p-6 sm:p-8">
+              <p className="operational-label">01 / Website project</p>
+              <p className="mt-3 text-3xl font-semibold tracking-[-0.045em] text-base-heading">From $599</p>
+              <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">A one-time investment for planning, design, development, review, and launch.</p>
+            </div>
+            <div className="border-t border-white/10 bg-base-cyan/[0.06] p-6 sm:border-l sm:border-t-0 sm:p-8">
+              <p className="operational-label text-base-cyan">02 / Hosting &amp; Care after launch</p>
+              <p className="mt-3 text-3xl font-semibold tracking-[-0.045em] text-base-cyan">From $39/month</p>
+              <p className="mt-3 max-w-md text-sm leading-6 text-base-text/70">Managed hosting, maintenance, monitoring, and support—priced separately from the website project.</p>
+            </div>
           </div>
         </Container>
       </section>
