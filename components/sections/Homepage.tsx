@@ -12,10 +12,8 @@ import {
 
 import { Container } from "@/components/layout/Container";
 import {
-  MotionArticle,
   ProjectReveal,
   Reveal,
-  Stagger,
 } from "@/components/motion/MotionSystem";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { Button } from "@/components/ui/button";
@@ -24,89 +22,33 @@ import { PackageCards } from "@/components/sections/PackageCards";
 import { siteConfig } from "@/lib/site";
 
 const servicePaths = [
-  {
-    index: "01",
-    problem: "The business is credible, but the website does not communicate it yet.",
-    title: "Small-Business Web Design",
-    description:
-      "A professional website planned around your business, your customers, and the actions you need them to take.",
-    detail: "New websites · Clear positioning · Mobile-first execution",
-    icon: Sparkles,
-  },
-  {
-    index: "02",
-    problem: "The business moved forward while the website fell behind.",
-    title: "Website Redesign",
-    description:
-      "A structured rebuild for an outdated or underperforming website that no longer represents the quality of your work.",
-    detail: "Content structure · Visual direction · Technical renewal",
-    icon: RefreshCw,
-  },
-  {
-    index: "03",
-    problem: "The website exists, but nobody is clearly responsible for it.",
-    title: "Hosting & Care",
-    description:
-      "Dependable hosting, monitoring, maintenance, and a real person responsible for the website after launch.",
-    detail: "Managed hosting · Monitoring · Ongoing support",
-    icon: ShieldCheck,
-  },
+  { title: "Help customers understand what you do", description: "Clear services, service areas, and useful answers help people decide whether your business fits their needs.", icon: Sparkles },
+  { title: "Show why your work is worth choosing", description: "Give your project photos, customer feedback, and experience a place to build confidence before someone contacts you.", icon: RefreshCw },
+  { title: "Make the next step easier", description: "Give customers a straightforward way to request an estimate or share what they need, with useful details arriving in your inbox.", icon: ShieldCheck },
 ] as const;
 
 const processSteps = [
-  ["01", "Discovery", "Understand the business, audience, priorities, and project constraints."],
-  ["02", "Direction", "Define the site structure, content hierarchy, and visual approach."],
-  ["03", "Creation", "Design and build the approved experience with careful technical execution."],
-  ["04", "Review", "Walk through the work, consolidate feedback, and refine the details."],
-  ["05", "Launch & Care", "Verify the complete system, launch deliberately, and support it afterward."],
+  ["01", "Talk it through", "Tell me about your customers, your priorities, and what needs to work better."],
+  ["02", "Agree on a plan", "Know what will be built, what it costs, and what I need from you before we begin."],
+  ["03", "Build your website", "I turn the agreed plan and your business content into a working preview."],
+  ["04", "Review together", "See the website before it goes live and share feedback within your included revision rounds."],
+  ["05", "Launch with support", "After approval and final payment, we launch. Your chosen care plan handles the agreed ongoing support."],
 ] as const;
 
 export function ServicesOverview() {
   return (
-    <section id="services" className="section-space section-panel isolate overflow-hidden border-y border-white/[0.07]">
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-        <span className="absolute -right-24 top-20 h-64 w-64 rotate-45 border border-base-cyan/[0.08]" />
-        <span className="absolute bottom-16 left-[8%] h-32 w-32 rounded-full border border-base-cyan/[0.08] shadow-[0_0_70px_hsl(var(--signal-cyan)/0.045)]" />
-      </div>
+    <section id="services" className="scroll-mt-28 border-b border-white/10 py-12 sm:py-16">
       <Container>
-        <Reveal className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
-          <SectionTitle
-            kicker="Problems & solutions"
-            title="Start with what is not working. Build only what solves it."
-            description="MDW brings design, development, launch planning, and ongoing care into one accountable process—without selling unnecessary features."
-            align="left"
-            className="max-w-4xl"
-          />
-          <div className="shrink-0">
-            <Button asChild variant="outline">
-              <Link href="/pricing">Services &amp; Pricing <ArrowRight /></Link>
-            </Button>
-          </div>
-        </Reveal>
-
-        <Stagger className="mt-10 grid overflow-hidden border border-base-cyan/15 bg-base-bg/28 shadow-[0_0_80px_hsl(var(--signal-cyan)/0.04)] md:grid-cols-3 sm:mt-14">
-          {servicePaths.map((service) => {
-            const Icon = service.icon;
-            return (
-              <MotionArticle
-                key={service.title}
-                className="group relative border-b border-white/10 p-6 last:border-b-0 md:border-b-0 md:border-r md:p-7 md:last:border-r-0 lg:p-8"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <NumberBadge value={service.index} />
-                  <Icon className="h-5 w-5 text-base-cyan/65 transition-transform group-hover:-translate-y-0.5" aria-hidden="true" />
-                </div>
-                <p className="mt-6 min-h-12 text-sm leading-6 text-base-mute">{service.problem}</p>
-                <div className="mt-5 border-t border-white/10 pt-5">
-                  <p className="operational-label">MDW response</p>
-                  <h3 className="mt-3 text-xl font-semibold tracking-[-0.025em] text-base-heading">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-base-text/68">{service.description}</p>
-                  <p className="mt-5 font-mono text-[0.625rem] uppercase leading-5 tracking-[0.13em] text-base-mute">{service.detail}</p>
-                </div>
-              </MotionArticle>
-            );
-          })}
-        </Stagger>
+        <SectionTitle kicker="Built around your customers" title="A website with a job to do." align="left" />
+        <div className="mt-8 grid gap-8 md:grid-cols-3">
+          {servicePaths.map(({ title, description, icon: Icon }) => (
+            <article key={title}>
+              <Icon className="h-5 w-5 text-base-cyan" aria-hidden="true" />
+              <h3 className="mt-4 text-xl font-semibold text-base-heading">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-base-text/70">{description}</p>
+            </article>
+          ))}
+        </div>
       </Container>
     </section>
   );
@@ -120,13 +62,13 @@ export function WorkOverview() {
           <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionTitle
               kicker="Proof in practice"
-              title="Two businesses. Two different customer journeys."
-              description="The visual direction changes with the business. The standard does not: clear structure, responsive execution, secure lead capture, and dependable care."
+              title="Real businesses. Thoughtful website decisions."
+              description="Every project starts with what customers need to understand and what the owner needs to manage."
               align="left"
               className="max-w-4xl"
             />
             <p className="max-w-sm border-l border-base-cyan/35 pl-5 text-sm leading-6 text-base-text/62">
-              Built for the business in front of us—not adapted from a house style.
+              Explore how each website helps customers take the next step.
             </p>
           </Reveal>
 
@@ -135,8 +77,8 @@ export function WorkOverview() {
               index="01"
               region="Riverbank · Central Valley"
               title="Sweet Indulgence"
-              description="A visual bakery experience that guides customers from inspiration to a secure custom inquiry."
-              points={["Luxury-led direction", "Responsive presentation", "Secure inquiry delivery"]}
+              description="Custom cakes start with a customer’s idea. The website pairs cake photography with an inquiry path so visitors can explore the work and share what they have in mind."
+              points={["Browse cake inspiration", "Share a custom request", "Reach the business directly"]}
               image="/portfolio/sweet-indulgence-homepage.webp"
               imageAlt="Sweet Indulgence homepage featuring a custom butterfly celebration cake"
               imagePosition="object-center"
@@ -147,14 +89,21 @@ export function WorkOverview() {
               index="02"
               region="East Bay / Delta"
               title="Chairez Fencing"
-              description="A focused contractor website that makes services, completed work, and estimate requests easy to find."
-              points={["Clear service structure", "Project gallery", "Managed hosting"]}
+              description="Choosing a fencing contractor means understanding the services and seeing the work. The website brings those details together with a clear route to request an estimate."
+              points={["Understand available services", "See completed projects", "Request an estimate"]}
               image="/portfolio/chairez-fencing.png"
               imageAlt="Chairez Fencing website shown across desktop and mobile layouts"
               imagePosition="object-center"
               link="https://www.chairezfencing.com/"
             />
           </div>
+          <article className="mt-8 border-l-2 border-base-cyan bg-base-cyan/[0.04] p-6 sm:p-8">
+            <p className="operational-label">Also built by MDW / Savory Sakura</p>
+            <h3 className="mt-3 text-2xl font-semibold text-base-heading">Catering requests built around the owner’s availability.</h3>
+            <p className="mt-4 max-w-3xl leading-7 text-base-text/70">Savory Sakura needed customers to explore the menu and request weekend catering. The site accepts preferred dates with a week’s notice, gathers order details, and explains that approval and a deposit are needed to confirm an order.</p>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-base-text/70">Customers have a clear way to ask. The owner keeps control of availability and confirmation.</p>
+            <Link href="https://www.savorysakura.com" target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 font-semibold text-base-cyan">Visit Savory Sakura <ExternalLink className="h-4 w-4" aria-hidden="true" /></Link>
+          </article>
         </Container>
       </section>
 
@@ -288,7 +237,7 @@ export function PricingOverview() {
           <SectionTitle
             kicker="Investment snapshot"
             title="The right starting point for your business."
-            description="Compare the one-time build price and recommended monthly care together. No hunting for the ongoing cost."
+            description="Choose a starting point for what your business needs. Each option shows the build price, 50% starting payment, and recommended care."
             align="left"
             className="max-w-4xl"
           />
@@ -327,10 +276,10 @@ export function AboutOverview() {
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <SectionTitle kicker="About" title="Your website is handled by the person whose name is on the work." align="left" />
+            <SectionTitle kicker="About" title="You work directly with me, Matthew." align="left" />
             <div className="mt-6 space-y-5 leading-7 text-base-text/70">
-              <p>I started McPherson Digital Works to give small-business owners a professional online presence without leaving them alone with confusing tools or unclear technical decisions. I remain directly involved from planning and design through launch and ongoing support.</p>
-              <p>The discipline behind MDW is influenced by my Marine Corps background: prepare carefully, communicate clearly, take responsibility for the work, and leave the system stronger than you found it.</p>
+              <p>You know your business. I help turn that knowledge into a website your customers can understand and use. We agree on the priorities, scope, and cost before I start building.</p>
+              <p>You review a working preview before launch, and you have a direct contact for the support included in your care plan afterward. New needs can be discussed and quoted as your business changes.</p>
             </div>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-sm font-medium text-base-text/72">
               <span>Founder-led</span>
