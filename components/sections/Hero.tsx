@@ -36,20 +36,20 @@ export function Hero() {
 
           <HeroReveal delay={0.24}>
             <h1 className="mt-6 text-balance text-[clamp(2.45rem,5.8vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-[hsl(var(--text-hero))]">
-              A dependable website partner for the business you&apos;re building.
+              Help customers see your value. Make it easier to get in touch.
             </h1>
           </HeroReveal>
 
           <HeroReveal delay={0.38}>
             <p className="mt-7 max-w-2xl text-pretty text-base leading-7 text-base-text/76 sm:text-lg sm:leading-8">
-              McPherson Digital Works plans, designs, builds, and supports professional websites for small businesses in Modesto and across California&apos;s Central Valley.
+              Hello there! My name is Matthew. I build websites that explain your services, show the quality of your work, and give customers a clear next step. You work directly with me, from the first conversation through launch and ongoing care.
             </p>
           </HeroReveal>
 
           <HeroReveal delay={0.5}>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <ProjectIntakeTrigger size="lg">
-                Start a Project
+                Let’s Talk
                 <ArrowRight aria-hidden="true" />
               </ProjectIntakeTrigger>
               <Button asChild size="lg" variant="outline">
@@ -62,7 +62,7 @@ export function Hero() {
             <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/10 pt-5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-base-mute">
               <span>Founder-led</span>
               <span>Veteran-owned</span>
-              <span>Website packages from $599</span>
+              <span>Websites from $800 · Hosting &amp; Care from $39/month</span>
             </div>
           </HeroReveal>
         </div>

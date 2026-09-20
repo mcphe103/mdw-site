@@ -19,10 +19,10 @@ export function ContactOverview() {
               <SectionTitle
                 kicker="Start a conversation"
                 title="Bring the business problem. We can define the website together."
-                description="A straightforward first conversation by Google Meet or phone—without a sales ambush or obligation."
+                description="Tell me what you need your website to do. We’ll talk through your goals, options, and budget by Google Meet or phone."
                 align="left"
               />
-              <p className="mt-6 text-sm font-semibold text-base-heading">Website packages begin at $599.</p>
+              <p className="mt-6 text-sm font-semibold text-base-heading">Website packages begin at $800.</p>
             </div>
 
             <div>
@@ -32,7 +32,7 @@ export function ContactOverview() {
               </div>
               <div className="mt-5 flex flex-col gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center">
                 <ProjectIntakeTrigger size="lg">
-                  Start a Project <ArrowRight aria-hidden="true" />
+                  Let’s Talk <ArrowRight aria-hidden="true" />
                 </ProjectIntakeTrigger>
                 <Button asChild size="lg" variant="outline">
                   <Link href="/contact">Open Contact Page</Link>
@@ -62,7 +62,7 @@ export function Contact() {
               />
               <div className="mt-8 space-y-3 border-t border-white/10 pt-6 text-sm leading-6 text-base-text/72">
                 {[
-                  "A straightforward conversation—not a sales ambush.",
+                  "A straightforward conversation about your goals, options, and budget.",
                   "No obligation or project date reserved by submitting.",
                   "Google Meet or phone, by appointment.",
                 ].map((item) => (
@@ -81,7 +81,7 @@ export function Contact() {
                   value={siteConfig.email}
                 />
               </div>
-              <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website packages begin at $599.</p>
+              <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website packages begin at $800.</p>
             </div>
 
             <div className="rounded-lg border border-white/12 bg-base-bg/72 p-6 shadow-elevation backdrop-blur-sm sm:p-8">

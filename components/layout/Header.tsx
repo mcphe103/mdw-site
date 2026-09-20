@@ -124,7 +124,7 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <ProjectIntakeTrigger size="sm">Start a Project</ProjectIntakeTrigger>
+          <ProjectIntakeTrigger size="sm">Let’s Talk</ProjectIntakeTrigger>
         </div>
 
         <button
@@ -183,7 +183,7 @@ export function Header() {
 
             <div className="mt-8">
               <ProjectIntakeTrigger size="lg" className="w-full sm:w-auto" onBeforeOpen={closeMobile}>
-                Start a Project
+                Let’s Talk
               </ProjectIntakeTrigger>
             </div>
 

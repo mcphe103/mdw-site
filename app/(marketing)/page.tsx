@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import {
   AboutOverview,
-  PricingOverview,
   ServicesOverview,
+  PricingOverview,
+  ProcessOverview,
   WorkOverview,
 } from "@/components/sections/Homepage";
 import { ContactOverview } from "@/components/sections/Contact";
@@ -21,8 +22,9 @@ export default function Page() {
       <Hero />
       <ServicesOverview />
       <WorkOverview />
-      <PricingOverview />
       <AboutOverview />
+      <PricingOverview />
+      <ProcessOverview />
       <ContactOverview />
     </>
   );

@@ -198,6 +198,7 @@ export function InquiryForm({ idPrefix, className, onSuccess }: InquiryFormProps
       </div>
 
       <div className="mt-1 md:col-span-2">
+        <p className="mb-4 text-sm leading-6 text-base-mute">I’ll reply within one to two business days. You don’t need to choose a package before reaching out.</p>
         {error && (
           <p role="alert" className="mb-4 border-l border-destructive bg-destructive/10 px-4 py-3 text-sm leading-6 text-destructive-foreground">
             {error}

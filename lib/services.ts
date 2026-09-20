@@ -2,14 +2,14 @@ export const websitePackages = [
   {
     index: "01",
     name: "Quick Launch",
-    price: "$599",
+    price: "$800",
     description:
-      "A polished one-page website for businesses ready to establish a credible online presence quickly and affordably.",
+      "Give customers one clear place to understand your business and get in touch.",
     summaryPoints: [
       "One professionally structured scrolling page",
-      "Responsive, brand-aligned design",
-      "One inquiry form or contact action",
-      "Foundational SEO",
+      "Your services, work, and contact details",
+      "A clear way for customers to reach you",
+      "Search-friendly page foundations",
     ],
     included: [
       "One professionally structured scrolling page",
@@ -34,13 +34,13 @@ export const websitePackages = [
   {
     index: "02",
     name: "Starter Website",
-    price: "$999",
+    price: "$1,200",
     description:
-      "A complete professional website for small businesses ready to clearly present their services, build trust, and generate inquiries.",
+      "Explain your services, show your work, and help customers request an estimate. A practical fit for contractors and service businesses.",
     summaryPoints: [
       "Up to five core pages",
-      "Customized responsive design",
-      "One professional inquiry form",
+      "Room to explain services and show your work",
+      "An inquiry form for useful request details",
       "Two focused revision rounds",
     ],
     included: [
@@ -67,13 +67,13 @@ export const websitePackages = [
   {
     index: "03",
     name: "Growth Website",
-    price: "$1,499",
+    price: "$1,800",
     description:
-      "An expanded website for businesses that need deeper content, stronger service presentation, and additional lead-generation capabilities.",
+      "Give multiple services and customer needs their own space as your business expands.",
     summaryPoints: [
       "Up to eight core pages",
-      "Expanded content architecture",
-      "Up to two lead-capture forms",
+      "Dedicated space for different services",
+      "Up to two forms for different request types",
       "Approved simple integrations",
     ],
     included: [
@@ -147,7 +147,7 @@ export const carePlans = [
 ] as const;
 
 export const packageComparison = [
-  ["Starting price", "$599", "$999", "$1,499"],
+  ["Starting price", "$800", "$1,200", "$1,800"],
   ["Website size", "One scrolling page", "Up to 5 pages", "Up to 8 pages"],
   ["Responsive design", "Included", "Included", "Included"],
   ["Client-provided content", "Required", "Required", "Required"],

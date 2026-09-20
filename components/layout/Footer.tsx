@@ -5,7 +5,7 @@ import { Container } from "@/components/layout/Container";
 import { siteConfig } from "@/lib/site";
 
 const exploreLinks = [
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/pricing" },
   { label: "Work", href: "/#portfolio" },
   { label: "Process", href: "/#process" },
   { label: "About", href: "/about" },
