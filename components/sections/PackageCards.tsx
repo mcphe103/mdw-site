@@ -7,6 +7,7 @@ export function PackageCards() {
     <div className="grid gap-5 lg:grid-cols-3">
       {websitePackages.map((plan) => {
         const care = carePlans.find((item) => item.name === plan.carePlan)!;
+        const installment = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(Number(plan.price.replace(/[^0-9.]/g, "")) / 2);
         const featured = "featured" in plan && plan.featured;
         return (
           <article key={plan.name} className={`flex flex-col border p-6 sm:p-8 ${featured ? "border-base-cyan/45 bg-base-cyan/[0.06]" : "border-white/15 bg-base-surface/60"}`}>
@@ -19,6 +20,10 @@ export function PackageCards() {
             <div className="my-6 border-y border-white/15 py-5">
               <p className="text-xs uppercase tracking-widest text-base-mute">One-time website build</p>
               <p className="mt-2 text-4xl font-semibold tracking-tight text-base-heading"><span className="mr-2 text-sm font-normal text-base-mute">From</span>{plan.price}</p>
+              <div className="mt-4 border-l-2 border-base-cyan bg-base-cyan/[0.08] p-3">
+                <p className="text-sm font-semibold leading-6 text-base-heading">{installment} to start · {installment} before launch</p>
+                <p className="mt-1 text-xs leading-5 text-base-text/70">50% upfront. Deposit is based on your final approved quote.</p>
+              </div>
               <p className="mt-5 text-xs uppercase tracking-widest text-base-mute">Recommended hosting &amp; care</p>
               <p className="mt-2 text-2xl font-semibold text-base-cyan">{care.monthlyPrice}</p>
               <p className="mt-2 text-xs leading-5 text-base-text/65">Billed separately after launch.</p>
