@@ -66,7 +66,7 @@ const questions = [
   {
     question: "How much does a small-business website cost?",
     answer:
-      "MDW website packages begin at $599. Final scope and investment are confirmed after a focused discovery conversation.",
+      "MDW website packages begin at $600. Final scope and investment are confirmed after a focused discovery conversation.",
   },
   {
     question: "What happens after the website launches?",
