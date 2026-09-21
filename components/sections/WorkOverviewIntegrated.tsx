@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, ExternalLink } from "lucide-react";
 
@@ -7,6 +6,7 @@ import { ProjectReveal, Reveal } from "@/components/motion/MotionSystem";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { NumberBadge } from "@/components/ui/NumberBadge";
+import { ProjectMedia } from "@/components/work/ProjectMedia";
 import { portfolioProjects } from "@/lib/projects/data";
 
 export function WorkOverviewIntegrated() {
@@ -45,19 +45,13 @@ export function WorkOverviewIntegrated() {
               <Link
                 href={`/work/${project.slug}`}
                 aria-label={`View the ${project.client} case study`}
-                className="group/image relative block min-h-[18rem] overflow-hidden bg-base-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan/70 sm:min-h-[21rem]"
+                className="group/media block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan/70"
               >
-                <Image
-                  src={project.media.src}
-                  alt={project.media.alt}
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover object-top transition-transform duration-500 ease-out group-hover/image:scale-[1.015]"
+                <ProjectMedia
+                  project={project}
+                  priority={index === 0}
+                  className="border-0 border-b border-white/10 shadow-none transition-colors group-hover/media:border-base-cyan/30"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-base-bg/58 via-transparent to-transparent transition-colors group-hover/image:from-base-bg/48" />
-                <span className="pointer-events-none absolute right-4 top-4 grid h-9 w-9 place-items-center border border-base-cyan/25 bg-base-bg/82 text-base-cyan shadow-elevation backdrop-blur-sm transition-colors group-hover/image:border-base-cyan/55 group-hover/image:bg-base-bg/92">
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </span>
               </Link>
 
               <div className="flex flex-1 flex-col p-6 sm:p-8">
@@ -108,14 +102,11 @@ export function WorkOverviewIntegrated() {
                 <Link
                   href={`/work/${project.slug}`}
                   aria-label={`View the ${project.client} case study`}
-                  className="group relative block min-h-[18rem] overflow-hidden bg-base-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan"
+                  className="group/media block self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan"
                 >
-                  <Image
-                    src={project.media.src}
-                    alt={project.media.alt}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.01]"
+                  <ProjectMedia
+                    project={project}
+                    className="border-0 border-b border-white/10 shadow-none transition-colors group-hover/media:border-base-cyan/30 lg:border-b-0 lg:border-r"
                   />
                 </Link>
                 <div className="p-6 sm:p-8">
