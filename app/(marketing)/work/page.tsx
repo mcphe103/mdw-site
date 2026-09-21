@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
 import { NumberBadge } from "@/components/ui/NumberBadge";
+import { ProjectMedia } from "@/components/work/ProjectMedia";
 import { portfolioProjects } from "@/lib/projects/data";
 import { siteConfig } from "@/lib/site";
 
@@ -31,42 +31,53 @@ export default function WorkPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-2">
+        <div className="mt-12 space-y-14 lg:mt-16 lg:space-y-20">
           {portfolioProjects.map((project, index) => (
             <article
               key={project.slug}
-              className="project-feature overflow-hidden border border-white/10 bg-base-surface/72"
+              className="grid items-center gap-7 border-t border-white/10 pt-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12"
             >
               <Link
                 href={`/work/${project.slug}`}
                 aria-label={`View ${project.client} case study`}
-                className="group relative block aspect-[16/10] overflow-hidden bg-base-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan/70"
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-base-cyan/70 focus-visible:ring-offset-4 focus-visible:ring-offset-background"
               >
-                <Image
-                  src={project.media.src}
-                  alt={project.media.alt}
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.015]"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-base-bg/55 via-transparent to-transparent" />
+                <ProjectMedia project={project} priority={index === 0} className="transition-colors group-hover:border-base-cyan/28" />
               </Link>
 
-              <div className="p-6 sm:p-8">
+              <div>
                 <div className="flex items-center gap-3">
                   <NumberBadge value={String(index + 1).padStart(2, "0")} size="compact" />
                   <p className="operational-label">{project.category}</p>
                 </div>
-                <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-base-heading">
+                <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-4xl">
                   {project.client}
                 </h2>
+                {project.region && <p className="mt-2 text-sm font-medium text-base-cyan/80">{project.region}</p>}
                 <p className="mt-4 leading-7 text-base-text/68">{project.summary}</p>
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-base-heading transition-colors hover:text-base-cyan"
-                >
-                  View case study <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
+
+                <ul className="mt-6 space-y-2.5 border-l border-base-cyan/25 pl-5 text-sm leading-6 text-base-text/64">
+                  {project.contributions.slice(0, 4).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+
+                <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-base-heading transition-colors hover:text-base-cyan"
+                  >
+                    View case study <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                  <Link
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-base-mute transition-colors hover:text-base-heading"
+                  >
+                    Live website <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
             </article>
           ))}
