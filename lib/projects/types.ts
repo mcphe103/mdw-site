@@ -3,6 +3,11 @@ export type ProjectMedia = {
   alt: string;
 };
 
+export type ProjectQuote = {
+  body: string;
+  attribution: string;
+};
+
 export type PortfolioProject = {
   slug: string;
   client: string;
@@ -14,4 +19,5 @@ export type PortfolioProject = {
   media: ProjectMedia;
   liveUrl: string;
   featured: boolean;
+  quote?: ProjectQuote;
 };
