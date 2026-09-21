@@ -1,5 +1,7 @@
 import type { PortfolioProject } from "./types";
 
+const portfolioLabAssetBase = "https://mcpherson-digital-works-redesign-v2.vercel.app/projects";
+
 export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "chairez-fencing",
@@ -19,8 +21,18 @@ export const portfolioProjects: PortfolioProject[] = [
       "Managed hosting & launch support",
     ],
     media: {
-      src: "/portfolio/chairez-fencing.png",
-      alt: "Chairez Fencing website shown across desktop and mobile layouts",
+      desktop: {
+        src: `${portfolioLabAssetBase}/chairez-fencing/desktop-home.png`,
+        alt: "Chairez Fencing website desktop homepage",
+        width: 2048,
+        height: 1152,
+      },
+      mobile: {
+        src: `${portfolioLabAssetBase}/chairez-fencing/mobile-home.jpg`,
+        alt: "Chairez Fencing website mobile homepage",
+        width: 1290,
+        height: 2211,
+      },
     },
     liveUrl: "https://www.chairezfencing.com/",
     featured: true,
@@ -47,8 +59,18 @@ export const portfolioProjects: PortfolioProject[] = [
       "Managed hosting & launch support",
     ],
     media: {
-      src: "/portfolio/sweet-indulgence-homepage.webp",
-      alt: "Sweet X Indulgence homepage featuring a custom celebration cake",
+      desktop: {
+        src: `${portfolioLabAssetBase}/sweet-x-indulgence/desktop-home.png`,
+        alt: "Sweet X Indulgence website desktop homepage",
+        width: 2048,
+        height: 1159,
+      },
+      mobile: {
+        src: `${portfolioLabAssetBase}/sweet-x-indulgence/mobile-home.jpg`,
+        alt: "Sweet X Indulgence website mobile homepage",
+        width: 1290,
+        height: 2235,
+      },
     },
     liveUrl: "https://www.sweetxindulgence.com/",
     featured: true,
@@ -70,8 +92,12 @@ export const portfolioProjects: PortfolioProject[] = [
       "Mobile-friendly layout",
     ],
     media: {
-      src: "/portfolio/savory-sakura.webp",
-      alt: "Savory Sakura website with cherry blossom branding and weekend catering request messaging",
+      cover: {
+        src: "/portfolio/savory-sakura.webp",
+        alt: "Savory Sakura website with cherry blossom branding and weekend catering request messaging",
+        width: 2048,
+        height: 1157,
+      },
     },
     liveUrl: "https://www.savorysakura.com/",
     featured: false,
