@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
+import { ProjectMedia } from "@/components/work/ProjectMedia";
 import { portfolioProjects, getPortfolioProject } from "@/lib/projects/data";
 import { siteConfig } from "@/lib/site";
 
@@ -75,26 +75,7 @@ export default async function ProjectPage({
           </div>
         </div>
 
-        <div className="project-feature mt-12 overflow-hidden border border-white/10 bg-base-surface/72 lg:mt-16">
-          <div className="flex items-center gap-2 border-b border-white/10 bg-base-bg/70 px-4 py-3">
-            <span className="h-2 w-2 rounded-full bg-white/15" aria-hidden="true" />
-            <span className="h-2 w-2 rounded-full bg-white/15" aria-hidden="true" />
-            <span className="h-2 w-2 rounded-full bg-white/15" aria-hidden="true" />
-            <span className="ml-2 truncate font-mono text-[0.625rem] uppercase tracking-[0.14em] text-base-mute">
-              {project.client}
-            </span>
-          </div>
-          <div className="relative aspect-[16/10] bg-base-bg">
-            <Image
-              src={project.media.src}
-              alt={project.media.alt}
-              fill
-              priority
-              sizes="(min-width: 1280px) 1150px, 100vw"
-              className="object-cover object-top"
-            />
-          </div>
-        </div>
+        <ProjectMedia project={project} priority className="project-feature mt-12 lg:mt-16" />
 
         <div className="mt-12 grid gap-10 border-t border-white/10 pt-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14 lg:pt-14">
           <div>
