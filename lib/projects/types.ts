@@ -3,7 +3,7 @@ export type ProjectQuote = {
   attribution: string;
 };
 
-export type ProjectImage = {
+export type MediaImage = {
   src: string;
   alt: string;
   width: number;
@@ -12,11 +12,13 @@ export type ProjectImage = {
 
 export type ProjectMedia = {
   /** Optional single-image fallback for projects without paired captures yet. */
-  cover?: ProjectImage;
+  cover?: MediaImage;
   /** Real desktop screenshot, rendered at its intrinsic aspect ratio. */
-  desktop?: ProjectImage;
+  desktopHome?: MediaImage;
   /** Real mobile screenshot, paired with the desktop capture when available. */
-  mobile?: ProjectImage;
+  mobileHome?: MediaImage;
+  /** Optional real detail captures for future case-study galleries. */
+  details?: MediaImage[];
 };
 
 export type PortfolioProject = {

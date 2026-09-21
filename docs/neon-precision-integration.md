@@ -41,11 +41,11 @@ This branch integrates the strongest work from `mdw-v0-redesign-lab` into the ex
 
 ## Portfolio media migration status
 
-The branch now renders the approved Chairez Fencing and Sweet X Indulgence desktop/mobile captures at their intrinsic aspect ratios using the Neon Precision browser + phone presentation. The captures are never cropped, stretched, recolored, or regenerated.
+The branch renders the approved Chairez Fencing and Sweet X Indulgence desktop/mobile captures at their intrinsic aspect ratios using the Neon Precision browser + phone presentation. The captures are never cropped, stretched, recolored, regenerated, or recompressed.
 
-For the branch preview, those four approved screenshots are temporarily sourced from the existing `mcpherson-digital-works-redesign-v2` Vercel project because the current GitHub connector cannot transfer binary blobs between repositories. `next/image` still serves the images through the MDW site's image pipeline.
+The four approved source files now live under `public/projects/` in `mdw-site`; their Git blob hashes match the donor repository exactly. `next/image` serves them through the MDW site's image pipeline without a runtime dependency on the donor Vercel project.
 
-Before this branch is eligible to merge to `main`, replace those temporary remote URLs with the already-prepared optimized local WebP assets in `mdw-site`. This removes the cross-project dependency and substantially reduces source asset weight. Savory Sakura remains on its current verified local image until a matching mobile capture is approved.
+Savory Sakura remains on its current verified local image until a matching mobile capture is approved.
 
 ## Guardrail
 

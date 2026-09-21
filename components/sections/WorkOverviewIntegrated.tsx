@@ -49,7 +49,6 @@ export function WorkOverviewIntegrated() {
               >
                 <ProjectMedia
                   project={project}
-                  priority={index === 0}
                   className="border-0 border-b border-white/10 shadow-none transition-colors group-hover/media:border-base-cyan/30"
                 />
               </Link>

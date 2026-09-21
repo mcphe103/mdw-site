@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import type { PortfolioProject, ProjectImage } from "@/lib/projects/types";
+import type { MediaImage, PortfolioProject } from "@/lib/projects/types";
 
 function getHost(url: string) {
   try {
@@ -24,22 +24,22 @@ export function ProjectMedia({
   className?: string;
 }) {
   const host = getHost(project.liveUrl);
-  const { desktop, mobile, cover } = project.media;
+  const { desktopHome, mobileHome, cover } = project.media;
   const sizes =
     variant === "feature"
       ? "(min-width: 1280px) 1150px, (min-width: 1024px) 85vw, 100vw"
       : "(min-width: 1024px) 52vw, 100vw";
 
-  if (desktop) {
+  if (desktopHome) {
     const phoneWidth = variant === "feature" ? "w-[24%] min-w-24" : "w-[22%] min-w-20";
 
     return (
-      <div className={`relative ${mobile ? "pb-7 pr-4 sm:pb-9 sm:pr-7" : ""} ${className}`}>
-        <BrowserFrame image={desktop} host={host} sizes={sizes} priority={priority} />
+      <div className={`relative ${mobileHome ? "pb-7 pr-4 sm:pb-9 sm:pr-7" : ""} ${className}`}>
+        <BrowserFrame image={desktopHome} host={host} sizes={sizes} priority={priority} />
 
-        {mobile ? (
+        {mobileHome ? (
           <PhoneFrame
-            image={mobile}
+            image={mobileHome}
             sizes="(min-width: 1024px) 220px, 28vw"
             className={`absolute bottom-0 right-0 ${phoneWidth}`}
           />
@@ -71,7 +71,7 @@ function BrowserFrame({
   sizes,
   priority = false,
 }: {
-  image: ProjectImage;
+  image: MediaImage;
   host: string;
   sizes: string;
   priority?: boolean;
@@ -107,7 +107,7 @@ function PhoneFrame({
   sizes,
   className = "",
 }: {
-  image: ProjectImage;
+  image: MediaImage;
   sizes: string;
   className?: string;
 }) {

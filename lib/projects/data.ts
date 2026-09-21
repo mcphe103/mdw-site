@@ -1,7 +1,5 @@
 import type { PortfolioProject } from "./types";
 
-const portfolioLabAssetBase = "https://mcpherson-digital-works-redesign-v2.vercel.app/projects";
-
 export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "chairez-fencing",
@@ -21,14 +19,14 @@ export const portfolioProjects: PortfolioProject[] = [
       "Managed hosting & launch support",
     ],
     media: {
-      desktop: {
-        src: `${portfolioLabAssetBase}/chairez-fencing/desktop-home.png`,
+      desktopHome: {
+        src: "/projects/chairez-fencing/desktop-home.png",
         alt: "Chairez Fencing website desktop homepage",
         width: 2048,
         height: 1152,
       },
-      mobile: {
-        src: `${portfolioLabAssetBase}/chairez-fencing/mobile-home.jpg`,
+      mobileHome: {
+        src: "/projects/chairez-fencing/mobile-home.jpg",
         alt: "Chairez Fencing website mobile homepage",
         width: 1290,
         height: 2211,
@@ -59,14 +57,14 @@ export const portfolioProjects: PortfolioProject[] = [
       "Managed hosting & launch support",
     ],
     media: {
-      desktop: {
-        src: `${portfolioLabAssetBase}/sweet-x-indulgence/desktop-home.png`,
+      desktopHome: {
+        src: "/projects/sweet-x-indulgence/desktop-home.png",
         alt: "Sweet X Indulgence website desktop homepage",
         width: 2048,
         height: 1159,
       },
-      mobile: {
-        src: `${portfolioLabAssetBase}/sweet-x-indulgence/mobile-home.jpg`,
+      mobileHome: {
+        src: "/projects/sweet-x-indulgence/mobile-home.jpg",
         alt: "Sweet X Indulgence website mobile homepage",
         width: 1290,
         height: 2235,
