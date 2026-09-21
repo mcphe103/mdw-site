@@ -47,6 +47,16 @@ The four approved source files now live under `public/projects/` in `mdw-site`; 
 
 Savory Sakura remains on its current verified local image until a matching mobile capture is approved.
 
+## Homepage project roles
+
+Portfolio projects use an explicit `homepageRole` so homepage prominence can change without removing case studies or rewriting layout code:
+
+- `featured` powers the established two-card showcase.
+- `latest` powers one larger, reusable latest-project feature and supports either paired desktop/mobile media or a single approved cover.
+- `archive` removes a project from homepage promotion while preserving it in `/work`, its case-study route, sitemap, and next-project navigation.
+
+When a new MDW project launches, move the existing latest project to `archive` and assign the new project to `latest`.
+
 ## Guardrail
 
 Do not replace the current production site wholesale with the v0 redesign. Integrate selectively and incrementally.

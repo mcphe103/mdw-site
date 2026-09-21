@@ -33,7 +33,7 @@ export const portfolioProjects: PortfolioProject[] = [
       },
     },
     liveUrl: "https://www.chairezfencing.com/",
-    featured: true,
+    homepageRole: "featured",
     quote: {
       body: "Matthew delivered a fast, clean site and keeps everything running. I don’t even think about it anymore.",
       attribution: "Chairez Fencing, Small Business Owner",
@@ -71,7 +71,7 @@ export const portfolioProjects: PortfolioProject[] = [
       },
     },
     liveUrl: "https://www.sweetxindulgence.com/",
-    featured: true,
+    homepageRole: "featured",
   },
   {
     slug: "savory-sakura",
@@ -98,9 +98,17 @@ export const portfolioProjects: PortfolioProject[] = [
       },
     },
     liveUrl: "https://www.savorysakura.com/",
-    featured: false,
+    homepageRole: "latest",
   },
 ];
+
+export const featuredPortfolioProjects = portfolioProjects.filter(
+  (project) => project.homepageRole === "featured",
+);
+
+export const latestPortfolioProject = portfolioProjects.find(
+  (project) => project.homepageRole === "latest",
+);
 
 export function getPortfolioProject(slug: string) {
   return portfolioProjects.find((project) => project.slug === slug);

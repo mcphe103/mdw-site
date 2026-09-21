@@ -21,6 +21,8 @@ export type ProjectMedia = {
   details?: MediaImage[];
 };
 
+export type HomepageProjectRole = "featured" | "latest" | "archive";
+
 export type PortfolioProject = {
   slug: string;
   client: string;
@@ -31,6 +33,7 @@ export type PortfolioProject = {
   contributions: string[];
   media: ProjectMedia;
   liveUrl: string;
-  featured: boolean;
+  /** Controls homepage prominence without affecting the /work archive or case-study route. */
+  homepageRole: HomepageProjectRole;
   quote?: ProjectQuote;
 };
