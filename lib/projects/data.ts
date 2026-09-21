@@ -24,6 +24,10 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     liveUrl: "https://www.chairezfencing.com/",
     featured: true,
+    quote: {
+      body: "Matthew delivered a fast, clean site and keeps everything running. I don’t even think about it anymore.",
+      attribution: "Chairez Fencing, Small Business Owner",
+    },
   },
   {
     slug: "sweet-x-indulgence",
