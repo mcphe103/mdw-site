@@ -4,6 +4,15 @@ const developmentScriptPolicy = process.env.NODE_ENV === "development" ? " 'unsa
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "mcpherson-digital-works-redesign-v2.vercel.app",
+        pathname: "/projects/**",
+      },
+    ],
+  },
   async headers() {
     return [
       {
