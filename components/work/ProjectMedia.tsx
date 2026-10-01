@@ -77,14 +77,14 @@ function BrowserFrame({
   priority?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-md border border-white/10 bg-base-surface/72 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9),0_0_48px_hsl(var(--signal-cyan)/0.035)] transition-colors hover:border-base-cyan/25">
-      <div className="flex items-center gap-2 border-b border-white/10 bg-base-bg/88 px-3 py-2.5 sm:px-4">
+    <div className="isolate overflow-hidden rounded-md border border-white/[0.18] bg-base-raised shadow-[0_30px_80px_-34px_rgba(0,0,0,0.95),0_0_0_1px_rgba(0,0,0,0.72),0_0_48px_hsl(var(--signal-cyan)/0.035)] transition-colors hover:border-white/25">
+      <div className="flex items-center gap-2 border-b border-white/[0.14] bg-base-raised px-3 py-2.5 sm:px-4">
         <span className="flex items-center gap-1.5" aria-hidden="true">
-          <span className="h-2 w-2 rounded-full bg-white/15" />
-          <span className="h-2 w-2 rounded-full bg-white/15" />
-          <span className="h-2 w-2 rounded-full bg-white/15" />
+          <span className="h-2 w-2 rounded-full bg-white/20" />
+          <span className="h-2 w-2 rounded-full bg-white/20" />
+          <span className="h-2 w-2 rounded-full bg-white/20" />
         </span>
-        <span className="ml-1 min-w-0 flex-1 truncate rounded-sm border border-white/[0.06] bg-base-bg/65 px-3 py-1.5 text-center font-mono text-[0.625rem] tracking-[0.08em] text-base-mute">
+        <span className="ml-1 min-w-0 flex-1 truncate rounded-sm border border-white/[0.11] bg-base-bg px-3 py-1.5 text-center font-mono text-[0.625rem] tracking-[0.08em] text-base-mute shadow-inner">
           {host}
         </span>
       </div>
@@ -96,8 +96,10 @@ function BrowserFrame({
         height={image.height}
         priority={priority}
         sizes={sizes}
-        className="block h-auto w-full bg-base-bg"
+        className="block h-auto w-full bg-white"
       />
+
+      <div aria-hidden="true" className="h-1 border-t border-white/[0.12] bg-base-raised" />
     </div>
   );
 }
@@ -113,9 +115,9 @@ function PhoneFrame({
 }) {
   return (
     <div
-      className={`overflow-hidden rounded-[1.35rem] border border-base-cyan/22 bg-base-bg p-1.5 shadow-[0_22px_48px_-22px_rgba(0,0,0,0.95),0_0_28px_hsl(var(--signal-cyan)/0.09)] ${className}`}
+      className={`overflow-hidden rounded-[1.35rem] border-2 border-white/[0.18] bg-base-raised p-1.5 shadow-[0_22px_48px_-18px_rgba(0,0,0,0.98),0_0_0_1px_rgba(0,0,0,0.8),0_0_28px_hsl(var(--signal-cyan)/0.07)] ${className}`}
     >
-      <div className="relative overflow-hidden rounded-[1rem] bg-base-surface">
+      <div className="relative overflow-hidden rounded-[1rem] bg-base-bg ring-1 ring-black/80">
         <span
           aria-hidden="true"
           className="absolute left-1/2 top-1.5 z-10 h-1.5 w-8 -translate-x-1/2 rounded-full bg-base-bg/90 shadow-[0_0_0_1px_rgba(255,255,255,0.04)]"
