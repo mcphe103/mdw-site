@@ -22,7 +22,7 @@ export function ContactOverview() {
                 description="Tell me what you need your website to do. We’ll talk through your goals, options, and budget by Google Meet or phone."
                 align="left"
               />
-              <p className="mt-6 text-sm font-semibold text-base-heading">Website packages begin at $800.</p>
+              <p className="mt-6 text-sm font-semibold text-base-heading">Website packages begin at $600.</p>
             </div>
 
             <div>
@@ -81,7 +81,7 @@ export function Contact() {
                   value={siteConfig.email}
                 />
               </div>
-              <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website packages begin at $800.</p>
+              <p className="mt-auto pt-8 text-sm font-semibold text-base-heading">Website packages begin at $600.</p>
             </div>
 
             <div className="rounded-lg border border-white/12 bg-base-bg/72 p-6 shadow-elevation backdrop-blur-sm sm:p-8">

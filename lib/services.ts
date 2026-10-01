@@ -2,7 +2,7 @@ export const websitePackages = [
   {
     index: "01",
     name: "Quick Launch",
-    price: "$800",
+    price: "$600",
     description:
       "Give customers one clear place to understand your business and get in touch.",
     summaryPoints: [
@@ -151,7 +151,7 @@ export const carePlans = [
 ] as const;
 
 export const packageComparison = [
-  ["Starting price", "$800", "$1,200", "$1,800"],
+  ["Starting price", "$600", "$1,200", "$1,800"],
   ["Website size", "One scrolling page", "Up to 5 pages", "Up to 8 pages"],
   ["Responsive design", "Included", "Included", "Included"],
   ["Client-provided content", "Required", "Required", "Required"],
