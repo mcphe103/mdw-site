@@ -1,12 +1,12 @@
+import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
 import { carePlans, websitePackages } from "@/lib/services";
 
-export function PackageCards() {
+export function PackageCards({ careDetailsHref = "/pricing#care-plans" }: { careDetailsHref?: string }) {
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       {websitePackages.map((plan) => {
-        const care = carePlans.find((item) => item.name === plan.carePlan)!;
         const installment = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(Number(plan.price.replace(/[^0-9.]/g, "")) / 2);
         const featured = "featured" in plan && plan.featured;
         return (
@@ -24,9 +24,32 @@ export function PackageCards() {
                 <p className="text-sm font-semibold leading-6 text-base-heading">{installment} to start · {installment} before launch</p>
                 <p className="mt-1 text-xs leading-5 text-base-text/70">50% upfront. Deposit is based on your final approved quote.</p>
               </div>
-              <p className="mt-5 text-xs uppercase tracking-widest text-base-mute">Recommended hosting &amp; care</p>
-              <p className="mt-2 text-2xl font-semibold text-base-cyan">{care.monthlyPrice}</p>
-              <p className="mt-2 text-xs leading-5 text-base-text/65">Billed separately after launch.</p>
+              <p className="mt-5 text-xs uppercase tracking-widest text-base-mute">After launch · choose your care</p>
+              <div className="mt-3 grid gap-2.5">
+                {carePlans.map((care) => {
+                  const recommended = care.name === plan.recommendedCarePlan;
+
+                  return (
+                    <div
+                      key={care.name}
+                      className={`border px-3.5 py-3 ${recommended ? "border-base-cyan/40 bg-base-cyan/[0.07]" : "border-white/10 bg-base-bg/45"}`}
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+                        <p className="text-sm font-semibold text-base-heading">{care.shortName}</p>
+                        {recommended ? <span className="text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-base-cyan">Recommended</span> : null}
+                      </div>
+                      <p className="mt-1.5 text-xl font-semibold tracking-[-0.03em] text-base-cyan">{care.monthlyPrice}</p>
+                      <p className="mt-1.5 text-xs leading-5 text-base-text/65">{care.summary}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs leading-5">
+                <p className="text-base-text/65">Selected and billed separately after launch.</p>
+                <Link href={careDetailsHref} className="font-semibold text-base-heading transition-colors hover:text-base-cyan">
+                  Compare care plans
+                </Link>
+              </div>
             </div>
             <ul className="space-y-3 text-sm leading-6 text-base-text/75">
               {plan.summaryPoints.map((point) => <li key={point} className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-base-cyan" aria-hidden="true" />{point}</li>)}

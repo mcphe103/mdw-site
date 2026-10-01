@@ -29,7 +29,7 @@ export const websitePackages = [
       "Ongoing content updates",
       "Domain registration or renewal",
     ],
-    carePlan: "Launch Hosting & Care",
+    recommendedCarePlan: "Managed Technical Care",
   },
   {
     index: "02",
@@ -61,7 +61,7 @@ export const websitePackages = [
     ],
     note:
       "Typical pages may include Home, About, Services, Gallery or Portfolio, and Contact. Page names may vary. Unusually complex pages may affect the final scope.",
-    carePlan: "Standard Hosting & Care",
+    recommendedCarePlan: "Managed Care + Updates",
     featured: true,
   },
   {
@@ -95,16 +95,18 @@ export const websitePackages = [
       "Extensive copywriting, branding, content migration, or ongoing SEO campaigns",
       "Functionality not approved during discovery",
     ],
-    carePlan: "Standard Hosting & Care",
+    recommendedCarePlan: "Managed Care + Updates",
   },
 ] as const;
 
 export const carePlans = [
   {
-    name: "Launch Hosting & Care",
-    monthlyPrice: "$39/month",
-    annualPrice: "$390/year",
-    intendedFor: "Quick Launch websites",
+    name: "Managed Technical Care",
+    shortName: "Technical Care",
+    monthlyPrice: "$69/month",
+    annualPrice: "$690/year",
+    intendedFor: "Businesses that rarely need content changes",
+    summary: "Managed hosting and technical upkeep, with content changes quoted when needed.",
     included: [
       "Managed website hosting",
       "SSL and domain connection",
@@ -122,10 +124,12 @@ export const carePlans = [
     note: "Content updates are billed separately.",
   },
   {
-    name: "Standard Hosting & Care",
-    monthlyPrice: "$100/month",
-    annualPrice: "$1,000/year",
-    intendedFor: "Starter and Growth websites",
+    name: "Managed Care + Updates",
+    shortName: "Care + Updates",
+    monthlyPrice: "$129/month",
+    annualPrice: "$1,290/year",
+    intendedFor: "Businesses that want routine monthly changes",
+    summary: "Managed hosting and technical upkeep, plus up to one hour of routine updates each month.",
     included: [
       "Managed website hosting",
       "SSL and domain connection",
@@ -155,7 +159,7 @@ export const packageComparison = [
   ["Forms", "One contact form or action", "One inquiry form", "Up to two forms"],
   ["Simple integrations", "Not included", "Quoted as needed", "Approved simple integrations"],
   ["Revision rounds", "One", "Two", "Three"],
-  ["Recommended care plan", "Launch Care", "Standard Care", "Standard Care"],
+  ["Recommended care plan", "Technical Care", "Care + Updates", "Care + Updates"],
   ["Best suited for", "Establishing an online presence", "Complete small-business website", "Expanded content and business needs"],
 ] as const;
 

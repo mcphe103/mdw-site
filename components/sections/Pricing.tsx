@@ -18,10 +18,10 @@ export function Pricing() {
           <p className="operational-label">Services & Pricing / Project investment</p>
           <div className="mt-5 grid gap-8 lg:grid-cols-[1.18fr_0.82fr] lg:items-end lg:gap-20">
             <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.05em] text-base-heading sm:text-5xl lg:text-6xl">
-              Choose the website your business needs next.
+              Choose your website build and ongoing care.
             </h1>
             <p className="max-w-xl text-base leading-8 text-base-text/70 sm:text-lg">
-              Compare your one-time website build and recommended monthly care in one place. Final scope and pricing are confirmed before work begins.
+              Make two clear decisions in one place: the website your business needs now and how much help you want after launch. Final scope and pricing are confirmed before work begins.
             </p>
           </div>
 
@@ -30,18 +30,26 @@ export function Pricing() {
 
       <section className="section-panel py-12 sm:py-16" aria-label="Website packages">
         <Container>
-          <h2 className="sr-only">Choose your website package</h2>
-          <PackageCards />
-          <p className="mt-6 text-sm leading-6 text-base-mute">50% to reserve your project; the remaining balance is due before launch. Hosting &amp; Care is separate from the build. Domain registration and renewal are additional.</p>
+          <div className="grid gap-5 border-b border-white/10 pb-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-16">
+            <div>
+              <p className="operational-label">01 / Choose your website build</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-4xl">Start with what the website needs to accomplish.</h2>
+            </div>
+            <p className="max-w-2xl leading-7 text-base-text/70 lg:justify-self-end">Each package shows the one-time build price, the 50% starting payment, and both after-launch care choices. The highlighted care plan is a recommendation—not a requirement.</p>
+          </div>
+          <div className="mt-8">
+            <PackageCards careDetailsHref="#care-plans" />
+          </div>
+          <p className="mt-6 text-sm leading-6 text-base-mute">50% reserves your project; the remaining balance is due before launch. Your selected Hosting &amp; Care plan is billed separately after launch. Domain registration and renewal are additional.</p>
         </Container>
       </section>
 
-      <section className="section-space">
+      <section id="care-plans" className="section-space scroll-mt-24">
         <Container>
           <div className="max-w-3xl">
-            <p className="operational-label">After launch / Hosting & Care</p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-5xl">What changes between care plans?</h2>
-            <p className="mt-5 max-w-2xl leading-7 text-base-text/70">Have someone to contact when a website issue comes up. Both plans cover hosting, monitoring, maintenance, and technical support. Launch Care covers technical upkeep; Standard also includes up to one hour each month for routine changes such as hours, supplied photos, or service details.</p>
+            <p className="operational-label">02 / Choose your care after launch</p>
+            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-5xl">Choose how much ongoing help you want.</h2>
+            <p className="mt-5 max-w-2xl leading-7 text-base-text/70">Every website can use either plan. Both cover managed hosting, monitoring, maintenance, and technical support. Care + Updates also includes up to one hour each month for routine changes such as hours, supplied photos, pricing, or service details.</p>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -49,8 +57,9 @@ export function Pricing() {
               <article key={plan.name} className={`relative overflow-hidden border p-7 sm:p-9 ${"featured" in plan && plan.featured ? "border-base-cyan/35 bg-base-cyan/[0.055]" : "border-white/10 bg-base-surface/60"}`}>
                 {"featured" in plan && plan.featured && <span className="absolute inset-x-0 top-0 h-px bg-base-cyan shadow-[0_0_24px_hsl(var(--signal-cyan)/0.65)]" aria-hidden="true" />}
                 <ShieldCheck className="h-6 w-6 text-base-cyan" aria-hidden="true" />
-                <p className="operational-label mt-7">For {plan.intendedFor}</p>
+                <p className="operational-label mt-7">Best for {plan.intendedFor}</p>
                 <h3 className="mt-3 text-2xl font-semibold tracking-[-0.035em] text-base-heading sm:text-3xl">{plan.name}</h3>
+                <p className="mt-3 text-sm leading-6 text-base-text/68">{plan.summary}</p>
                 <div className="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
                   <p className="text-3xl font-semibold tracking-[-0.045em] text-base-cyan">{plan.monthlyPrice}</p>
                   <p className="text-sm text-base-mute">or {plan.annualPrice}</p>
