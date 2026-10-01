@@ -33,66 +33,8 @@ export function WorkOverviewIntegrated() {
           </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-5 sm:mt-14 lg:grid-cols-2">
-          {featuredPortfolioProjects.map((project, index) => (
-            <ProjectReveal
-              key={project.slug}
-              className="project-feature flex h-full flex-col overflow-hidden border border-white/10 bg-base-surface/72"
-            >
-              <Link
-                href={`/work/${project.slug}`}
-                aria-label={`View the ${project.client} case study`}
-                className="group/media block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan/70"
-              >
-                <ProjectMedia
-                  project={project}
-                  className="border-0 border-b border-white/10 shadow-none transition-colors group-hover/media:border-base-cyan/30"
-                />
-              </Link>
-
-              <div className="flex flex-1 flex-col p-6 sm:p-8">
-                <div className="flex items-center gap-3">
-                  <NumberBadge value={String(index + 1).padStart(2, "0")} size="compact" />
-                  <p className="operational-label">{project.region ?? project.category}</p>
-                </div>
-
-                <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em] text-base-heading sm:text-3xl">
-                  {project.client}
-                </h3>
-                <p className="mt-3 leading-7 text-base-text/68">{project.summary}</p>
-
-                <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-5 text-xs font-medium text-base-text/64">
-                  {project.contributions.slice(0, 3).map((point) => (
-                    <li key={point} className="flex items-center gap-2">
-                      <Check className="h-3.5 w-3.5 shrink-0 text-base-cyan" aria-hidden="true" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
-                  <Link
-                    href={`/work/${project.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-base-heading transition-colors hover:text-base-cyan"
-                  >
-                    View case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                  <Link
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-base-mute transition-colors hover:text-base-heading"
-                  >
-                    Live website <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </ProjectReveal>
-          ))}
-        </div>
-
         {latestPortfolioProject && (
-          <ProjectReveal className="relative mt-8 overflow-hidden border border-base-cyan/20 bg-base-cyan/[0.035]">
+          <ProjectReveal className="relative mt-10 overflow-hidden border border-base-cyan/20 bg-base-cyan/[0.035] sm:mt-14">
             <span
               aria-hidden="true"
               className="absolute left-0 top-0 h-px w-52 bg-gradient-to-r from-base-cyan via-base-cyan/45 to-transparent shadow-[0_0_20px_hsl(var(--signal-cyan)/0.42)]"
@@ -148,6 +90,7 @@ export function WorkOverviewIntegrated() {
                   <ProjectMedia
                     project={latestPortfolioProject}
                     variant="feature"
+                    priority
                     className="border-0 border-b border-white/10 shadow-none transition-colors group-hover/media:border-base-cyan/30 lg:border-b-0"
                   />
                 </Link>
@@ -155,6 +98,65 @@ export function WorkOverviewIntegrated() {
             </article>
           </ProjectReveal>
         )}
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
+          {featuredPortfolioProjects.map((project, index) => (
+            <ProjectReveal
+              key={project.slug}
+              className="project-feature flex h-full flex-col overflow-hidden border border-white/10 bg-base-surface/72"
+            >
+              <Link
+                href={`/work/${project.slug}`}
+                aria-label={`View the ${project.client} case study`}
+                className="group/media block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan/70"
+              >
+                <ProjectMedia
+                  project={project}
+                  className="border-0 border-b border-white/10 shadow-none transition-colors group-hover/media:border-base-cyan/30"
+                />
+              </Link>
+
+              <div className="flex flex-1 flex-col p-6 sm:p-8">
+                <div className="flex items-center gap-3">
+                  <NumberBadge value={String(index + (latestPortfolioProject ? 2 : 1)).padStart(2, "0")} size="compact" />
+                  <p className="operational-label">{project.region ?? project.category}</p>
+                </div>
+
+                <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em] text-base-heading sm:text-3xl">
+                  {project.client}
+                </h3>
+                <p className="mt-3 leading-7 text-base-text/68">{project.summary}</p>
+
+                <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-5 text-xs font-medium text-base-text/64">
+                  {project.contributions.slice(0, 3).map((point) => (
+                    <li key={point} className="flex items-center gap-2">
+                      <Check className="h-3.5 w-3.5 shrink-0 text-base-cyan" aria-hidden="true" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-base-heading transition-colors hover:text-base-cyan"
+                  >
+                    View case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                  <Link
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-base-mute transition-colors hover:text-base-heading"
+                  >
+                    Live website <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            </ProjectReveal>
+          ))}
+        </div>
+
       </Container>
     </section>
   );

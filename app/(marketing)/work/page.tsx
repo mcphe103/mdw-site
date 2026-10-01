@@ -5,7 +5,7 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { NumberBadge } from "@/components/ui/NumberBadge";
 import { ProjectMedia } from "@/components/work/ProjectMedia";
-import { portfolioProjects } from "@/lib/projects/data";
+import { workPortfolioProjects } from "@/lib/projects/data";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function WorkPage() {
         </div>
 
         <div className="mt-12 space-y-14 lg:mt-16 lg:space-y-20">
-          {portfolioProjects.map((project, index) => (
+          {workPortfolioProjects.map((project, index) => (
             <article
               key={project.slug}
               className="grid items-center gap-7 border-t border-white/10 pt-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12"

@@ -90,11 +90,17 @@ export const portfolioProjects: PortfolioProject[] = [
       "Mobile-friendly layout",
     ],
     media: {
-      cover: {
+      desktopHome: {
         src: "/portfolio/savory-sakura.webp",
         alt: "Savory Sakura website with cherry blossom branding and weekend catering request messaging",
         width: 2048,
         height: 1157,
+      },
+      mobileHome: {
+        src: "/projects/savory-sakura/mobile-home.jpeg",
+        alt: "Savory Sakura mobile homepage showing weekend catering messaging and menu actions",
+        width: 709,
+        height: 1536,
       },
     },
     liveUrl: "https://www.savorysakura.com/",
@@ -109,6 +115,14 @@ export const featuredPortfolioProjects = portfolioProjects.filter(
 export const latestPortfolioProject = portfolioProjects.find(
   (project) => project.homepageRole === "latest",
 );
+
+/** Keeps the current latest project first without removing older case studies. */
+export const workPortfolioProjects = latestPortfolioProject
+  ? [
+      latestPortfolioProject,
+      ...portfolioProjects.filter((project) => project.slug !== latestPortfolioProject.slug),
+    ]
+  : portfolioProjects;
 
 export function getPortfolioProject(slug: string) {
   return portfolioProjects.find((project) => project.slug === slug);

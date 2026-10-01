@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
 import { ProjectMedia } from "@/components/work/ProjectMedia";
-import { portfolioProjects, getPortfolioProject } from "@/lib/projects/data";
+import { portfolioProjects, getPortfolioProject, workPortfolioProjects } from "@/lib/projects/data";
 import { siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -42,10 +42,10 @@ export default async function ProjectPage({
 
   if (!project) notFound();
 
-  const projectIndex = portfolioProjects.findIndex((item) => item.slug === project.slug);
+  const projectIndex = workPortfolioProjects.findIndex((item) => item.slug === project.slug);
   const nextProject =
-    portfolioProjects.length > 1
-      ? portfolioProjects[(projectIndex + 1) % portfolioProjects.length]
+    workPortfolioProjects.length > 1
+      ? workPortfolioProjects[(projectIndex + 1) % workPortfolioProjects.length]
       : undefined;
 
   return (
