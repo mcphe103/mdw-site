@@ -35,7 +35,7 @@ export function Pricing() {
               <p className="operational-label">01 / Choose your website build</p>
               <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-base-heading sm:text-4xl">Start with what the website needs to accomplish.</h2>
             </div>
-            <p className="max-w-2xl leading-7 text-base-text/70 lg:justify-self-end">Each package shows the one-time build price, the 50% starting payment, and both after-launch care choices. The highlighted care plan is a recommendation—not a requirement.</p>
+            <p className="max-w-2xl leading-7 text-base-text/70 lg:justify-self-end">Each package shows the one-time build price and 50% starting payment first. Open Hosting &amp; Care when you are ready to compare the two after-launch choices.</p>
           </div>
           <div className="mt-8">
             <PackageCards careDetailsHref="#care-plans" />
