@@ -1,12 +1,12 @@
 import { ArrowRight, Check } from "lucide-react";
 import { ProjectIntakeTrigger } from "@/components/project-intake/ProjectIntake";
-import { carePlans, websitePackages } from "@/lib/services";
+import { CarePlanPopover } from "@/components/sections/CarePlanPopover";
+import { websitePackages } from "@/lib/services";
 
-export function PackageCards() {
+export function PackageCards({ careDetailsHref = "/pricing#care-plans" }: { careDetailsHref?: string }) {
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       {websitePackages.map((plan) => {
-        const care = carePlans.find((item) => item.name === plan.carePlan)!;
         const installment = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(Number(plan.price.replace(/[^0-9.]/g, "")) / 2);
         const featured = "featured" in plan && plan.featured;
         return (
@@ -24,9 +24,7 @@ export function PackageCards() {
                 <p className="text-sm font-semibold leading-6 text-base-heading">{installment} to start · {installment} before launch</p>
                 <p className="mt-1 text-xs leading-5 text-base-text/70">50% upfront. Deposit is based on your final approved quote.</p>
               </div>
-              <p className="mt-5 text-xs uppercase tracking-widest text-base-mute">Recommended hosting &amp; care</p>
-              <p className="mt-2 text-2xl font-semibold text-base-cyan">{care.monthlyPrice}</p>
-              <p className="mt-2 text-xs leading-5 text-base-text/65">Billed separately after launch.</p>
+              <CarePlanPopover recommendedCarePlan={plan.recommendedCarePlan} careDetailsHref={careDetailsHref} />
             </div>
             <ul className="space-y-3 text-sm leading-6 text-base-text/75">
               {plan.summaryPoints.map((point) => <li key={point} className="flex gap-3"><Check className="mt-1 h-4 w-4 shrink-0 text-base-cyan" aria-hidden="true" />{point}</li>)}

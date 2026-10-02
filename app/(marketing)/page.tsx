@@ -6,8 +6,8 @@ import {
   ServicesOverview,
   PricingOverview,
   ProcessOverview,
-  WorkOverview,
 } from "@/components/sections/Homepage";
+import { WorkOverviewIntegrated } from "@/components/sections/WorkOverviewIntegrated";
 import { ContactOverview } from "@/components/sections/Contact";
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function Page() {
     <>
       <Hero />
       <ServicesOverview />
-      <WorkOverview />
+      <WorkOverviewIntegrated />
       <AboutOverview />
       <PricingOverview />
       <ProcessOverview />

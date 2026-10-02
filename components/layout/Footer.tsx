@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 
 const exploreLinks = [
   { label: "Services", href: "/pricing" },
-  { label: "Work", href: "/#portfolio" },
+  { label: "Work", href: "/work" },
   { label: "Process", href: "/#process" },
   { label: "About", href: "/about" },
 ];
