@@ -11,7 +11,7 @@ import { WorkOverviewIntegrated } from "@/components/sections/WorkOverviewIntegr
 import { ContactOverview } from "@/components/sections/Contact";
 
 export const metadata: Metadata = {
-  title: "Modesto Web Design for Small Businesses",
+  title: "Small-Business Websites & Ongoing Care",
   description:
     "McPherson Digital Works plans, designs, builds, and supports professional websites for small businesses in Modesto and across California's Central Valley.",
 };
