@@ -8,17 +8,19 @@ import { Contact } from "@/components/sections/Contact";
 import { SectionTitle } from "@/components/sections/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { NumberBadge } from "@/components/ui/NumberBadge";
+import { ProjectMedia } from "@/components/work/ProjectMedia";
+import { portfolioProjects } from "@/lib/projects/data";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Modesto Web Design for Small Businesses",
+  title: "Modesto Web Design & Website Redesign",
   description:
-    "Professional web design, website redesign, managed hosting, and ongoing website care for small businesses in Modesto and California's Central Valley.",
+    "Need a website or redesign in Modesto? MDW builds mobile-friendly small-business websites, makes contacting you simple, and offers ongoing support.",
   alternates: { canonical: "/modesto-web-design" },
   openGraph: {
-    title: "Modesto Web Design for Small Businesses",
+    title: "Modesto Web Design & Website Redesign",
     description:
-      "Professional websites and dependable ongoing care for businesses in Modesto and across California's Central Valley.",
+      "Mobile-friendly websites, redesigns, and ongoing care for Modesto and Central Valley small businesses.",
     url: "/modesto-web-design",
     images: [
       {
@@ -36,44 +38,33 @@ const services = [
     index: "01",
     title: "New Small-Business Websites",
     description:
-      "A clear, professional website built around your services, customers, and the action you want visitors to take.",
+      "Give your business a professional online home where people can explore your services, understand what makes you different, and contact you easily.",
   },
   {
     index: "02",
     title: "Website Redesign",
     description:
-      "A structured rebuild for a site that feels outdated, is difficult to use, or no longer represents the quality of your business.",
+      "Already have a website? We can review what is working, identify what is getting in the way, and create an updated experience that better reflects your business.",
   },
   {
     index: "03",
     title: "Hosting & Ongoing Care",
     description:
-      "Managed hosting, monitoring, maintenance, and direct support from the person responsible for your website.",
+      "Your website should not become another technical responsibility on your plate. MDW offers ongoing hosting, maintenance, and support to help keep everything running after launch.",
   },
 ] as const;
 
 const questions = [
-  {
-    question: "Do you only work with businesses in Modesto?",
-    answer:
-      "No. MDW serves Modesto, Riverbank, Ceres, Oakdale, Turlock, Manteca, surrounding Central Valley communities, and select remote clients.",
-  },
-  {
-    question: "Can you redesign an existing website?",
-    answer:
-      "Yes. A redesign can improve the structure, messaging, mobile experience, visual direction, performance, and path to contact while preserving what still works.",
-  },
-  {
-    question: "How much does a small-business website cost?",
-    answer:
-      "MDW website packages begin at $600. Final scope and investment are confirmed after a focused discovery conversation.",
-  },
-  {
-    question: "What happens after the website launches?",
-    answer:
-      "Hosting & Care plans are available for monitoring, maintenance, updates, and dependable support after launch.",
-  },
+  { question: "How much does a small-business website cost?", answer: "MDW website packages begin at $600. Pricing depends on the pages, features, and other requirements of your project. We'll discuss the scope before you commit." },
+  { question: "Can you improve my existing website?", answer: "Yes. Depending on its condition and technology, we can discuss improvements or a full redesign." },
+  { question: "Do you only serve Modesto?", answer: "No. MDW works with businesses throughout the surrounding Central Valley and considers select remote projects." },
+  { question: "What happens after my website launches?", answer: "You can choose an ongoing Hosting & Care plan for maintenance, updates, and support, based on your needs." },
+  { question: "How do I get started?", answer: "Tell MDW a little about your business and what you'd like your website to accomplish. We'll discuss the project and recommend an appropriate next step." },
 ] as const;
+
+const localCaseStudies = portfolioProjects.filter(
+  (project) => project.slug === "chairez-fencing" || project.slug === "sweet-x-indulgence",
+);
 
 export default function ModestoWebDesignPage() {
   return (
@@ -85,10 +76,13 @@ export default function ModestoWebDesignPage() {
             <div>
               <p className="operational-label">Modesto web design · Central Valley</p>
               <h1 className="mt-6 max-w-4xl text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.055em] text-base-heading sm:text-5xl lg:text-6xl">
-                Professional websites for Modesto small businesses.
+                Modesto Web Design Built Around Your Business
               </h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-base-text/72">
-                McPherson Digital Works plans, designs, builds, and supports dependable websites that help local businesses present their work clearly and make contacting them easy.
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-base-text/80">
+                Your website should do more than look professional. It should help customers understand what you offer, see the quality of your work, and know how to take the next step.
+              </p>
+              <p className="mt-4 max-w-2xl leading-7 text-base-text/68">
+                McPherson Digital Works designs and builds mobile-friendly websites for small businesses in Modesto and surrounding communities. Whether you&apos;re launching a new business or improving an existing website, you&apos;ll work directly with the person planning and building your project.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <ProjectIntakeTrigger size="lg">
@@ -133,8 +127,8 @@ export default function ModestoWebDesignPage() {
         <Container>
           <SectionTitle
             kicker="Website services"
-            title="The right website starts with what your business actually needs."
-            description="Each project is planned around the business, the customer journey, and the result the website needs to support."
+            title="A website that works for your business."
+            description="Every business has different needs. The goal is to build something useful for your customers—not add features you don’t need."
             align="left"
             className="max-w-4xl"
           />
@@ -161,6 +155,37 @@ export default function ModestoWebDesignPage() {
         </Container>
       </section>
 
+      <section className="section-space border-b border-white/[0.07]">
+        <Container>
+          <SectionTitle
+            kicker="Real work / small businesses"
+            title="Real websites. Real small businesses."
+            description="A website is easier to evaluate when you can see actual work. Explore a few small-business projects built by MDW."
+            align="left"
+          />
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            {localCaseStudies.map((project) => (
+              <article key={project.slug} className="flex h-full flex-col overflow-hidden border border-white/10 bg-base-surface/72">
+                <Link href={`/work/${project.slug}`} aria-label={`View the ${project.client} case study`} className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-base-cyan/70">
+                  <ProjectMedia project={project} className="border-0 border-b border-white/10 shadow-none transition-colors group-hover:border-base-cyan/30" />
+                </Link>
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <p className="operational-label">{project.region ?? project.category}</p>
+                  <h3 className="mt-4 text-2xl font-semibold tracking-[-0.035em] text-base-heading">{project.client}</h3>
+                  <p className="mt-4 flex-1 text-sm leading-7 text-base-text/70 sm:text-base">{project.summary}</p>
+                  <Link href={`/work/${project.slug}`} className="mt-6 inline-flex items-center gap-2 self-start text-sm font-semibold text-base-heading transition-colors hover:text-base-cyan">
+                    View case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+          <Button asChild variant="outline" className="mt-8">
+            <Link href="/work">Explore All Projects <ArrowRight aria-hidden="true" /></Link>
+          </Button>
+        </Container>
+      </section>
+
       <section className="section-space">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
@@ -182,6 +207,15 @@ export default function ModestoWebDesignPage() {
               <p className="mt-6 text-sm leading-6 text-base-mute">
                 Don&apos;t see your community listed? Reach out—nearby Central Valley locations and select remote projects can still be considered.
               </p>
+              <div className="mt-8 border-l border-base-cyan/30 pl-5">
+                <h3 className="text-lg font-semibold text-base-heading">Local web design with a direct point of contact.</h3>
+                <p className="mt-3 leading-7 text-base-text/70">
+                  When you reach out, we&apos;ll discuss your business, what your customers need, and what your website should accomplish. You&apos;ll receive a defined project scope before work begins.
+                </p>
+                <p className="mt-3 text-sm leading-6 text-base-mute">
+                  No unnecessary complexity. Just a website planned around your needs, with ongoing support available after launch.
+                </p>
+              </div>
             </div>
           </div>
         </Container>
@@ -191,7 +225,7 @@ export default function ModestoWebDesignPage() {
         <Container>
           <SectionTitle
             kicker="Common questions"
-            title="Practical answers before you reach out."
+            title="Common questions about web design in Modesto."
             align="left"
           />
           <div className="mt-12 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2">
